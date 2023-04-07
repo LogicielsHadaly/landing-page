@@ -15,7 +15,7 @@ const stats = [
     },
     {
         data: "70%",
-        desc: "most people are using split in their website."
+        desc: "most people are using hadaly in their website."
     },
 ]
 

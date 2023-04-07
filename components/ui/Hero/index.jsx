@@ -9,14 +9,16 @@ const Hero = () => (
         >
             <div className="space-y-5 max-w-4xl mx-auto text-center">
                 <h1 className="text-4xl text-gray-800 font-extrabold mx-auto sm:text-6xl">
-                    The fastest way to Increase your{" "}
+                    The fastest way to centralize your{" "}
                     <span className=" bg-clip-text text-transparent bg-gradient-to-r from-[#9867F0] to-[#ED4E50]">
-                        website traffic
+                        Portfolio analytics
                     </span>
                 </h1>
                 <p className="max-w-xl mx-auto">
-                    The ultimate way to get more website traffic and grow your
-                    online business. Start your free trial now.
+                    The ultimate way to get more insights our of your portfolio.
+                </p>
+                <p className="max-w-xl mx-auto fade-in-text">
+                    Contact our data scientist team now!
                 </p>
                 <div className="flex items-center justify-center gap-x-3 font-medium text-sm">
                     <NavLink
