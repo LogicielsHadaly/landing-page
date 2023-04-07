@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const navigation = [
         { name: "Features", href: "#features" },
-        { name: "Prix", href: "/pricing" },
+        { name: "Pricing", href: "/pricing" },
         { name: "FAQs", href: "#faqs" },
     ];
 
