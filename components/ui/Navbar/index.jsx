@@ -11,6 +11,7 @@ const Navbar = () => {
         { name: "Features", href: "#features" },
         { name: "Pricing", href: "/pricing" },
         { name: "FAQs", href: "#faqs" },
+        { name: "Dev", href: "/dev" },
     ];
 
     useEffect(() => {
