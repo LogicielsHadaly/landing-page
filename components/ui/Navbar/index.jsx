@@ -1,25 +1,33 @@
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import NavHeader from "../NavHeader";
 import NavLink from "../NavLink";
 
 const Navbar = () => {
-    const [state, setState] = useState(false);
-    const menuBtnEl = useRef();
+  const [state, setState] = useState(false);
+  const menuBtnEl = useRef();
 
-    const navigation = [
-        { name: "Features", href: "#features" },
-        { name: "Pricing", href: "/pricing" },
-        { name: "FAQs", href: "#faqs" },
-        { name: "Dev", href: "/dev" },
-    ];
+  const navigation = [
+    { name: "Features", href: "#features" },
+    //{ name: "Pricing", href: "/pricing" },
+    { name: "FAQs", href: "#faqs" },
+    { name: "Contact", href: "#contact" },
+    //{ name: "Dev", href: "/dev" },
+  ];
 
-    useEffect(() => {
-        document.onclick = (e) => {
-            const target = e.target;
-            if (!menuBtnEl.current.contains(target)) setState(false);
-        };
-    }, []);
+  useEffect(() => {
+    document.onclick = (e) => {
+      const target = e.target;
+      if (!menuBtnEl.current.contains(target)) setState(false);
+    };
+  }, []);
+
+  const handleClick = (e, href) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(href);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
     return (
         <header className="relative">
@@ -47,19 +55,16 @@ const Navbar = () => {
                         <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
                             {navigation.map((item, idx) => {
                                 return (
-                                    <li
-                                        key={idx}
-                                        className="hover:text-gray-900"
-                                    >
-                                        <Link
-                                            href={item.href}
-                                            className="block"
-                                            scroll={false}
-                                        >
-                                            {item.name}
-                                        </Link>
+                                    <li key={idx} className="hover:text-gray-900">
+                                      <a
+                                        href={item.href}
+                                        className="block"
+                                        onClick={(e) => handleClick(e, item.href)}
+                                      >
+                                        {item.name}
+                                      </a>
                                     </li>
-                                );
+                                  );
                             })}
                         </ul>
                         <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">

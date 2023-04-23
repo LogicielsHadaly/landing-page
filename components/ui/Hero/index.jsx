@@ -9,7 +9,7 @@ const Hero = () => (
         >
             <div className="space-y-5 max-w-4xl mx-auto text-center">
                 <h1 className="text-4xl text-gray-800 font-extrabold mx-auto sm:text-6xl">
-                    The fastest way to centralize your{" "}
+                    The fastest way to upgrade your{" "}
                     <span className=" bg-clip-text text-transparent bg-gradient-to-r from-[#9867F0] to-[#ED4E50]">
                         Portfolio analytics
                     </span>
