@@ -9,23 +9,24 @@ const Hero = () => (
         >
             <div className="space-y-5 max-w-4xl mx-auto text-center">
                 <h1 className="text-4xl text-gray-800 font-extrabold mx-auto sm:text-6xl">
-                    The fastest way to upgrade your{" "}
-                    <span className=" bg-clip-text text-transparent bg-gradient-to-r from-[#9867F0] to-[#ED4E50]">
-                        Portfolio analytics
+                Boost Engagement and Confidence with Hadaly's   {" "}
+                    <span className=" bg-clip-text text-transparent bg-gradient-to-r from-[#1E3A8A] to-[#F3B3A7]">
+                    AI-Driven Financial Analytics
                     </span>
                 </h1>
                 <p className="max-w-xl mx-auto">
-                    The ultimate way to get more insights our of your portfolio.
+                Maximize engagement with tailored financial analytics.
                 </p>
                 <p className="max-w-xl mx-auto fade-in-text">
-                    Contact our data scientist team now!
+                Enhance user retention and platform revenue.
                 </p>
                 <div className="flex items-center justify-center gap-x-3 font-medium text-sm">
                     <NavLink
-                        href="/pricing"
-                        className="flex items-center gap-x-2 text-white bg-blue-600 hover:bg-blue-500 active:bg-blue-700 "
+                        href="#contact"
+                        className="flex items-center gap-x-2 text-white bg-[#1E3A8A] hover:bg-[#F3B3A7] active:bg-[#10B981] "
+                        scroll={false}
                     >
-                        Get free trial
+                        Get in touch
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
