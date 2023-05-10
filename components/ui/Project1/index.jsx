@@ -33,15 +33,24 @@ function Project1() {
   const [intervalState, setInterval] = useState("");
   const [stockSymbol, setStockSymbol] = useState("");
 
-  //   useEffect(() => {
-  //     fetch("api url")
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         setStockData(data);
-  //       });
-  //   });
+  // function fetchApiResult() {
+  //   fetch(
+  //     `https://api.hadaly.ca/historic?symbol=${stockSymbol}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`,
+  //     {
+  //       headers: {
+  //         "Content-type": "application/json",
+  //       },
+  //       method: "GET",
+  //     }
+  //   )
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       setStockApiData(data);
+  //     });
+  //   console.log(stockApiData);
+  // }
 
   useEffect(() => {
     const filtered = stocks.filter((option) =>
@@ -73,13 +82,21 @@ function Project1() {
             <p>Stock: {stockSymbol} </p>
             <p>{filteredOptions.length} items shown</p>
             <div>
-              {stockApiData.length > 0 && (
+              Start Date: {startDateState}
+              <br />
+              End Date: {endDateState}
+              <br />
+              Stock: {stockSymbol}
+              <br />
+              Interval: {intervalState}
+              <br />
+              {/* {stockApiData.length > 0 && (
                 <ul>
                   {stockApiData.map((stock) => (
                     <li key={stock.id}>{stock.id}</li>
                   ))}
                 </ul>
-              )}
+              )} */}
             </div>
           </div>
           <div id="user-inputs">
@@ -90,7 +107,7 @@ function Project1() {
                   <br />
                   <input
                     type="date"
-                    onChange={(e) => setStartDate(e.target.value)}
+                    onChange={(e) => setStartDate(e.target.value.toString())}
                   />
                 </div>
                 <div style={{ paddingLeft: "1em" }}>
@@ -98,22 +115,19 @@ function Project1() {
                   <br />
                   <input
                     type="date"
-                    onChange={(e) => setEndDate(e.target.value)}
+                    onChange={(e) => setEndDate(e.target.value.toString())}
                   />
                 </div>
               </div>
               <div date-rangepicker class="flex items-center"></div>
               <div id="interval" style={{ marginTop: "1em" }}>
                 <Autocomplete
+                  disablePortal
                   options={intervals}
-                  getOptionLabel={(option) => option.label}
-                  onChange={(event, value) => setInterval(value)}
+                  onInputChange={(event, interval) => setInterval(interval)}
+                  sx={{ width: 300 }}
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Select an Interval"
-                      variant="outlined"
-                    />
+                    <TextField {...params} label="Interval" />
                   )}
                 />
               </div>
@@ -152,6 +166,7 @@ function Project1() {
                   )}
                 />
               </div>
+              <input type="button" onClick={fetchApiResult} value="Submit" />
             </form>
           </div>{" "}
           {/* End user inputs */}
