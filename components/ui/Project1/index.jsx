@@ -5,7 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 
 function Project1() {
   const stocks = [
-    { stockName: "APPL", label: "Apple (APPL)" },
+    { stockName: "AAPL", label: "Apple (AAPL)" },
     { stockName: "MSFT", label: "Microsoft (MSFT)" },
     { stockName: "SNAP", label: "Snapchat (SNAP)" },
     { stockName: "TSLA", label: "Tesla (TSLA)" },
@@ -24,7 +24,7 @@ function Project1() {
     { label: "1d" },
   ];
 
-  const [stockApiData, setStockApiData] = useState([]);
+  const [stockApiData, setStockApiData] = useState();
   const [filteredOptions, setFilteredOptions] = useState(stocks);
   const [inputValue, setInputValue] = useState("");
 
@@ -33,24 +33,33 @@ function Project1() {
   const [intervalState, setInterval] = useState("");
   const [stockSymbol, setStockSymbol] = useState("");
 
-  // function fetchApiResult() {
-  //   fetch(
-  //     `https://api.hadaly.ca/historic?symbol=${stockSymbol}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`,
-  //     {
-  //       headers: {
-  //         "Content-type": "application/json",
-  //       },
-  //       method: "GET",
-  //     }
-  //   )
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setStockApiData(data);
-  //     });
-  //   console.log(stockApiData);
-  // }
+  const [hasResults, setHasResults] = useState("");
+
+  const url = `https://api.hadaly.ca/historic?symbol=${stockSymbol}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`;
+
+  async function fetchApiResult() {
+    await fetch(`https://cors-anywhere.herokuapp.com/${url}`, {
+      headers: {
+        "Content-type": "application/json",
+      },
+      method: "GET",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setStockApiData(JSON.parse(data));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  useEffect(() => {
+    if (stockApiData) {
+      setHasResults(stockApiData.close.length);
+    }
+  }, [stockApiData]);
 
   useEffect(() => {
     const filtered = stocks.filter((option) =>
@@ -75,28 +84,38 @@ function Project1() {
         >
           <div
             className="border-2 border-dashed border-black"
-            style={{ marginLeft: "10em", width: "30em", height: "30em" }}
+            style={{ marginLeft: "10em", width: "80em", height: "30em" }}
           >
             {/* Insert Graph Here */}
             <h1>GRAPH</h1>
-            <p>Stock: {stockSymbol} </p>
-            <p>{filteredOptions.length} items shown</p>
             <div>
-              Start Date: {startDateState}
-              <br />
-              End Date: {endDateState}
-              <br />
-              Stock: {stockSymbol}
-              <br />
-              Interval: {intervalState}
-              <br />
-              {/* {stockApiData.length > 0 && (
-                <ul>
-                  {stockApiData.map((stock) => (
-                    <li key={stock.id}>{stock.id}</li>
+              <p>Results: {hasResults}</p>
+              {/* {hasResults > 0 ? ( */}
+              {hasResults > 0 ? (
+                <table>
+                  <tr>
+                    <th>Open</th>
+                    <th>Close</th>
+                    <th>Low</th>
+                    <th>High</th>
+                    <th>Volume</th>
+                    <th>Close Time</th>
+                  </tr>
+                  {stockApiData.open.map((stock, index) => (
+                    <tr>
+                      <td>{stock}</td>
+                      <td>{stockApiData.close[index]}</td>
+                      <td>{stockApiData.low[index]}</td>
+                      <td>{stockApiData.high[index]}</td>
+                      <td>{stockApiData.volume[index]}</td>
+                      <td>{stockApiData.close_time[index]}</td>
+                      <td></td>
+                    </tr>
                   ))}
-                </ul>
-              )} */}
+                </table>
+              ) : (
+                <p>Nothing</p>
+              )}
             </div>
           </div>
           <div id="user-inputs">
@@ -119,11 +138,13 @@ function Project1() {
                   />
                 </div>
               </div>
-              <div date-rangepicker class="flex items-center"></div>
               <div id="interval" style={{ marginTop: "1em" }}>
                 <Autocomplete
                   disablePortal
                   options={intervals}
+                  isOptionEqualToValue={(option, value) =>
+                    option.label === value.label
+                  }
                   onInputChange={(event, interval) => setInterval(interval)}
                   sx={{ width: 300 }}
                   renderInput={(params) => (
@@ -135,7 +156,7 @@ function Project1() {
                 <Autocomplete
                   options={stocks}
                   getOptionLabel={(option) => option.label}
-                  getOptionSelected={(option, value) =>
+                  isOptionEqualToValue={(option, value) =>
                     option.stockName === value.stockName
                   }
                   inputValue={inputValue}
@@ -166,7 +187,11 @@ function Project1() {
                   )}
                 />
               </div>
-              <input type="button" onClick={fetchApiResult} value="Submit" />
+              <input
+                type="button"
+                onClick={() => fetchApiResult()}
+                value="Submit"
+              />
             </form>
           </div>{" "}
           {/* End user inputs */}
