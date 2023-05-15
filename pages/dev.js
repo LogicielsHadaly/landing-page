@@ -9,11 +9,11 @@ export default function index() {
   return (
     <>
       <Head>
-        <meta name='robots' content='index' />
-        <title>Pricing - Split</title>
+        <meta name="robots" content="index" />
+        <title>Dev - Split</title>
       </Head>
       <Navbar />
-      <DEV/>
+      <DEV />
       <Footer />
     </>
   );

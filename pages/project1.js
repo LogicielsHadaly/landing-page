@@ -8,7 +8,7 @@ export default function index() {
     <>
       <Head>
         <meta name="robots" content="index" />
-        <title>Project1 - Split</title>
+        <title>Graph - Hadaly</title>
       </Head>
       <Navbar />
       <Project1 />

@@ -1132,6 +1132,11 @@ var monthData = [
   { time: "2019-04-05", value: 99.540001 },
 ];
 
+const defaultSize = {
+  width: 300,
+  height: 160,
+};
+
 // Specify plans
 const plans = [
   {
@@ -1158,7 +1163,7 @@ const plans = [
     name: "Basic plan",
     desc: "SEO, social, and PPC tools",
     isMostPop: false,
-    graph: <INDICATORS dataInput={dataInput} />,
+    graph: <INDICATORS dataInput={dataInput} size={defaultSize} />,
   },
 
   {
