@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "../components/ui/Navbar";
 import Footer from "../components/ui/Footer";
-import Project1 from "../components/ui/Project1";
+import Graph from "../components/ui/Graph";
 
 export default function index() {
   return (
@@ -11,7 +11,7 @@ export default function index() {
         <title>Graph - Hadaly</title>
       </Head>
       <Navbar />
-      <Project1 />
+      <Graph />
       <Footer />
     </>
   );

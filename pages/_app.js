@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import "../components/ui/Project1";
+import "../components/ui/Graph";
 import Head from "next/head";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";

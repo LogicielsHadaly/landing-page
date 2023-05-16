@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <meta name='robots' content='index' />
+        <meta name="robots" content="index" />
       </Head>
       <Navbar />
       <Hero />
@@ -23,7 +23,7 @@ export default function Home() {
       <CTA />
       <Features />
       <Stats />
-      {/* <FAQs /> */}
+      <FAQs />
       <FooterCTA />
       <Footer />
     </>
