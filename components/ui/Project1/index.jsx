@@ -36,17 +36,6 @@ function Project1() {
   const [filteredOptions, setFilteredOptions] = useState(stockNames);
   const [inputValue, setInputValue] = useState("");
 
-  let today = new Date();
-  let todayToString = `${today.getUTCFullYear()}-${today.getUTCMonth()}-${today.getUTCDay()}`;
-
-  // User inputs for the url
-  // const [endDateState, setEndDate] = useState(todayToString);
-  // today.setUTCFullYear(today.getFullYear() - 2);
-  // todayToString = `${today.getUTCFullYear()}-${today.getUTCMonth()}-${today.getUTCDay()}`;
-  // const [startDateState, setStartDate] = useState(todayToString);
-  // const [intervalState, setIntervalState] = useState("1d");
-  // const [stockSymbol, setStockSymbol] = useState("AAPL");
-
   const [endDateState, setEndDate] = useState(null);
   const [startDateState, setStartDate] = useState(null);
   const [intervalState, setIntervalState] = useState("");
@@ -55,7 +44,9 @@ function Project1() {
   // Check if it's ok to show results.
   // Url
   const [hasResults, setHasResults] = useState(false);
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(
+    `https://hadalyapi-production.up.railway.app/historic?symbol=${stockSymbol}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`
+  );
 
   //Fetch interval wait time
   const waitTime = 500;
@@ -69,11 +60,8 @@ function Project1() {
 
   //Get the info from the api with a {waitTime} interval to allow useStates
   //to save the info
-  // The interval
-
   let running;
   async function fetchApiResult() {
-    //console.log(url);
     running = setInterval(() => {
       console.log(url);
       fetch(url, {
@@ -86,15 +74,46 @@ function Project1() {
           return response.json();
         })
         .then((data) => {
-          const parsedData = JSON.parse(data);
-          setHasResults(true);
+          return JSON.parse(data);
+        })
+        .then((parsedData) => {
           setStockApiData(parsedData);
+          setHasResults(true);
         })
         .catch((error) => {
           console.error(error);
         });
       clearInterval(running);
     }, waitTime);
+  }
+
+  //Get a default value to start the application
+  const defaultStock = "AAPL";
+  const defaultInterval = "1d";
+  //The time is set from todays date to 2 years prior
+  useEffect(() => {
+    setStockSymbol(defaultStock);
+    setIntervalState(defaultInterval);
+    let today = new Date();
+    console.log(today);
+    let day = today.getUTCDate();
+    let month = today.getUTCMonth() + 1;
+    let year = today.getUTCFullYear();
+    setEndDate(`${year}-${month}-${day}`);
+    year = today.getUTCFullYear() - 2;
+    setStartDate(`${year}-${month}-${day}`);
+  }, []);
+
+  function createChart() {
+    return {
+      desc: (
+        <a href={url} style={{ color: "blue" }}>
+          Click here to Check API
+        </a>
+      ),
+      isMostPop: false,
+      graph: <INDICATORS dataInput={dataInputs} size={size} />,
+    };
   }
 
   useEffect(() => {
@@ -108,7 +127,6 @@ function Project1() {
           month: theDate.getUTCMonth() + 1,
           day: theDate.getUTCDate(),
         },
-        // time: stockApiData.close_time[i],
         open: parseFloat(stockApiData.open[i]),
         high: parseFloat(stockApiData.high[i]),
         low: parseFloat(stockApiData.low[i]),
@@ -116,20 +134,7 @@ function Project1() {
       };
       dataInputs.push(toPush);
     }
-
-    let chart = {
-      desc: (
-        <a href={url} style={{ color: "blue" }}>
-          Click here to Check API
-        </a>
-      ),
-      isMostPop: false,
-      graph: <INDICATORS dataInput={dataInputs} size={size} />,
-    };
-
-    //console.log(chart);
-
-    setChartPlan(chart);
+    setChartPlan(createChart());
   }, [stockApiData, hasResults]);
 
   // Will update the url if there is a change of user inputs
@@ -171,6 +176,12 @@ function Project1() {
           className="lg:flex flex-initial flex-none w-50"
         >
           <div className="bg-tranpsarent" style={{ width: "60em" }}>
+            <div className="border-2 border-slate-500 rounded-md w-1/2 ml-7">
+              <h1 className="text-xl ml-8 pr-8">
+                {stockSymbol}: {startDateState} - {endDateState} | Interval:{" "}
+                {intervalState}
+              </h1>
+            </div>
             {/* GRAPH GRAPH GRAPH GRAPH */}
             <section
               className="custom-screen text-gray-600 bg-transparent"
@@ -184,7 +195,7 @@ function Project1() {
                     </div>
                   </div>
                 ) : (
-                  <div>Please Choose Your Info</div>
+                  <div>Loading Chart...</div>
                 )}
               </div>
             </section>
@@ -192,7 +203,7 @@ function Project1() {
 
             {/* USER INPUTS || USER INPUTS */}
           </div>
-          <div id="user-inputs">
+          <div id="user-inputs" className="mt-10">
             <form id="dates" className="ml-4">
               <div className="flex flex-initial">
                 <div id="startDate">
