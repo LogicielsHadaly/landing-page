@@ -12,24 +12,31 @@ import { LocalizationProvider, MobileDatePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import CreateGraph from "./createGraph";
 import style from "./style/style.module.css";
-import { indicatorsList } from "./indicatorsList";
 import { stocksList } from "./stocksList";
+import { IndicatorList } from "./indicators/indicatorList";
+import { PatternList } from "./indicators/patternsExport";
+
+let count = 0;
 
 function Graph() {
-    // Hard Coded example stock names
-    const stockNames = stocksList;
-
     //Hard coded intervals
     const intervals = [
         { label: "1 hour", value: "1h" },
         { label: "1 day", value: "1d" },
     ];
 
-    // Api result is stored here
+    //I don't understand why some need to be states and others not....
+    //It works. don't touch
+    //Lists
+    const stockNames = stocksList;
+    const [indicatorList, setIndicatorList] = useState(IndicatorList);
+    const [patternList, setPatternList] = useState(PatternList);
+
+    // Api results are stored here
     const [historicApiData, setStockApiData] = useState(null);
     const [indicatorApiData, setIndicatorApiData] = useState(null);
 
-    //For pressing enter
+    //For pressing enter in stock
     const [filteredOptions, setFilteredOptions] = useState(stockNames);
     const [inputValue, setInputValue] = useState("");
 
@@ -38,12 +45,19 @@ function Graph() {
     const [startDateState, setStartDate] = useState(null);
     const [intervalState, setIntervalState] = useState("");
     const [stockSymbolState, setStockSymbolState] = useState("");
-    const [indicatorChoice, setIndicatorChoice] = useState("");
-    const [indicatorResultParsed, setIndicatorResultParsed] = useState([]);
-    const [indicatorListView, setIndicatorListView] = useState("");
-    const lineColor = ["#2962FF", "#e942f5", "#42f595"];
+    const [indicatorState, setIndicatorState] = useState("");
 
-    const [indicatorState, setIndicatorState] = useState([]);
+    //indicatorChosenList is the list of indicators to be sent as a request body
+    //indicatorResultParsed is the cleaned up JSON.parse result of the response from the API
+    const [indicatorChosenList, setIndicatorChosenList] = useState([]);
+    const [indicatorResultParsed, setIndicatorResultParsed] = useState([]);
+
+    //This is the list that shows up under the graph to show what indicator and pattern
+    // are being shown and remove them as well.
+    const [indicatorListView, setIndicatorListView] = useState("");
+
+    //LineColor list
+    const lineColor = ["#2962FF", "#e942f5", "#42f595", "#FFFFFF", "#fffb00"];
 
     //Url's for API
     let historicUrl = "";
@@ -52,33 +66,30 @@ function Graph() {
     // Historic API URL for reference
     // `https://hadalyapi-production.up.railway.app/historic?symbol=${stockSymbol}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`
 
-    // Makes sure there is something to show
-    const [hasResults, setHasResults] = useState(false);
-
     //Fetch interval wait time
     const waitTime = 500;
 
     //Data to create charts
-    let historicDataInputs = [];
-    let indicatorDataInputs = [];
+    const [historicDataInputs, setHistoricDataInputs] = useState([]);
+    const [indicatorDataInputs, setIndicatorDataInputs] = useState([]);
     const [chartPlan, setChartPlan] = useState();
 
     //////////////////////////////////////////////////////////////////
-    /**** FUNCTIONS START ****/
+    /**** GET HISTORIC ****/
     //Default Values to start app
-    // useEffect(() => {
-    //     const defaultStock = "AAPL";
-    //     const defaultInterval = "1d";
-    //     setStockSymbolState(defaultStock);
-    //     setIntervalState(defaultInterval);
-    //     let today = new Date();
-    //     let day = today.getUTCDate();
-    //     let month = today.getUTCMonth() + 1;
-    //     let year = today.getUTCFullYear();
-    //     setEndDate(`${year}-${month}-${day}`);
-    //     setStartDate(`${year - 1}-${month}-${day}`);
-    //     setIndicatorState([indicatorsList[8]]);
-    // }, []);
+    useEffect(() => {
+        const defaultStock = "AAPL";
+        const defaultInterval = "1h";
+        setStockSymbolState(defaultStock);
+        setIntervalState(defaultInterval);
+        let today = new Date();
+        let day = today.getUTCDate();
+        let month = today.getUTCMonth() + 1;
+        let year = today.getUTCFullYear();
+        setEndDate(`${year}-${month}-${day}`);
+        setStartDate(`${year - 1}-${month}-${day}`);
+        setIndicatorChosenList(["CDLRICKSHAWMAN", "CDL3OUTSIDE"]);
+    }, []);
 
     //Calls fetchHistoricResult
     useEffect(() => {
@@ -102,7 +113,7 @@ function Graph() {
     //Returns historic
     let runningStock;
     function fetchHistoricResult() {
-        //console.log(historicUrl);
+        // console.log(historicUrl);
         runningStock = setInterval(() => {
             fetch(historicUrl, {
                 headers: {
@@ -128,25 +139,26 @@ function Graph() {
     }
 
     /////////////////////////////////////////////////////////////////////
+    /***** GET INDICATOR *****/
     useEffect(() => {
-        if (!indicatorChoice) return;
-        setIndicatorState((prevState) => {
+        if (!indicatorState) return;
+        setIndicatorChosenList((prevState) => {
             let copy = [...prevState]; // Create a new array with the previous state
 
-            if (copy.indexOf(indicatorChoice) !== -1) return copy;
+            if (copy.indexOf(indicatorState) !== -1) return copy;
             if (copy.length === 5) {
                 copy = copy.slice(1);
             }
-            copy.push(indicatorChoice);
+            copy.push(indicatorState);
             return copy; // Return the updated state
         });
-    }, [indicatorChoice]);
+    }, [indicatorState]);
 
     //Returns indicatorApiData
     useEffect(() => {
         //console.log("return indicatorApiData");
         const sendReqBody = {
-            indicators: indicatorState,
+            indicators: indicatorChosenList,
             symbol: stockSymbolState,
             start_date: startDateState,
             end_date: endDateState,
@@ -169,7 +181,7 @@ function Graph() {
             .catch((error) => {
                 console.error(error);
             });
-    }, [indicatorState, historicApiData]);
+    }, [indicatorChosenList, historicApiData]);
 
     //Clean up dataset to remove NaN and replace with 0
     useEffect(() => {
@@ -188,14 +200,18 @@ function Graph() {
             );
         }
     }, [indicatorApiData]);
+    //////////////////////////////////////////////////////////////
 
     //Info to send to create charts
+    //It looks very complicated  because it's long. I tried separating but
+    // async stuff annoyed me so I kept as one
     useEffect(() => {
-        if (indicatorState.length < 1) {
+        if (indicatorChosenList.length < 1) {
             //console.log("Emptying");
-            indicatorDataInputs = [];
+            setIndicatorDataInputs([]);
         }
         if (!historicApiData) return;
+        let dataToHistoric = [];
         //console.log(historicApiData);
         for (let i = 0; i < historicApiData.close.length; i++) {
             let theDate = new Date(historicApiData.close_time[i]);
@@ -220,9 +236,10 @@ function Graph() {
                           close: parseFloat(historicApiData.close[i]),
                       };
 
-            historicDataInputs.push(historicToPush);
+            dataToHistoric.push(historicToPush);
         }
 
+        let dataToIndicators = [];
         if (indicatorResultParsed.length !== 0) {
             if (indicatorResultParsed.dates.length > 0) {
                 for (
@@ -233,45 +250,49 @@ function Graph() {
                     let indicatorToPush = [];
                     if (indicatorResultParsed.length < 1) continue;
                     if (
-                        !(indicatorState[i] in indicatorResultParsed.indicators)
+                        !(
+                            indicatorChosenList[i] in
+                            indicatorResultParsed.indicators
+                        )
                     )
                         return;
 
-                    indicatorResultParsed.indicators[indicatorState[i]].map(
-                        (ind, index) => {
-                            let date = new Date(
-                                historicApiData.close_time[index]
-                            );
-                            let t =
-                                intervalState == "1d"
-                                    ? {
-                                          time: `${date.getUTCFullYear()}-${
-                                              date.getUTCMonth() + 1 < 10
-                                                  ? "0" +
-                                                    (date.getUTCMonth() + 1)
-                                                  : date.getUTCMonth() + 1
-                                          }-${
-                                              date.getUTCDate() < 10
-                                                  ? "0" + date.getUTCDate()
-                                                  : date.getUTCDate()
-                                          }`,
-                                          value: ind,
-                                      }
-                                    : {
-                                          time: historicApiData.close_time[
-                                              index
-                                          ],
-                                          value: ind,
-                                      };
+                    indicatorResultParsed.indicators[
+                        indicatorChosenList[i]
+                    ].map((ind, index) => {
+                        // console.log(intervalState);
+                        let date = new Date(historicApiData.close_time[index]);
 
-                            indicatorToPush.push(t);
-                        }
-                    );
-                    indicatorDataInputs.push(indicatorToPush);
+                        let t =
+                            intervalState == "1d"
+                                ? {
+                                      time: `${date.getUTCFullYear()}-${
+                                          date.getUTCMonth() + 1 < 10
+                                              ? "0" + (date.getUTCMonth() + 1)
+                                              : date.getUTCMonth() + 1
+                                      }-${
+                                          date.getUTCDate() < 10
+                                              ? "0" + date.getUTCDate()
+                                              : date.getUTCDate()
+                                      }`,
+                                      value: ind,
+                                  }
+                                : {
+                                      time: historicApiData.close_time[index],
+                                      value: ind,
+                                  };
+
+                        if (t.time !== "NaN-NaN-NaN") indicatorToPush.push(t);
+                    });
+                    dataToIndicators.push(indicatorToPush);
                 }
             }
         }
-        console.log("Make Chart");
+        setIndicatorDataInputs(dataToIndicators);
+        setHistoricDataInputs(dataToHistoric);
+    }, [indicatorResultParsed, historicApiData]);
+
+    useEffect(() => {
         setChartPlan(() => {
             return (
                 <CreateGraph
@@ -284,14 +305,13 @@ function Graph() {
                 />
             );
         });
-    }, [indicatorResultParsed, historicApiData, indicatorState]);
+    }, [historicDataInputs, indicatorDataInputs]);
 
+    //Creates a blank chart
     useEffect(() => {
         setChartPlan(() => {
             return (
                 <CreateGraph
-                    historicData={historicDataInputs}
-                    indicatorData={indicatorDataInputs}
                     size={{
                         width: 900,
                         height: 500,
@@ -302,9 +322,9 @@ function Graph() {
     }, []);
 
     useEffect(() => {
-        if (indicatorState === null) return;
+        if (indicatorChosenList === null) return;
         setIndicatorListView(() => {
-            return indicatorState.map((e, i) => {
+            return indicatorChosenList.map((e, i) => {
                 return (
                     <span
                         key={i}
@@ -319,10 +339,10 @@ function Graph() {
                 );
             });
         });
-    }, [indicatorState]);
+    }, [indicatorChosenList]);
 
     const removeIndicator = (index) => {
-        setIndicatorState((prevState) => {
+        setIndicatorChosenList((prevState) => {
             const newState = [...prevState];
             newState.splice(index, 1);
             return newState;
@@ -530,18 +550,41 @@ function Graph() {
                             >
                                 <Autocomplete
                                     disablePortal
-                                    options={indicatorsList}
+                                    options={indicatorList}
                                     isOptionEqualToValue={(option, value) =>
                                         option.label === value.label
                                     }
                                     onChange={(event, indicator) => {
-                                        setIndicatorChoice(indicator);
+                                        setIndicatorState(indicator.indicator);
                                     }}
                                     sx={{ width: 300 }}
                                     renderInput={(params) => (
                                         <TextField
                                             {...params}
                                             label="Indicators"
+                                        />
+                                    )}
+                                />
+                            </div>
+                            <div
+                                id="indicatorChoice"
+                                className="mt-5"
+                                style={{ width: "19em" }}
+                            >
+                                <Autocomplete
+                                    disablePortal
+                                    options={patternList}
+                                    isOptionEqualToValue={(option, value) =>
+                                        option.label === value.label
+                                    }
+                                    onChange={(event, pattern) => {
+                                        setIndicatorState(pattern.indicator);
+                                    }}
+                                    sx={{ width: 300 }}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label="Patterns"
                                         />
                                     )}
                                 />

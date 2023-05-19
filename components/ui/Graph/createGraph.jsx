@@ -38,8 +38,6 @@ var CreateGraph = ({
     const chartContainerRef = useRef(null);
     const chartRef = useRef(null);
 
-    console.log(size);
-
     if (size) {
         layout.width = size.width;
         layout.height = size.height;
@@ -48,7 +46,6 @@ var CreateGraph = ({
     }
 
     useEffect(() => {
-        // console.log(historicData);
         const chart = LC.createChart(chartContainerRef.current, layout, {
             autosize: true,
         });
@@ -64,9 +61,15 @@ var CreateGraph = ({
             candleStickSeries.setData(historicData);
         }
 
-        //console.log(indicatorData);
+        // console.log(indicatorData);
         if (indicatorData.length > 0) {
-            const lineColor = ["#2962FF", "#e942f5", "#42f595"];
+            const lineColor = [
+                "#2962FF",
+                "#e942f5",
+                "#42f595",
+                "#FFFFFF",
+                "#fffb00",
+            ];
             indicatorData.map((indicator, index) => {
                 let areaSeries = chart.addAreaSeries({
                     lineColor: lineColor[index],
@@ -74,13 +77,6 @@ var CreateGraph = ({
                     bottomColor: "rgba(0, 08, 255, 0)",
                 });
                 areaSeries.setData(indicator);
-            });
-        }
-
-        if (markerData.length > 0) {
-            markerData.map((marker, index) => {
-                if (marker === 100) {
-                }
             });
         }
 
