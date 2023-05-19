@@ -42,7 +42,7 @@ export const indicatorsList = [
     "MACD",
     "MACDEXT",
     "MACDFIX",
-    "MFI",
+    //"MFI",
     "MINUS_DI",
     "MINUS_DM",
     "MOM",

@@ -38,24 +38,33 @@ var CreateGraph = ({
     const chartContainerRef = useRef(null);
     const chartRef = useRef(null);
 
+    console.log(size);
+
     if (size) {
         layout.width = size.width;
         layout.height = size.height;
+    } else {
+        layoung;
     }
 
     useEffect(() => {
+        // console.log(historicData);
         const chart = LC.createChart(chartContainerRef.current, layout, {
             autosize: true,
         });
-        const candleStickSeries = chart.addCandlestickSeries({
-            upColor: "rgb(38,166,154)",
-            downColor: "rgb(255,82,82)",
-            wickUpColor: "rgb(38,166,154)",
-            wickDownColor: "rgb(255,82,82)",
-            borderVisible: false,
-        });
-        candleStickSeries.setData(historicData);
 
+        if (historicData.length > 0) {
+            const candleStickSeries = chart.addCandlestickSeries({
+                upColor: "rgb(38,166,154)",
+                downColor: "rgb(255,82,82)",
+                wickUpColor: "rgb(38,166,154)",
+                wickDownColor: "rgb(255,82,82)",
+                borderVisible: false,
+            });
+            candleStickSeries.setData(historicData);
+        }
+
+        //console.log(indicatorData);
         if (indicatorData.length > 0) {
             const lineColor = ["#2962FF", "#e942f5", "#42f595"];
             indicatorData.map((indicator, index) => {
@@ -79,7 +88,7 @@ var CreateGraph = ({
         return () => {
             chartRef.current.remove();
         };
-    });
+    }, [historicData, indicatorData]);
 
     return (
         <section className="custom-screen text-gray-600">

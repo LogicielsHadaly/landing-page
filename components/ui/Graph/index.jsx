@@ -1,3 +1,10 @@
+/**
+ * Author: Ariel Martin Cohe
+ * Date: 9-05-2023
+ * Description: Front-end of the graph app.
+ *
+ */
+
 import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -14,16 +21,13 @@ function Graph() {
 
     //Hard coded intervals
     const intervals = [
-        { label: "1m" },
-        { label: "5m" },
-        { label: "30m" },
-        { label: "1h" },
-        { label: "6h" },
-        { label: "1d" },
+        { label: "1 hour", value: "1h" },
+        { label: "1 day", value: "1d" },
     ];
 
     // Api result is stored here
     const [historicApiData, setStockApiData] = useState(null);
+    const [indicatorApiData, setIndicatorApiData] = useState(null);
 
     //For pressing enter
     const [filteredOptions, setFilteredOptions] = useState(stockNames);
@@ -34,11 +38,12 @@ function Graph() {
     const [startDateState, setStartDate] = useState(null);
     const [intervalState, setIntervalState] = useState("");
     const [stockSymbolState, setStockSymbolState] = useState("");
-    const [indicatorState, setIndicatorState] = useState([]);
     const [indicatorChoice, setIndicatorChoice] = useState("");
-
+    const [indicatorResultParsed, setIndicatorResultParsed] = useState([]);
     const [indicatorListView, setIndicatorListView] = useState("");
     const lineColor = ["#2962FF", "#e942f5", "#42f595"];
+
+    const [indicatorState, setIndicatorState] = useState([]);
 
     //Url's for API
     let historicUrl = "";
@@ -50,8 +55,6 @@ function Graph() {
     // Makes sure there is something to show
     const [hasResults, setHasResults] = useState(false);
 
-    let indicatorResultParsed = null;
-
     //Fetch interval wait time
     const waitTime = 500;
 
@@ -60,25 +63,46 @@ function Graph() {
     let indicatorDataInputs = [];
     const [chartPlan, setChartPlan] = useState();
 
+    //////////////////////////////////////////////////////////////////
     /**** FUNCTIONS START ****/
     //Default Values to start app
+    // useEffect(() => {
+    //     const defaultStock = "AAPL";
+    //     const defaultInterval = "1d";
+    //     setStockSymbolState(defaultStock);
+    //     setIntervalState(defaultInterval);
+    //     let today = new Date();
+    //     let day = today.getUTCDate();
+    //     let month = today.getUTCMonth() + 1;
+    //     let year = today.getUTCFullYear();
+    //     setEndDate(`${year}-${month}-${day}`);
+    //     setStartDate(`${year - 1}-${month}-${day}`);
+    //     setIndicatorState([indicatorsList[8]]);
+    // }, []);
+
+    //Calls fetchHistoricResult
     useEffect(() => {
-        const defaultStock = "AAPL";
-        const defaultInterval = "1d";
-        setStockSymbolState(defaultStock);
-        setIntervalState(defaultInterval);
-        let today = new Date();
-        let day = today.getUTCDate();
-        let month = today.getUTCMonth() + 1;
-        let year = today.getUTCFullYear();
-        setEndDate(`${year}-${month}-${day}`);
-        setStartDate(`${year - 1}-${month}-${day}`);
-        setIndicatorState([indicatorsList[8]]);
-    }, []);
+        if (
+            startDateState &&
+            endDateState &&
+            intervalState &&
+            stockSymbolState
+        ) {
+            historicUrl = `https://hadalyapi-production.up.railway.app/historic?symbol=${stockSymbolState}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`;
+            fetchHistoricResult();
+        }
+    }, [
+        startDateState,
+        endDateState,
+        intervalState,
+        stockSymbolState,
+        historicUrl,
+    ]);
 
     //Returns historic
     let runningStock;
     function fetchHistoricResult() {
+        //console.log(historicUrl);
         runningStock = setInterval(() => {
             fetch(historicUrl, {
                 headers: {
@@ -102,28 +126,25 @@ function Graph() {
             clearInterval(runningStock);
         }, waitTime);
     }
-    //Calls fetchHistoricResult and fetchIndicatorResult
-    useEffect(() => {
-        if (
-            startDateState &&
-            endDateState &&
-            intervalState &&
-            stockSymbolState
-        ) {
-            historicUrl = `https://hadalyapi-production.up.railway.app/historic?symbol=${stockSymbolState}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`;
-            fetchHistoricResult();
-        }
-    }, [
-        startDateState,
-        endDateState,
-        intervalState,
-        stockSymbolState,
-        historicUrl,
-    ]);
 
-    //Returns indicator
-    async function fetchIndicatorData() {
-        //if (indicatorState.length < 1) return;
+    /////////////////////////////////////////////////////////////////////
+    useEffect(() => {
+        if (!indicatorChoice) return;
+        setIndicatorState((prevState) => {
+            let copy = [...prevState]; // Create a new array with the previous state
+
+            if (copy.indexOf(indicatorChoice) !== -1) return copy;
+            if (copy.length === 5) {
+                copy = copy.slice(1);
+            }
+            copy.push(indicatorChoice);
+            return copy; // Return the updated state
+        });
+    }, [indicatorChoice]);
+
+    //Returns indicatorApiData
+    useEffect(() => {
+        //console.log("return indicatorApiData");
         const sendReqBody = {
             indicators: indicatorState,
             symbol: stockSymbolState,
@@ -132,7 +153,7 @@ function Graph() {
             interval: intervalState,
         };
 
-        await fetch(indicatorUrl, {
+        fetch(indicatorUrl, {
             headers: {
                 "Content-type": "application/json",
             },
@@ -143,109 +164,114 @@ function Graph() {
                 return response.json();
             })
             .then((data) => {
-                cleanIndicatorApiParsedResult(data);
+                setIndicatorApiData(data);
             })
             .catch((error) => {
                 console.error(error);
             });
-    }
+    }, [indicatorState, historicApiData]);
 
+    //Clean up dataset to remove NaN and replace with 0
     useEffect(() => {
-        fetchIndicatorData();
-    }, [indicatorChoice, historicApiData]);
-
-    //Parse the JSON result and handles NaN data
-    async function cleanIndicatorApiParsedResult(data) {
-        if (data === null) return;
-        if (data.length > 0) {
-            const cleanResponse = data.replace(/NaN/g, 0);
-            indicatorResultParsed = JSON.parse(cleanResponse, (key, value) => {
-                if (typeof value === "number" && Number.isNaN(value)) {
-                    return 0;
-                }
-                return value;
-            });
+        //console.log("Setting indicatorResultParsed");
+        if (indicatorApiData === null) return;
+        if (indicatorApiData.length > 0) {
+            //console.log("here");
+            const cleanResponse = indicatorApiData.replace(/NaN/g, 0);
+            setIndicatorResultParsed(
+                JSON.parse(cleanResponse, (key, value) => {
+                    if (typeof value === "number" && Number.isNaN(value)) {
+                        return 0;
+                    }
+                    return value;
+                })
+            );
         }
-        infoToChart();
-    }
-
-    //IndicatorState List handler
-    useEffect(() => {
-        if (!indicatorChoice) return;
-        let copy = indicatorState;
-        if (copy.indexOf(indicatorChoice) !== -1) return;
-        if (copy.length >= 3) {
-            copy = copy.slice(1);
-        }
-        copy.push(indicatorChoice);
-        setIndicatorState(copy);
-    }, [indicatorChoice]);
+    }, [indicatorApiData]);
 
     //Info to send to create charts
-    async function infoToChart() {
+    useEffect(() => {
+        if (indicatorState.length < 1) {
+            //console.log("Emptying");
+            indicatorDataInputs = [];
+        }
         if (!historicApiData) return;
+        //console.log(historicApiData);
         for (let i = 0; i < historicApiData.close.length; i++) {
             let theDate = new Date(historicApiData.close_time[i]);
-            let historicToPush = {
-                time: {
-                    year: theDate.getUTCFullYear(),
-                    month: theDate.getUTCMonth() + 1,
-                    day: theDate.getUTCDate(),
-                },
-                open: parseFloat(historicApiData.open[i]),
-                high: parseFloat(historicApiData.high[i]),
-                low: parseFloat(historicApiData.low[i]),
-                close: parseFloat(historicApiData.close[i]),
-            };
+            let historicToPush =
+                intervalState == "1d"
+                    ? {
+                          time: {
+                              year: theDate.getUTCFullYear(),
+                              month: theDate.getUTCMonth() + 1,
+                              day: theDate.getUTCDate(),
+                          },
+                          open: parseFloat(historicApiData.open[i]),
+                          high: parseFloat(historicApiData.high[i]),
+                          low: parseFloat(historicApiData.low[i]),
+                          close: parseFloat(historicApiData.close[i]),
+                      }
+                    : {
+                          time: parseFloat(historicApiData.close_time[i]),
+                          open: parseFloat(historicApiData.open[i]),
+                          high: parseFloat(historicApiData.high[i]),
+                          low: parseFloat(historicApiData.low[i]),
+                          close: parseFloat(historicApiData.close[i]),
+                      };
+
             historicDataInputs.push(historicToPush);
         }
 
-        if (indicatorResultParsed !== null) {
-            if (
-                Object.keys(indicatorResultParsed.indicators).length !==
-                indicatorState.length
-            )
-                setIndicatorChoice(indicatorChoice);
-            for (
-                let i = 0;
-                i < Object.keys(indicatorResultParsed.indicators).length;
-                i++
-            ) {
-                let indicatorToPush = [];
-                if (indicatorResultParsed.length < 1) continue;
-                // console.log(i);
-                console.log(indicatorState[i]);
-                console.log(indicatorState);
-                console.log(indicatorResultParsed.indicators);
-                if (!(indicatorState[i] in indicatorResultParsed.indicators)) {
-                    console.log("doesnt have");
-                    return;
+        if (indicatorResultParsed.length !== 0) {
+            if (indicatorResultParsed.dates.length > 0) {
+                for (
+                    let i = 0;
+                    i < Object.keys(indicatorResultParsed.indicators).length;
+                    i++
+                ) {
+                    let indicatorToPush = [];
+                    if (indicatorResultParsed.length < 1) continue;
+                    if (
+                        !(indicatorState[i] in indicatorResultParsed.indicators)
+                    )
+                        return;
+
+                    indicatorResultParsed.indicators[indicatorState[i]].map(
+                        (ind, index) => {
+                            let date = new Date(
+                                historicApiData.close_time[index]
+                            );
+                            let t =
+                                intervalState == "1d"
+                                    ? {
+                                          time: `${date.getUTCFullYear()}-${
+                                              date.getUTCMonth() + 1 < 10
+                                                  ? "0" +
+                                                    (date.getUTCMonth() + 1)
+                                                  : date.getUTCMonth() + 1
+                                          }-${
+                                              date.getUTCDate() < 10
+                                                  ? "0" + date.getUTCDate()
+                                                  : date.getUTCDate()
+                                          }`,
+                                          value: ind,
+                                      }
+                                    : {
+                                          time: historicApiData.close_time[
+                                              index
+                                          ],
+                                          value: ind,
+                                      };
+
+                            indicatorToPush.push(t);
+                        }
+                    );
+                    indicatorDataInputs.push(indicatorToPush);
                 }
-
-                indicatorResultParsed.indicators[indicatorState[i]].map(
-                    (ind, index) => {
-                        let date = new Date(historicApiData.close_time[index]);
-                        const t = {
-                            time: `${date.getUTCFullYear()}-${
-                                date.getUTCMonth() + 1 < 10
-                                    ? "0" + (date.getUTCMonth() + 1)
-                                    : date.getUTCMonth() + 1
-                            }-${
-                                date.getUTCDate() < 10
-                                    ? "0" + date.getUTCDate()
-                                    : date.getUTCDate()
-                            }`,
-                            value: ind,
-                        };
-
-                        indicatorToPush.push(t);
-                    }
-                );
-                indicatorDataInputs.push(indicatorToPush);
             }
-
-            // console.log(indicatorDataInputs);
         }
+        console.log("Make Chart");
         setChartPlan(() => {
             return (
                 <CreateGraph
@@ -258,18 +284,35 @@ function Graph() {
                 />
             );
         });
-    }
+    }, [indicatorResultParsed, historicApiData, indicatorState]);
+
+    useEffect(() => {
+        setChartPlan(() => {
+            return (
+                <CreateGraph
+                    historicData={historicDataInputs}
+                    indicatorData={indicatorDataInputs}
+                    size={{
+                        width: 900,
+                        height: 500,
+                    }}
+                />
+            );
+        });
+    }, []);
 
     useEffect(() => {
         if (indicatorState === null) return;
         setIndicatorListView(() => {
-            indicatorState.map((e, i) => {
+            return indicatorState.map((e, i) => {
                 return (
                     <span
-                        class="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+                        key={i}
+                        className="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
                         style={{
                             color: lineColor[i],
                         }}
+                        onClick={() => removeIndicator(i)}
                     >
                         {e}
                     </span>
@@ -278,8 +321,18 @@ function Graph() {
         });
     }, [indicatorState]);
 
+    const removeIndicator = (index) => {
+        setIndicatorState((prevState) => {
+            const newState = [...prevState];
+            newState.splice(index, 1);
+            return newState;
+        });
+    };
+
+    /////////////////////////////////////////////////////////
     //This is for the stock name to be able to show the right option
     //and the value is the symbol and not the name
+    // !!!DO NOT TOUCH I HAVE NO IDEA HOW IT WORKS BUT IT DOES!!!
     useEffect(() => {
         const filtered = stockNames.filter((option) =>
             option.label.toLowerCase().includes(inputValue.toLowerCase())
@@ -287,6 +340,7 @@ function Graph() {
         setFilteredOptions(filtered);
     }, [inputValue]);
 
+    /////////////////////////////////////////////////////////
     return (
         <div className={style.body}>
             <div className="relative max-w-xl mx-auto text-center">
@@ -307,16 +361,20 @@ function Graph() {
                 >
                     {/* GRAPH || GRAPH */}
                     <div className="bg-tranpsarent" style={{ width: "60em" }}>
-                        <div
-                            style={{ width: "36em", borderRadius: "5px" }}
-                            className="border-2 border-slate-500 rounded-m ml-7"
-                        >
-                            <h1 className="text-xl ml-8 pr-7">
-                                <b>{stockSymbolState}</b>: Start:{" "}
-                                {startDateState} | End: {endDateState} |
-                                Interval: {intervalState}
-                            </h1>
-                        </div>
+                        {historicApiData ? (
+                            <div
+                                style={{ width: "36em", borderRadius: "5px" }}
+                                className="border-2 border-slate-500 rounded-m ml-7"
+                            >
+                                <h1 className="text-xl ml-8 pr-7">
+                                    <b>{stockSymbolState}</b>: Start:{" "}
+                                    {startDateState} | End: {endDateState} |
+                                    Interval: {intervalState}
+                                </h1>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
                         <section
                             className="custom-screen text-gray-600 bg-transparent"
                             style={{ width: "34em" }}
@@ -391,11 +449,17 @@ function Graph() {
                                 <Autocomplete
                                     disablePortal
                                     options={intervals}
-                                    isOptionEqualToValue={(option, value) =>
-                                        option.label === value.label
-                                    }
+                                    getOptionLabel={(option) => option.label} // Specify that the label should be displayed
                                     onInputChange={(event, interval) => {
-                                        setIntervalState(interval);
+                                        const selectedInterval = intervals.find(
+                                            (option) =>
+                                                option.label === interval
+                                        );
+                                        if (selectedInterval) {
+                                            setIntervalState(
+                                                selectedInterval.value
+                                            );
+                                        }
                                     }}
                                     sx={{ width: 300 }}
                                     renderInput={(params) => (
@@ -422,7 +486,10 @@ function Graph() {
                                         setInputValue(newInputValue);
                                     }}
                                     onChange={(event, value) => {
-                                        setStockSymbolState(value.stockName);
+                                        if (value !== null)
+                                            setStockSymbolState(
+                                                value.stockName
+                                            );
                                     }}
                                     value={stockNames.find(
                                         (stock) =>
@@ -467,7 +534,7 @@ function Graph() {
                                     isOptionEqualToValue={(option, value) =>
                                         option.label === value.label
                                     }
-                                    onInputChange={(event, indicator) => {
+                                    onChange={(event, indicator) => {
                                         setIndicatorChoice(indicator);
                                     }}
                                     sx={{ width: 300 }}
@@ -483,7 +550,7 @@ function Graph() {
                     </div>
                     {/* END USER INPUTS || END USER INPUTS */}
                 </div>
-                <div>
+                {/* <div>
                     Start Date: {startDateState}
                     <br />
                     End Date: {endDateState}
@@ -494,16 +561,14 @@ function Graph() {
                     <br />
                     Indicator:{" "}
                     {indicatorState ? (
-                        () => {
-                            indicatorState.map((e, i) => {
-                                return <span>{e} </span>;
-                            });
-                        }
+                        indicatorState.map((e, i) => {
+                            return <span key={i}>{e} </span>;
+                        })
                     ) : (
                         <></>
                     )}
                     <br />
-                </div>
+                </div> */}
 
                 {/* End container */}
             </div>
