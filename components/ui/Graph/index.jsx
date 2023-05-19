@@ -35,6 +35,7 @@ function Graph() {
     // Api results are stored here
     const [historicApiData, setStockApiData] = useState(null);
     const [indicatorApiData, setIndicatorApiData] = useState(null);
+    const [patternApiData, setPatternApiData] = useState(null);
 
     //For pressing enter in stock
     const [filteredOptions, setFilteredOptions] = useState(stockNames);
@@ -46,18 +47,24 @@ function Graph() {
     const [intervalState, setIntervalState] = useState("");
     const [stockSymbolState, setStockSymbolState] = useState("");
     const [indicatorState, setIndicatorState] = useState("");
+    const [patternState, setPatternState] = useState("");
 
     //indicatorChosenList is the list of indicators to be sent as a request body
     //indicatorResultParsed is the cleaned up JSON.parse result of the response from the API
     const [indicatorChosenList, setIndicatorChosenList] = useState([]);
     const [indicatorResultParsed, setIndicatorResultParsed] = useState([]);
 
+    const [patternChosenList, setPatternChosenList] = useState([]);
+    const [patternResultParsed, setPatternResultParsed] = useState([]);
+
     //This is the list that shows up under the graph to show what indicator and pattern
     // are being shown and remove them as well.
     const [indicatorListView, setIndicatorListView] = useState("");
+    const [patternListView, setPatternListView] = useState("");
 
     //LineColor list
     const lineColor = ["#2962FF", "#e942f5", "#42f595", "#FFFFFF", "#fffb00"];
+    const markerColors = [];
 
     //Url's for API
     let historicUrl = "";
@@ -72,6 +79,7 @@ function Graph() {
     //Data to create charts
     const [historicDataInputs, setHistoricDataInputs] = useState([]);
     const [indicatorDataInputs, setIndicatorDataInputs] = useState([]);
+    const [patternDataInputs, setPatternDataInputs] = useState([]);
     const [chartPlan, setChartPlan] = useState();
 
     //////////////////////////////////////////////////////////////////
@@ -79,7 +87,7 @@ function Graph() {
     //Default Values to start app
     useEffect(() => {
         const defaultStock = "AAPL";
-        const defaultInterval = "1h";
+        const defaultInterval = "1d";
         setStockSymbolState(defaultStock);
         setIntervalState(defaultInterval);
         let today = new Date();
@@ -88,7 +96,8 @@ function Graph() {
         let year = today.getUTCFullYear();
         setEndDate(`${year}-${month}-${day}`);
         setStartDate(`${year - 1}-${month}-${day}`);
-        setIndicatorChosenList(["CDLRICKSHAWMAN", "CDL3OUTSIDE"]);
+        setIndicatorChosenList([indicatorList[0].indicator]);
+        setPatternChosenList([patternList[3].indicator]);
     }, []);
 
     //Calls fetchHistoricResult
@@ -146,16 +155,18 @@ function Graph() {
             let copy = [...prevState]; // Create a new array with the previous state
 
             if (copy.indexOf(indicatorState) !== -1) return copy;
-            if (copy.length === 5) {
+            if (copy.length === 3) {
                 copy = copy.slice(1);
             }
             copy.push(indicatorState);
+            //console.log(copy);
             return copy; // Return the updated state
         });
     }, [indicatorState]);
 
     //Returns indicatorApiData
     useEffect(() => {
+        if (indicatorChosenList.length < 1) return;
         //console.log("return indicatorApiData");
         const sendReqBody = {
             indicators: indicatorChosenList,
@@ -164,7 +175,7 @@ function Graph() {
             end_date: endDateState,
             interval: intervalState,
         };
-
+        // console.log(sendReqBody);
         fetch(indicatorUrl, {
             headers: {
                 "Content-type": "application/json",
@@ -173,6 +184,7 @@ function Graph() {
             body: JSON.stringify(sendReqBody),
         })
             .then((response) => {
+                //console.log(response);
                 return response.json();
             })
             .then((data) => {
@@ -200,16 +212,90 @@ function Graph() {
             );
         }
     }, [indicatorApiData]);
+
+    useEffect(() => {
+        if (indicatorChosenList.length < 1) {
+            setIndicatorDataInputs([]);
+        }
+    }, [indicatorChosenList]);
+
     //////////////////////////////////////////////////////////////
+
+    useEffect(() => {
+        if (!patternState) return;
+        setPatternChosenList((prevState) => {
+            let copy = [...prevState]; // Create a new array with the previous state
+
+            if (copy.indexOf(patternState) !== -1) return copy;
+            if (copy.length === 3) {
+                copy = copy.slice(1);
+            }
+            copy.push(patternState);
+            //console.log(copy);
+            return copy; // Return the updated state
+        });
+    }, [patternState]);
+
+    //Returns patternApiData
+    useEffect(() => {
+        //console.log(patternChosenList);
+        if (patternChosenList.length < 1) return;
+        const sendReqBody = {
+            indicators: patternChosenList,
+            symbol: stockSymbolState,
+            start_date: startDateState,
+            end_date: endDateState,
+            interval: intervalState,
+        };
+        //console.log(sendReqBody);
+        fetch(indicatorUrl, {
+            headers: {
+                "Content-type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(sendReqBody),
+        })
+            .then((response) => {
+                //console.log(response);
+                return response.json();
+            })
+            .then((data) => {
+                setPatternApiData(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, [patternChosenList, historicApiData]);
+
+    //Clean up dataset to remove NaN and replace with 0
+    useEffect(() => {
+        //console.log(patternApiData);
+        if (patternApiData === null) return;
+        if (patternApiData.length > 0) {
+            //console.log("here");
+            const cleanResponse = patternApiData.replace(/NaN/g, 0);
+            setPatternResultParsed(
+                JSON.parse(cleanResponse, (key, value) => {
+                    if (typeof value === "number" && Number.isNaN(value)) {
+                        return 0;
+                    }
+                    return value;
+                })
+            );
+        }
+    }, [patternApiData]);
+    //////////////////////////////////////////////////////////////
+
+    useEffect(() => {
+        if (patternChosenList.length < 1) {
+            setPatternDataInputs([]);
+        }
+    }, [patternChosenList]);
 
     //Info to send to create charts
     //It looks very complicated  because it's long. I tried separating but
     // async stuff annoyed me so I kept as one
     useEffect(() => {
-        if (indicatorChosenList.length < 1) {
-            //console.log("Emptying");
-            setIndicatorDataInputs([]);
-        }
         if (!historicApiData) return;
         let dataToHistoric = [];
         //console.log(historicApiData);
@@ -282,15 +368,70 @@ function Graph() {
                                       value: ind,
                                   };
 
-                        if (t.time !== "NaN-NaN-NaN") indicatorToPush.push(t);
+                        if (t.time !== "NaN- NaN-NaN") indicatorToPush.push(t);
                     });
                     dataToIndicators.push(indicatorToPush);
                 }
             }
         }
+
+        let dataToPatterns = [];
+        //console.log(patternResultParsed);
+        if (patternResultParsed.length !== 0) {
+            if (patternResultParsed.dates.length > 0) {
+                for (
+                    let i = 0;
+                    i < Object.keys(patternResultParsed.indicators).length;
+                    i++
+                ) {
+                    let patternToPush = [];
+                    if (patternResultParsed.length < 1) continue;
+                    if (
+                        !(
+                            patternChosenList[i] in
+                            patternResultParsed.indicators
+                        )
+                    )
+                        return;
+
+                    patternResultParsed.indicators[patternChosenList[i]].map(
+                        (ind, index) => {
+                            // console.log(intervalState);
+                            let date = new Date(
+                                historicApiData.close_time[index]
+                            );
+
+                            let p =
+                                intervalState == "1d"
+                                    ? {
+                                          time: {
+                                              year: date.getUTCFullYear(),
+                                              month: date.getUTCMonth() + 1,
+                                              day: date.getUTCDate(),
+                                          },
+                                          value: ind,
+                                      }
+                                    : {
+                                          time: historicApiData.close_time[
+                                              index
+                                          ],
+                                          value: ind,
+                                      };
+
+                            if (p.time !== "NaN- NaN-NaN")
+                                patternToPush.push(p);
+                        }
+                    );
+                    dataToPatterns.push(patternToPush);
+                    //console.log(dataToPatterns);
+                }
+            }
+        }
+
+        setPatternDataInputs(dataToPatterns);
         setIndicatorDataInputs(dataToIndicators);
         setHistoricDataInputs(dataToHistoric);
-    }, [indicatorResultParsed, historicApiData]);
+    }, [indicatorResultParsed, historicApiData, patternResultParsed]);
 
     useEffect(() => {
         setChartPlan(() => {
@@ -298,6 +439,7 @@ function Graph() {
                 <CreateGraph
                     historicData={historicDataInputs}
                     indicatorData={indicatorDataInputs}
+                    markerData={patternDataInputs}
                     size={{
                         width: 900,
                         height: 500,
@@ -305,7 +447,7 @@ function Graph() {
                 />
             );
         });
-    }, [historicDataInputs, indicatorDataInputs]);
+    }, [historicDataInputs, indicatorDataInputs, patternDataInputs]);
 
     //Creates a blank chart
     useEffect(() => {
@@ -578,7 +720,7 @@ function Graph() {
                                         option.label === value.label
                                     }
                                     onChange={(event, pattern) => {
-                                        setIndicatorState(pattern.indicator);
+                                        setPatternState(pattern.indicator);
                                     }}
                                     sx={{ width: 300 }}
                                     renderInput={(params) => (
