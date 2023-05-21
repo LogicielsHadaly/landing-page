@@ -80,18 +80,17 @@ var CreateGraph = ({
 
         //console.log(indicatorData);
         // console.log(historicData);
-        console.log(markerData);
+        // console.log(markerData);
         let markersList = [];
 
         if (markerData.length > 0) {
-            for (let i = 0; i < markerData.length; i++) {
-                const markerChoice = markerData[i];
-                if (markerChoice.value > 0 || markerChoice.value < 0) {
-                    const position =
-                        markerChoice.value > 0 ? "aboveBar" : "belowBar";
-                    const color =
-                        markerChoice.value > 0 ? "#8cff5e" : "#ffc15e";
-                    markerChoice.map((marker, i) => {
+            markerData.map((patternChoice, index) => {
+                patternChoice.map((marker, index) => {
+                    if (marker.value > 0 || marker.value < 0) {
+                        console.log("we got data");
+                        const position =
+                            marker.value > 0 ? "aboveBar" : "belowBar";
+                        const color = marker.value > 0 ? "#8cff5e" : "#ffc15e";
                         const markerToPush = {
                             time: marker.time,
                             position: position,
@@ -100,11 +99,11 @@ var CreateGraph = ({
                             text: "",
                         };
                         markersList.push(markerToPush);
-                    });
-                }
-            }
-
-            candleStickSeries.setMarkers(markersList);
+                    }
+                });
+                candleStickSeries.setMarkers(markersList);
+                markersList = [];
+            });
         }
 
         chartRef.current = chart;

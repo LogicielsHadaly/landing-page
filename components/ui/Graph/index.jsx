@@ -96,8 +96,8 @@ function Graph() {
         let year = today.getUTCFullYear();
         setEndDate(`${year}-${month}-${day}`);
         setStartDate(`${year - 1}-${month}-${day}`);
-        setIndicatorChosenList([indicatorList[0].indicator]);
-        setPatternChosenList([patternList[3].indicator]);
+        //setIndicatorChosenList([indicatorList[0].indicator]);
+        setPatternChosenList(["CDL3OUTSIDE"]);
     }, []);
 
     //Calls fetchHistoricResult
@@ -491,6 +491,34 @@ function Graph() {
         });
     };
 
+    useEffect(() => {
+        if (patternChosenList === null) return;
+        setPatternListView(() => {
+            return patternChosenList.map((e, i) => {
+                return (
+                    <span
+                        key={i}
+                        className="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+                        style={{
+                            color: lineColor[i],
+                        }}
+                        onClick={() => removePattern(i)}
+                    >
+                        {e}
+                    </span>
+                );
+            });
+        });
+    }, [patternChosenList]);
+
+    const removePattern = (index) => {
+        setPatternChosenList((prevState) => {
+            const newState = [...prevState];
+            newState.splice(index, 1);
+            return newState;
+        });
+    };
+
     /////////////////////////////////////////////////////////
     //This is for the stock name to be able to show the right option
     //and the value is the symbol and not the name
@@ -546,14 +574,29 @@ function Graph() {
                                     <div className="bg-transparent relative flex-1 flex items-stretch flex-col">
                                         <div className=" space-y-4 border-b">
                                             <div>{chartPlan}</div>
-                                            <div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-                                                <span
-                                                    aria-current="true"
-                                                    class="block w-full px-4 py-2 text-white bg-blue-700 border-b border-gray-200 rounded-t-lg dark:bg-gray-800 dark:border-gray-600"
-                                                >
-                                                    Indicator List
-                                                </span>
-                                                {indicatorListView}
+                                            <div className="flex">
+                                                <div>
+                                                    <div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                                        <span
+                                                            aria-current="true"
+                                                            class="block w-full px-4 py-2 text-white bg-blue-700 border-b border-gray-200 rounded-t-lg dark:bg-gray-800 dark:border-gray-600"
+                                                        >
+                                                            Indicator List
+                                                        </span>
+                                                        {indicatorListView}
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white ml-4">
+                                                        <span
+                                                            aria-current="true"
+                                                            class="block w-full px-4 py-2 text-white bg-blue-700 border-b border-gray-200 rounded-t-lg dark:bg-gray-800 dark:border-gray-600"
+                                                        >
+                                                            Pattern List
+                                                        </span>
+                                                        {patternListView}
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -27,7 +27,7 @@ const patterns = [
         label: "Up/Down-gap side-by-side white lines",
     },
     { indicator: "CDLGRAVESTONEDOJI", label: "Gravestone Doji" },
-    { indicator: "CDLHAMMER", label: "Hammer" },
+    //{ indicator: "CDLHAMMER", label: "Hammer" },
     { indicator: "CDLHANGINGMAN", label: "Hanging Man" },
     { indicator: "CDLHARAMI", label: "Harami Pattern" },
     { indicator: "CDLHARAMICROSS", label: "Harami Cross Pattern" },
