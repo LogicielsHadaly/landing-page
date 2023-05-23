@@ -79,31 +79,35 @@ var CreateGraph = ({
         }
 
         //console.log(indicatorData);
-        // console.log(historicData);
-        // console.log(markerData);
-        let markersList = [];
+        //console.log(historicData);
+        //console.log(markerData);
 
+        let markersList = [];
         if (markerData.length > 0) {
-            markerData.map((patternChoice, index) => {
-                patternChoice.map((marker, index) => {
-                    if (marker.value > 0 || marker.value < 0) {
-                        console.log("we got data");
-                        const position =
-                            marker.value > 0 ? "aboveBar" : "belowBar";
-                        const color = marker.value > 0 ? "#8cff5e" : "#ffc15e";
-                        const markerToPush = {
-                            time: marker.time,
-                            position: position,
-                            color: color,
-                            shape: "circle",
-                            text: "",
-                        };
-                        markersList.push(markerToPush);
-                    }
-                });
-                candleStickSeries.setMarkers(markersList);
-                markersList = [];
+            const markerColors = [
+                ["#8cff5e", "#ffc15e"],
+                ["#14faf6", "#ca03fc"],
+                ["#f5f5f5", "#f70015"],
+            ];
+            markerData.map((marker, index) => {
+                if (marker.value > 0 || marker.value < 0) {
+                    const position = marker.value > 0 ? "aboveBar" : "belowBar";
+                    const color =
+                        marker.value > 0
+                            ? markerColors[marker.index][0]
+                            : markerColors[marker.index][1];
+                    const markerToPush = {
+                        time: marker.time,
+                        position: position,
+                        color: color,
+                        shape: "circle",
+                        text: "",
+                    };
+                    markersList.push(markerToPush);
+                }
+                // markersList = [];
             });
+            candleStickSeries.setMarkers(markersList);
         }
 
         chartRef.current = chart;

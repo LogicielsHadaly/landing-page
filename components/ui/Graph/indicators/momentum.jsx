@@ -1,0 +1,46 @@
+import React from "react";
+
+export const momentum = [
+    { indicator: "ADX", label: "Average Directional Movement Index" },
+    { indicator: "ADXR", label: "Average Directional Movement Index Rating" },
+    { indicator: "APO", label: "Absolute Price Oscillator" },
+    { indicator: "AROON", label: "Aroon" },
+    { indicator: "AROONOSC", label: "Aroon Oscillator" },
+    { indicator: "BOP", label: "Balance Of Power" },
+    { indicator: "CCI", label: "Commodity Channel Index" },
+    { indicator: "CMO", label: "Chande Momentum Oscillator" },
+    { indicator: "DX", label: "Directional Movement Index" },
+    { indicator: "MACD", label: "Moving Average Convergence/Divergence" },
+    { indicator: "MACDEXT", label: "MACD with controllable MA type" },
+    {
+        indicator: "MACDFIX",
+        label: "Moving Average Convergence/Divergence Fix 12/26",
+    },
+    { indicator: "MFI", label: "Money Flow Index" },
+    { indicator: "MINUS_DI", label: "Minus Directional Indicator" },
+    { indicator: "MINUS_DM", label: "Minus Directional Movement" },
+    { indicator: "MOM", label: "Momentum" },
+    { indicator: "PLUS_DI", label: "Plus Directional Indicator" },
+    { indicator: "PLUS_DM", label: "Plus Directional Movement" },
+    { indicator: "PPO", label: "Percentage Price Oscillator" },
+    { indicator: "ROC", label: "Rate of change : ((price/prevPrice)-1)*100" },
+    {
+        indicator: "ROCP",
+        label: "Rate of change Percentage: (price-prevPrice)/prevPrice",
+    },
+    { indicator: "ROCR", label: "Rate of change ratio: (price/prevPrice)" },
+    {
+        indicator: "ROCR100",
+        label: "Rate of change ratio 100 scale: (price/prevPrice)*100",
+    },
+    { indicator: "RSI", label: "Relative Strength Index" },
+    { indicator: "STOCH", label: "Stochastic" },
+    { indicator: "STOCHF", label: "Stochastic Fast" },
+    { indicator: "STOCHRSI", label: "Stochastic Relative Strength Index" },
+    {
+        indicator: "TRIX",
+        label: "1-day Rate-Of-Change (ROC) of a Triple Smooth EMA",
+    },
+    { indicator: "ULTOSC", label: "Ultimate Oscillator" },
+    { indicator: "WILLR", label: "Williams' %R" },
+];

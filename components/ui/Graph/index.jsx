@@ -64,7 +64,11 @@ function Graph() {
 
     //LineColor list
     const lineColor = ["#2962FF", "#e942f5", "#42f595", "#FFFFFF", "#fffb00"];
-    const markerColors = [];
+    const markerColors = [
+        ["#8cff5e", "#ffc15e"],
+        ["#14faf6", "#ca03fc"],
+        ["#f5f5f5", "#f70015"],
+    ];
 
     //Url's for API
     let historicUrl = "";
@@ -97,7 +101,7 @@ function Graph() {
         setEndDate(`${year}-${month}-${day}`);
         setStartDate(`${year - 1}-${month}-${day}`);
         //setIndicatorChosenList([indicatorList[0].indicator]);
-        setPatternChosenList(["CDL3OUTSIDE"]);
+        setPatternChosenList(["CDL3OUTSIDE", "CDLINVERTEDHAMMER"]);
     }, []);
 
     //Calls fetchHistoricResult
@@ -109,6 +113,7 @@ function Graph() {
             stockSymbolState
         ) {
             historicUrl = `https://hadalyapi-production.up.railway.app/historic?symbol=${stockSymbolState}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`;
+            //console.log("changing historic");
             fetchHistoricResult();
         }
     }, [
@@ -137,6 +142,7 @@ function Graph() {
                     return JSON.parse(data);
                 })
                 .then((parsedData) => {
+                    //console.log("Got it");
                     setStockApiData(parsedData);
                     setHasResults(true);
                 })
@@ -219,6 +225,36 @@ function Graph() {
         }
     }, [indicatorChosenList]);
 
+    // Add Indicator to list
+    useEffect(() => {
+        if (indicatorChosenList === null) return;
+        setIndicatorListView(() => {
+            return indicatorChosenList.map((e, i) => {
+                return (
+                    <span
+                        key={i}
+                        className="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+                        style={{
+                            color: lineColor[i],
+                        }}
+                        onClick={() => removeIndicator(i)}
+                    >
+                        {e}
+                    </span>
+                );
+            });
+        });
+    }, [indicatorChosenList]);
+
+    // function that removes indicator from list
+    const removeIndicator = (index) => {
+        setIndicatorChosenList((prevState) => {
+            const newState = [...prevState];
+            newState.splice(index, 1);
+            return newState;
+        });
+    };
+
     //////////////////////////////////////////////////////////////
 
     useEffect(() => {
@@ -238,7 +274,6 @@ function Graph() {
 
     //Returns patternApiData
     useEffect(() => {
-        //console.log(patternChosenList);
         if (patternChosenList.length < 1) return;
         const sendReqBody = {
             indicators: patternChosenList,
@@ -268,6 +303,7 @@ function Graph() {
     }, [patternChosenList, historicApiData]);
 
     //Clean up dataset to remove NaN and replace with 0
+    //Here we set Pattern Chosen List.
     useEffect(() => {
         //console.log(patternApiData);
         if (patternApiData === null) return;
@@ -284,7 +320,6 @@ function Graph() {
             );
         }
     }, [patternApiData]);
-    //////////////////////////////////////////////////////////////
 
     useEffect(() => {
         if (patternChosenList.length < 1) {
@@ -292,11 +327,56 @@ function Graph() {
         }
     }, [patternChosenList]);
 
+    //Add pattern to list
+    useEffect(() => {
+        if (patternChosenList === null) return;
+        setPatternListView(() => {
+            return patternChosenList.map((e, i) => {
+                return (
+                    <span
+                        key={i}
+                        className="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
+                        onClick={() => removePattern(i)}
+                    >
+                        {e}{" "}
+                        <span class="circle-container">
+                            <span
+                                class="circle"
+                                style={{ color: markerColors[i][0] }}
+                            >
+                                O
+                            </span>{" "}
+                            <span
+                                class="circle"
+                                style={{ color: markerColors[i][1] }}
+                            >
+                                O
+                            </span>
+                        </span>
+                    </span>
+                );
+            });
+        });
+    }, [patternChosenList]);
+
+    //Function that removes pattern from list
+    const removePattern = (index) => {
+        setPatternChosenList((prevState) => {
+            const newState = [...prevState];
+            newState.splice(index, 1);
+            return newState;
+        });
+    };
+
+    //////////////////////////////////////////////////////////////
+
     //Info to send to create charts
     //It looks very complicated  because it's long. I tried separating but
     // async stuff annoyed me so I kept as one
     useEffect(() => {
+        // HISTORIC
         if (!historicApiData) return;
+
         let dataToHistoric = [];
         //console.log(historicApiData);
         for (let i = 0; i < historicApiData.close.length; i++) {
@@ -321,10 +401,12 @@ function Graph() {
                           low: parseFloat(historicApiData.low[i]),
                           close: parseFloat(historicApiData.close[i]),
                       };
-
             dataToHistoric.push(historicToPush);
         }
+        setHistoricDataInputs(dataToHistoric);
+        ///////////////
 
+        // INDICATORS
         let dataToIndicators = [];
         if (indicatorResultParsed.length !== 0) {
             if (indicatorResultParsed.dates.length > 0) {
@@ -334,6 +416,7 @@ function Graph() {
                     i++
                 ) {
                     let indicatorToPush = [];
+                    //console.log(dataToHistoric);
                     if (indicatorResultParsed.length < 1) continue;
                     if (
                         !(
@@ -368,69 +451,56 @@ function Graph() {
                                       value: ind,
                                   };
 
-                        if (t.time !== "NaN- NaN-NaN") indicatorToPush.push(t);
+                        if (t.time !== "NaN-NaN-NaN") indicatorToPush.push(t);
                     });
                     dataToIndicators.push(indicatorToPush);
                 }
             }
         }
+        setIndicatorDataInputs(dataToIndicators);
 
+        //////////////////
+
+        //MARKERS FOR CHART
         let dataToPatterns = [];
-        //console.log(patternResultParsed);
-        if (patternResultParsed.length !== 0) {
-            if (patternResultParsed.dates.length > 0) {
-                for (
-                    let i = 0;
-                    i < Object.keys(patternResultParsed.indicators).length;
-                    i++
-                ) {
-                    let patternToPush = [];
-                    if (patternResultParsed.length < 1) continue;
-                    if (
-                        !(
-                            patternChosenList[i] in
-                            patternResultParsed.indicators
-                        )
-                    )
-                        return;
+        //console.log("here");
+        const unfilteredArray = Object.values(patternResultParsed.indicators);
+        const withInfoUnfilteredArray = [];
+        unfilteredArray.map((element, index) => {
+            let subArrayToPush = [];
+            element.map((e, i) => {
+                let date = new Date(historicApiData.close_time[i]);
+                let toPush = {
+                    time: {
+                        year: date.getUTCFullYear(),
+                        month: date.getUTCMonth() + 1,
+                        day: date.getUTCDate(),
+                    },
+                    value: e,
+                    index: index,
+                };
+                subArrayToPush.push(toPush);
+            });
+            withInfoUnfilteredArray.push(subArrayToPush);
+        });
 
-                    patternResultParsed.indicators[patternChosenList[i]].map(
-                        (ind, index) => {
-                            // console.log(intervalState);
-                            let date = new Date(
-                                historicApiData.close_time[index]
-                            );
+        //console.log(withInfoUnfilteredArray);
 
-                            let p =
-                                intervalState == "1d"
-                                    ? {
-                                          time: {
-                                              year: date.getUTCFullYear(),
-                                              month: date.getUTCMonth() + 1,
-                                              day: date.getUTCDate(),
-                                          },
-                                          value: ind,
-                                      }
-                                    : {
-                                          time: historicApiData.close_time[
-                                              index
-                                          ],
-                                          value: ind,
-                                      };
+        const flattenedArray = withInfoUnfilteredArray.flat();
 
-                            if (p.time !== "NaN- NaN-NaN")
-                                patternToPush.push(p);
-                        }
-                    );
-                    dataToPatterns.push(patternToPush);
-                    //console.log(dataToPatterns);
-                }
-            }
-        }
+        // Step 2: Filter out elements with a value of 0
+        const filteredArray = flattenedArray.filter((item) => item.value !== 0);
+
+        // Step 3: Sort the remaining elements by time
+        dataToPatterns = filteredArray.sort((a, b) => {
+            // Assuming the 'time' property is an object with 'year', 'month', and 'day' properties
+            const timeA = new Date(a.time.year, a.time.month, a.time.day);
+            const timeB = new Date(b.time.year, b.time.month, b.time.day);
+
+            return timeA - timeB;
+        });
 
         setPatternDataInputs(dataToPatterns);
-        setIndicatorDataInputs(dataToIndicators);
-        setHistoricDataInputs(dataToHistoric);
     }, [indicatorResultParsed, historicApiData, patternResultParsed]);
 
     useEffect(() => {
@@ -463,65 +533,8 @@ function Graph() {
         });
     }, []);
 
-    useEffect(() => {
-        if (indicatorChosenList === null) return;
-        setIndicatorListView(() => {
-            return indicatorChosenList.map((e, i) => {
-                return (
-                    <span
-                        key={i}
-                        className="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
-                        style={{
-                            color: lineColor[i],
-                        }}
-                        onClick={() => removeIndicator(i)}
-                    >
-                        {e}
-                    </span>
-                );
-            });
-        });
-    }, [indicatorChosenList]);
-
-    const removeIndicator = (index) => {
-        setIndicatorChosenList((prevState) => {
-            const newState = [...prevState];
-            newState.splice(index, 1);
-            return newState;
-        });
-    };
-
-    useEffect(() => {
-        if (patternChosenList === null) return;
-        setPatternListView(() => {
-            return patternChosenList.map((e, i) => {
-                return (
-                    <span
-                        key={i}
-                        className="block w-full px-4 py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:hover:text-white dark:focus:ring-gray-500 dark:focus:text-white"
-                        style={{
-                            color: lineColor[i],
-                        }}
-                        onClick={() => removePattern(i)}
-                    >
-                        {e}
-                    </span>
-                );
-            });
-        });
-    }, [patternChosenList]);
-
-    const removePattern = (index) => {
-        setPatternChosenList((prevState) => {
-            const newState = [...prevState];
-            newState.splice(index, 1);
-            return newState;
-        });
-    };
-
     /////////////////////////////////////////////////////////
-    //This is for the stock name to be able to show the right option
-    //and the value is the symbol and not the name
+    //This is for the autocomplete when you press enterS
     // !!!DO NOT TOUCH I HAVE NO IDEA HOW IT WORKS BUT IT DOES!!!
     useEffect(() => {
         const filtered = stockNames.filter((option) =>
@@ -529,8 +542,8 @@ function Graph() {
         );
         setFilteredOptions(filtered);
     }, [inputValue]);
-
     /////////////////////////////////////////////////////////
+
     return (
         <div className={style.body}>
             <div className="relative max-w-xl mx-auto text-center">
@@ -740,7 +753,14 @@ function Graph() {
                                         option.label === value.label
                                     }
                                     onChange={(event, indicator) => {
-                                        setIndicatorState(indicator.indicator);
+                                        //Error handling when pressing 'x'
+                                        if (indicator) {
+                                            setIndicatorState(
+                                                indicator.indicator
+                                            );
+                                        } else {
+                                            setIndicatorState(null); // or set it to an appropriate default value
+                                        }
                                     }}
                                     sx={{ width: 300 }}
                                     renderInput={(params) => (
@@ -763,7 +783,12 @@ function Graph() {
                                         option.label === value.label
                                     }
                                     onChange={(event, pattern) => {
-                                        setPatternState(pattern.indicator);
+                                        //Error handling when pressing 'x'
+                                        if (pattern) {
+                                            setPatternState(pattern.indicator);
+                                        } else {
+                                            setPatternState(null);
+                                        }
                                     }}
                                     sx={{ width: 300 }}
                                     renderInput={(params) => (
@@ -778,29 +803,9 @@ function Graph() {
                     </div>
                     {/* END USER INPUTS || END USER INPUTS */}
                 </div>
-                {/* <div>
-                    Start Date: {startDateState}
-                    <br />
-                    End Date: {endDateState}
-                    <br />
-                    Symbol: {stockSymbolState}
-                    <br />
-                    Interval: {intervalState}
-                    <br />
-                    Indicator:{" "}
-                    {indicatorState ? (
-                        indicatorState.map((e, i) => {
-                            return <span key={i}>{e} </span>;
-                        })
-                    ) : (
-                        <></>
-                    )}
-                    <br />
-                </div> */}
 
                 {/* End container */}
             </div>
-            {/* <div>Pink: {indicatorApiData.indicators[indicatorState[0]]}</div> */}
         </div>
     ); // End Return
 } //End Graph
