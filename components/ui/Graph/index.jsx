@@ -15,6 +15,7 @@ import style from "./style/style.module.css";
 import { stocksList } from "./stocksList";
 import { IndicatorList } from "./indicators/indicatorList";
 import { PatternList } from "./indicators/patternsExport";
+import GridContainer from "./GridLayout/GridContainer";
 
 let count = 0;
 
@@ -76,7 +77,7 @@ function Graph() {
         "https://hadalyapi-production.up.railway.app/indicators";
     // Historic API URL for reference
     // `https://hadalyapi-production.up.railway.app/historic?symbol=${stockSymbol}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`
-
+    const engineUrl = "https://hadalyapi-production.up.railway.app/engine";
     //Fetch interval wait time
     const waitTime = 500;
 
@@ -142,9 +143,7 @@ function Graph() {
                     return JSON.parse(data);
                 })
                 .then((parsedData) => {
-                    //console.log("Got it");
                     setStockApiData(parsedData);
-                    setHasResults(true);
                 })
                 .catch((error) => {
                     console.error(error);
@@ -339,15 +338,15 @@ function Graph() {
                         onClick={() => removePattern(i)}
                     >
                         {e}{" "}
-                        <span class="circle-container">
+                        <span className="circle-container">
                             <span
-                                class="circle"
+                                className="circle"
                                 style={{ color: markerColors[i][0] }}
                             >
                                 O
                             </span>{" "}
                             <span
-                                class="circle"
+                                className="circle"
                                 style={{ color: markerColors[i][1] }}
                             >
                                 O
@@ -503,8 +502,10 @@ function Graph() {
         setPatternDataInputs(dataToPatterns);
     }, [indicatorResultParsed, historicApiData, patternResultParsed]);
 
+    //This creates the graph by sending the appropriate values
     useEffect(() => {
         setChartPlan(() => {
+            // console.log(historicDataInputs);
             return (
                 <CreateGraph
                     historicData={historicDataInputs}
@@ -586,13 +587,15 @@ function Graph() {
                                 {chartPlan !== null ? (
                                     <div className="bg-transparent relative flex-1 flex items-stretch flex-col">
                                         <div className=" space-y-4 border-b">
+                                            {/* This is the chart!! */}
                                             <div>{chartPlan}</div>
+                                            {/* ******************* */}
                                             <div className="flex">
                                                 <div>
-                                                    <div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                                    <div className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                                                         <span
                                                             aria-current="true"
-                                                            class="block w-full px-4 py-2 text-white bg-blue-700 border-b border-gray-200 rounded-t-lg dark:bg-gray-800 dark:border-gray-600"
+                                                            className="block w-full px-4 py-2 text-white bg-blue-700 border-b border-gray-200 rounded-t-lg dark:bg-gray-800 dark:border-gray-600"
                                                         >
                                                             Indicator List
                                                         </span>
@@ -600,10 +603,10 @@ function Graph() {
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <div class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white ml-4">
+                                                    <div className="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white ml-4">
                                                         <span
                                                             aria-current="true"
-                                                            class="block w-full px-4 py-2 text-white bg-blue-700 border-b border-gray-200 rounded-t-lg dark:bg-gray-800 dark:border-gray-600"
+                                                            className="block w-full px-4 py-2 text-white bg-blue-700 border-b border-gray-200 rounded-t-lg dark:bg-gray-800 dark:border-gray-600"
                                                         >
                                                             Pattern List
                                                         </span>
@@ -803,7 +806,8 @@ function Graph() {
                     </div>
                     {/* END USER INPUTS || END USER INPUTS */}
                 </div>
-
+                <div></div>
+                <GridContainer stock={stockSymbolState} url={engineUrl} />
                 {/* End container */}
             </div>
         </div>

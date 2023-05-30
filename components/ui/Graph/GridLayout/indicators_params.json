@@ -1,0 +1,1762 @@
+[
+ {
+   "ID": "[301386,502700272]",
+   "indicator_id": 1,
+   "indicator_name_aff": "Hilbert Transform - Dominant Cycle Period",
+   "indicator_name": "HT_DCPERIOD",
+   "indicator_function": 1,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700273]",
+   "indicator_id": 2,
+   "indicator_name_aff": "Hilbert Transform - Dominant Cycle Phase",
+   "indicator_name": "HT_DCPHASE",
+   "indicator_function": 2,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700274]",
+   "indicator_id": 3,
+   "indicator_name_aff": "Hilbert Transform - Phasor Components - Inphase",
+   "indicator_name": "HT_PHASOR_inphase",
+   "indicator_function": 3,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700275]",
+   "indicator_id": 4,
+   "indicator_name_aff": "Hilbert Transform - Phasor Components -Quadrature",
+   "indicator_name": "HT_PHASOR_quadrature",
+   "indicator_function": 3,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700276]",
+   "indicator_id": 5,
+   "indicator_name_aff": "Hilbert Transform - SineWave - Sine",
+   "indicator_name": "HT_SINE_sine",
+   "indicator_function": 4,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700277]",
+   "indicator_id": 6,
+   "indicator_name_aff": "Hilbert Transform - SineWave - Leadsine",
+   "indicator_name": "HT_SINE_leadsine",
+   "indicator_function": 4,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700278]",
+   "indicator_id": 7,
+   "indicator_name_aff": "Hilbert Transform - Trend vs Cycle Mode",
+   "indicator_name": "HT_TRENDMODE",
+   "indicator_function": 5,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700279]",
+   "indicator_id": 8,
+   "indicator_name_aff": "Addition",
+   "indicator_name": "ADD",
+   "indicator_function": 6,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700280]",
+   "indicator_id": 9,
+   "indicator_name_aff": "Division",
+   "indicator_name": "DIV",
+   "indicator_function": 7,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700281]",
+   "indicator_id": 10,
+   "indicator_name_aff": "Maximum",
+   "indicator_name": "MAX",
+   "indicator_function": 8,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700282]",
+   "indicator_id": 11,
+   "indicator_name_aff": "Index of highest value",
+   "indicator_name": "MAXINDEX",
+   "indicator_function": 9,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700283]",
+   "indicator_id": 12,
+   "indicator_name_aff": "Minimum",
+   "indicator_name": "MIN",
+   "indicator_function": 10,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700284]",
+   "indicator_id": 13,
+   "indicator_name_aff": "Index of lowest value",
+   "indicator_name": "MININDEX",
+   "indicator_function": 11,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700285]",
+   "indicator_id": 14,
+   "indicator_name_aff": "Lowest and highest values - Min",
+   "indicator_name": "MINMAX_min",
+   "indicator_function": 12,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700286]",
+   "indicator_id": 15,
+   "indicator_name_aff": "Lowest and highest values - Max",
+   "indicator_name": "MINMAX_max",
+   "indicator_function": 12,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700287]",
+   "indicator_id": 16,
+   "indicator_name_aff": "Indexes of lowest and highest values - Min",
+   "indicator_name": "MINMAXINDEX_minidx",
+   "indicator_function": 13,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700288]",
+   "indicator_id": 17,
+   "indicator_name_aff": "Indexes of lowest and highest values - Max",
+   "indicator_name": "MINMAXINDEX_maxidx",
+   "indicator_function": 13,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700289]",
+   "indicator_id": 18,
+   "indicator_name_aff": "Vector Arithmetic Mult",
+   "indicator_name": "MULT",
+   "indicator_function": 14,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700290]",
+   "indicator_id": 19,
+   "indicator_name_aff": "Vector Arithmetic Substraction",
+   "indicator_name": "SUB",
+   "indicator_function": 15,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700291]",
+   "indicator_id": 20,
+   "indicator_name_aff": "Summation",
+   "indicator_name": "SUM",
+   "indicator_function": 16,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700292]",
+   "indicator_id": 21,
+   "indicator_name_aff": "Arc Cosine",
+   "indicator_name": "ACOS",
+   "indicator_function": 17,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700293]",
+   "indicator_id": 22,
+   "indicator_name_aff": "Arc Sine",
+   "indicator_name": "ASIN",
+   "indicator_function": 18,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700294]",
+   "indicator_id": 23,
+   "indicator_name_aff": "Arc Tangent",
+   "indicator_name": "ATAN",
+   "indicator_function": 19,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700295]",
+   "indicator_id": 24,
+   "indicator_name_aff": "Ceiling",
+   "indicator_name": "CEIL",
+   "indicator_function": 20,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700296]",
+   "indicator_id": 25,
+   "indicator_name_aff": "Cosine",
+   "indicator_name": "COS",
+   "indicator_function": 21,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700297]",
+   "indicator_id": 26,
+   "indicator_name_aff": "Hyperbolic Cosine",
+   "indicator_name": "COSH",
+   "indicator_function": 22,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700298]",
+   "indicator_id": 27,
+   "indicator_name_aff": "Exponential",
+   "indicator_name": "EXP",
+   "indicator_function": 23,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700299]",
+   "indicator_id": 28,
+   "indicator_name_aff": "Floor",
+   "indicator_name": "FLOOR",
+   "indicator_function": 24,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700300]",
+   "indicator_id": 29,
+   "indicator_name_aff": "Natural Logarithm",
+   "indicator_name": "LN",
+   "indicator_function": 25,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700301]",
+   "indicator_id": 30,
+   "indicator_name_aff": "Log10",
+   "indicator_name": "LOG10",
+   "indicator_function": 26,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700302]",
+   "indicator_id": 31,
+   "indicator_name_aff": "Sine",
+   "indicator_name": "SIN",
+   "indicator_function": 27,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700303]",
+   "indicator_id": 32,
+   "indicator_name_aff": "Hyperbolic Sine",
+   "indicator_name": "SINH",
+   "indicator_function": 28,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700304]",
+   "indicator_id": 33,
+   "indicator_name_aff": "Square Root",
+   "indicator_name": "SQRT",
+   "indicator_function": 29,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700305]",
+   "indicator_id": 34,
+   "indicator_name_aff": "Tangent",
+   "indicator_name": "TAN",
+   "indicator_function": 30,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700306]",
+   "indicator_id": 35,
+   "indicator_name_aff": "Hyperbolic Tangent",
+   "indicator_name": "TANH",
+   "indicator_function": 31,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700307]",
+   "indicator_id": 36,
+   "indicator_name_aff": "Average Directional Movement Index",
+   "indicator_name": "ADX",
+   "indicator_function": 32,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700308]",
+   "indicator_id": 37,
+   "indicator_name_aff": "Average Directional Movement Index Rating",
+   "indicator_name": "ADXR",
+   "indicator_function": 33,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700309]",
+   "indicator_id": 38,
+   "indicator_name_aff": "Absolute Price Oscillator",
+   "indicator_name": "APO",
+   "indicator_function": 34,
+   "indicator_parameters": "{\"parameters_id\":[3,4,5,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"fastperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":12}],\"slowperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":26}]}"
+ },
+ {
+   "ID": "[301386,502700310]",
+   "indicator_id": 39,
+   "indicator_name_aff": "Aroon - Down",
+   "indicator_name": "AROON_aroondown",
+   "indicator_function": 35,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700311]",
+   "indicator_id": 40,
+   "indicator_name_aff": "Aroon - Up",
+   "indicator_name": "AROON_aroonup",
+   "indicator_function": 35,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700312]",
+   "indicator_id": 41,
+   "indicator_name_aff": "Aroon Oscillator",
+   "indicator_name": "AROONOSC",
+   "indicator_function": 36,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700313]",
+   "indicator_id": 42,
+   "indicator_name_aff": "Balance Of Power",
+   "indicator_name": "BOP",
+   "indicator_function": 37,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700314]",
+   "indicator_id": 43,
+   "indicator_name_aff": "Commodity Channel Index",
+   "indicator_name": "CCI",
+   "indicator_function": 38,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700315]",
+   "indicator_id": 44,
+   "indicator_name_aff": "Chande Momentum Oscillator",
+   "indicator_name": "CMO",
+   "indicator_function": 39,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700316]",
+   "indicator_id": 45,
+   "indicator_name_aff": "Directional Movement Index",
+   "indicator_name": "DX",
+   "indicator_function": 40,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700317]",
+   "indicator_id": 46,
+   "indicator_name_aff": "Moving Average Convergence/Divergence",
+   "indicator_name": "MACD_macd",
+   "indicator_function": 41,
+   "indicator_parameters": "{\"parameters_id\":[3,4,6,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"fastperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":12}],\"slowperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":26}],\"signalperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":9}]}"
+ },
+ {
+   "ID": "[301386,502700318]",
+   "indicator_id": 47,
+   "indicator_name_aff": "Moving Average Convergence/Divergence - Signal",
+   "indicator_name": "MACD_macdsignal",
+   "indicator_function": 41,
+   "indicator_parameters": "{\"parameters_id\":[3,4,6,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"fastperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":12}],\"slowperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":26}],\"signalperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":9}]}"
+ },
+ {
+   "ID": "[301386,502700319]",
+   "indicator_id": 48,
+   "indicator_name_aff": "Moving Average Convergence/Divergence - Histogram",
+   "indicator_name": "MACD_macdhist",
+   "indicator_function": 41,
+   "indicator_parameters": "{\"parameters_id\":[3,4,6,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"fastperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":12}],\"slowperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":26}],\"signalperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":9}]}"
+ },
+ {
+   "ID": "[301386,502700320]",
+   "indicator_id": 49,
+   "indicator_name_aff": "MACD with controllable MA type",
+   "indicator_name": "MACDEXT_macd",
+   "indicator_function": 42,
+   "indicator_parameters": "{\"parameters_id\":[3,4,6,7,8,9,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"fastmatype\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"fastperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":12}],\"slowmatype\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"slowperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":26}],\"signalmatype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"signalperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":9}]}"
+ },
+ {
+   "ID": "[301386,502700321]",
+   "indicator_id": 50,
+   "indicator_name_aff": "MACD with controllable MA type - Signal",
+   "indicator_name": "MACDEXT_macdsignal",
+   "indicator_function": 42,
+   "indicator_parameters": "{\"parameters_id\":[3,4,6,7,8,9,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"fastmatype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"fastperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":12}],\"slowmatype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"slowperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":26}],\"signalmatype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"signalperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":9}]}"
+ },
+ {
+   "ID": "[301386,502700322]",
+   "indicator_id": 51,
+   "indicator_name_aff": "MACD with controllable MA type - Histogram",
+   "indicator_name": "MACDEXT_macdhist",
+   "indicator_function": 42,
+   "indicator_parameters": "{\"parameters_id\":[3,4,6,7,8,9,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"fastmatype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"fastperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":12}],\"slowmatype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"slowperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":26}],\"signalmatype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"signalperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":9}]}"
+ },
+ {
+   "ID": "[301386,502700323]",
+   "indicator_id": 52,
+   "indicator_name_aff": "Moving Average Convergence/Divergence Fix 12/26",
+   "indicator_name": "MACDFIX_macd",
+   "indicator_function": 43,
+   "indicator_parameters": "{\"parameters_id\":[6,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"signalperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":9}]}"
+ },
+ {
+   "ID": "[301386,502700324]",
+   "indicator_id": 53,
+   "indicator_name_aff": "Moving Average Convergence/Divergence Fix 12/26 - Signal",
+   "indicator_name": "MACDFIX_macdsignal",
+   "indicator_function": 43,
+   "indicator_parameters": "{\"parameters_id\":[6,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"signalperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":9}]}"
+ },
+ {
+   "ID": "[301386,502700325]",
+   "indicator_id": 54,
+   "indicator_name_aff": "Moving Average Convergence/Divergence Fix 12/26 - Histogram",
+   "indicator_name": "MACDFIX_macdhist",
+   "indicator_function": 43,
+   "indicator_parameters": "{\"parameters_id\":[6,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"signalperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":9}]}"
+ },
+ {
+   "ID": "[301386,502700326]",
+   "indicator_id": 55,
+   "indicator_name_aff": "Money Flow Index",
+   "indicator_name": "MFI",
+   "indicator_function": 44,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700327]",
+   "indicator_id": 56,
+   "indicator_name_aff": "Minus Directional Indicator",
+   "indicator_name": "MINUS_DI",
+   "indicator_function": 45,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700328]",
+   "indicator_id": 57,
+   "indicator_name_aff": "Minus Directional Movement",
+   "indicator_name": "MINUS_DM",
+   "indicator_function": 46,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700329]",
+   "indicator_id": 58,
+   "indicator_name_aff": "Momentum",
+   "indicator_name": "MOM",
+   "indicator_function": 47,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":10}]}"
+ },
+ {
+   "ID": "[301386,502700330]",
+   "indicator_id": 59,
+   "indicator_name_aff": "Plus Directional Indicator",
+   "indicator_name": "PLUS_DI",
+   "indicator_function": 48,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700331]",
+   "indicator_id": 60,
+   "indicator_name_aff": "Plus Directional Movement",
+   "indicator_name": "PLUS_DM",
+   "indicator_function": 49,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700333]",
+   "indicator_id": 61,
+   "indicator_name_aff": "Percentage Price Oscillator",
+   "indicator_name": "PPO",
+   "indicator_function": 50,
+   "indicator_parameters": "{\"parameters_id\":[3,4,5,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"fastperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":12}],\"slowperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":26}]}"
+ },
+ {
+   "ID": "[301386,502700334]",
+   "indicator_id": 62,
+   "indicator_name_aff": "Rate of change : ((price/prevPrice)-1)*100",
+   "indicator_name": "ROC",
+   "indicator_function": 51,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":10}]}"
+ },
+ {
+   "ID": "[301386,502700335]",
+   "indicator_id": 63,
+   "indicator_name_aff": "Rate of change Percentage: (price-prevPrice)/prevPrice",
+   "indicator_name": "ROCP",
+   "indicator_function": 52,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":10}]}"
+ },
+ {
+   "ID": "[301386,502700336]",
+   "indicator_id": 64,
+   "indicator_name_aff": "Rate of change ratio: (price/prevPrice)",
+   "indicator_name": "ROCR",
+   "indicator_function": 53,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":10}]}"
+ },
+ {
+   "ID": "[301386,502700337]",
+   "indicator_id": 65,
+   "indicator_name_aff": "Rate of change ratio 100 scale: (price/prevPrice)*100",
+   "indicator_name": "ROCR100",
+   "indicator_function": 54,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":10}]}"
+ },
+ {
+   "ID": "[301386,502700338]",
+   "indicator_id": 66,
+   "indicator_name_aff": "Relative Strength Index",
+   "indicator_name": "RSI",
+   "indicator_function": 55,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700339]",
+   "indicator_id": 67,
+   "indicator_name_aff": "Stochastic Slow",
+   "indicator_name": "STOCH_slowk",
+   "indicator_function": 56,
+   "indicator_parameters": "{\"parameters_id\":[10,11,12,13,14,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"fastk_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}],\"slowd_matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"slowd_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":3}],\"slowk_matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"slowk_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":3}]}"
+ },
+ {
+   "ID": "[301386,502700340]",
+   "indicator_id": 68,
+   "indicator_name_aff": "Stochastic Slow - Moving Average",
+   "indicator_name": "STOCH_slowd",
+   "indicator_function": 56,
+   "indicator_parameters": "{\"parameters_id\":[10,11,12,13,14,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"fastk_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}],\"slowd_matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"slowd_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":3}],\"slowk_matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"slowk_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":3}]}"
+ },
+ {
+   "ID": "[301386,502700341]",
+   "indicator_id": 69,
+   "indicator_name_aff": "Stochastic Fast",
+   "indicator_name": "STOCHF_fastk",
+   "indicator_function": 57,
+   "indicator_parameters": "{\"parameters_id\":[10,15,16,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"fastd_matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"fastd_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":3}],\"fastk_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700342]",
+   "indicator_id": 70,
+   "indicator_name_aff": "Stochastic Fast - Moving Average",
+   "indicator_name": "STOCHF_fastd",
+   "indicator_function": 57,
+   "indicator_parameters": "{\"parameters_id\":[10,15,16,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"fastd_matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"fastd_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":3}],\"fastk_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700343]",
+   "indicator_id": 71,
+   "indicator_name_aff": "Stochastic Relative Strength Index",
+   "indicator_name": "STOCHRSI_fastk",
+   "indicator_function": 58,
+   "indicator_parameters": "{\"parameters_id\":[2,10,15,16,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}],\"fastd_matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"fastd_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":3}],\"fastk_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700344]",
+   "indicator_id": 72,
+   "indicator_name_aff": "Stochastic Relative Strength Index - Moving Average",
+   "indicator_name": "STOCHRSI_fastd",
+   "indicator_function": 58,
+   "indicator_parameters": "{\"parameters_id\":[2,10,15,16,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}],\"fastd_matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"fastd_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":3}],\"fastk_period\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700345]",
+   "indicator_id": 73,
+   "indicator_name_aff": "1-day Rate-Of-Change (ROC) of a Triple Smooth EMA",
+   "indicator_name": "TRIX",
+   "indicator_function": 59,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700346]",
+   "indicator_id": 74,
+   "indicator_name_aff": "Ultimate Oscillator",
+   "indicator_name": "ULTOSC",
+   "indicator_function": 60,
+   "indicator_parameters": "{\"parameters_id\":[17,18,19,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod1\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":7}],\"timeperiod2\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}],\"timeperiod3\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":28}]}"
+ },
+ {
+   "ID": "[301386,502700347]",
+   "indicator_id": 75,
+   "indicator_name_aff": "Williams' %R",
+   "indicator_name": "WILLR",
+   "indicator_function": 61,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700348]",
+   "indicator_id": 76,
+   "indicator_name_aff": "Bollinger bands - Upper Band",
+   "indicator_name": "BBANDS_upperband",
+   "indicator_function": 62,
+   "indicator_parameters": "{\"parameters_id\":[2,5,20,21,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"nbdevdn\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":2}],\"nbdevup\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":2}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700349]",
+   "indicator_id": 77,
+   "indicator_name_aff": "Bollinger bands - Middle Band",
+   "indicator_name": "BBANDS_middleband",
+   "indicator_function": 62,
+   "indicator_parameters": "{\"parameters_id\":[2,5,20,21,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"nbdevdn\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":2}],\"nbdevup\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":2}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700350]",
+   "indicator_id": 78,
+   "indicator_name_aff": "Bollinger bands - Lower Band",
+   "indicator_name": "BBANDS_lowerband",
+   "indicator_function": 62,
+   "indicator_parameters": "{\"parameters_id\":[2,5,20,21,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"nbdevdn\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":2}],\"nbdevup\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":2}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700351]",
+   "indicator_id": 79,
+   "indicator_name_aff": "Double Exponential Moving Average",
+   "indicator_name": "DEMA",
+   "indicator_function": 63,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700352]",
+   "indicator_id": 80,
+   "indicator_name_aff": "Exponential Moving Average",
+   "indicator_name": "EMA",
+   "indicator_function": 64,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700353]",
+   "indicator_id": 81,
+   "indicator_name_aff": "Hilbert Transform - Instantaneous Trendline",
+   "indicator_name": "HT_TRENDLINE",
+   "indicator_function": 65,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}]}"
+ },
+ {
+   "ID": "[301386,502700354]",
+   "indicator_id": 82,
+   "indicator_name_aff": "Kaufman Adaptive Moving Average",
+   "indicator_name": "KAMA",
+   "indicator_function": 66,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700355]",
+   "indicator_id": 83,
+   "indicator_name_aff": "Moving average",
+   "indicator_name": "MA",
+   "indicator_function": 67,
+   "indicator_parameters": "{\"parameters_id\":[2,5,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700356]",
+   "indicator_id": 84,
+   "indicator_name_aff": "MESA - Mother of Adaptive Moving Average",
+   "indicator_name": "MAMA_mama",
+   "indicator_function": 68,
+   "indicator_parameters": "{\"parameters_id\":[22,23,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"fastlimit\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"slowlimit\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700357]",
+   "indicator_id": 85,
+   "indicator_name_aff": "MESA - Following Adaptive Moving Average",
+   "indicator_name": "MAMA_fama",
+   "indicator_function": 68,
+   "indicator_parameters": "{\"parameters_id\":[22,23,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"fastlimit\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"slowlimit\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700358]",
+   "indicator_id": 86,
+   "indicator_name_aff": "Moving average with variable period",
+   "indicator_name": "MAVP",
+   "indicator_function": 69,
+   "indicator_parameters": "{\"parameters_id\":[24,25,5,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"matype\":[{\"VALUES\":[{\"WMA\":2,\"EMA\":1,\"KAMA\":6,\"SMA\":0,\"TEMA\":4,\"T3\":8,\"DEMA\":3,\"TRIMA\":5,\"MAMA\":7}],\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"maxperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}],\"minperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":2}]}"
+ },
+ {
+   "ID": "[301386,502700359]",
+   "indicator_id": 87,
+   "indicator_name_aff": "MidPoint over period",
+   "indicator_name": "MIDPOINT",
+   "indicator_function": 70,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700360]",
+   "indicator_id": 88,
+   "indicator_name_aff": "Midpoint Price over period",
+   "indicator_name": "MIDPRICE",
+   "indicator_function": 71,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700361]",
+   "indicator_id": 89,
+   "indicator_name_aff": "Parabolic SAR",
+   "indicator_name": "SAR",
+   "indicator_function": 72,
+   "indicator_parameters": "{\"parameters_id\":[26,27,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"maximum\":[{\"MAX\":0.22,\"MIN\":0.02,\"DEFAULT\":0.2}],\"acceleration\":[{\"MAX\":0.22,\"MIN\":0.001,\"DEFAULT\":0.02}]}"
+ },
+ {
+   "ID": "[301386,502700362]",
+   "indicator_id": 90,
+   "indicator_name_aff": "Parabolic SAR - Extended",
+   "indicator_name": "SAREXT",
+   "indicator_function": 73,
+   "indicator_parameters": "{\"parameters_id\":[28,29,30,31,32,33,34,35,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"accelerationinitshort\":[{\"MAX\":0.22,\"MIN\":0.001,\"DEFAULT\":0.02}],\"accelerationmaxlong\":[{\"MAX\":0.22,\"MIN\":0.001,\"DEFAULT\":0.02}],\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"accelerationmaxshort\":[{\"MAX\":0.22,\"MIN\":0.001,\"DEFAULT\":0.02}],\"startvalue\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"accelerationshort\":[{\"MAX\":0.22,\"MIN\":0.001,\"DEFAULT\":0.02}],\"offsetonreverse\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"accelerationlong\":[{\"MAX\":0.22,\"MIN\":0.001,\"DEFAULT\":0.02}],\"accelerationinitlong\":[{\"MAX\":0.22,\"MIN\":0.001,\"DEFAULT\":0.02}]}"
+ },
+ {
+   "ID": "[301386,502700363]",
+   "indicator_id": 91,
+   "indicator_name_aff": "Simple Moving Average",
+   "indicator_name": "SMA",
+   "indicator_function": 74,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700364]",
+   "indicator_id": 92,
+   "indicator_name_aff": "Triple Exponential Moving Average (T3)",
+   "indicator_name": "T3",
+   "indicator_function": 75,
+   "indicator_parameters": "{\"parameters_id\":[2,36,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"vfactor\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700365]",
+   "indicator_id": 93,
+   "indicator_name_aff": "Triple Exponential Moving Average",
+   "indicator_name": "TEMA",
+   "indicator_function": 76,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700366]",
+   "indicator_id": 94,
+   "indicator_name_aff": "Triangular Moving Average",
+   "indicator_name": "TRIMA",
+   "indicator_function": 77,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700367]",
+   "indicator_id": 95,
+   "indicator_name_aff": "Weighted Moving Average",
+   "indicator_name": "WMA",
+   "indicator_function": 78,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700368]",
+   "indicator_id": 96,
+   "indicator_name_aff": "Two Crows",
+   "indicator_name": "CDL2CROWS",
+   "indicator_function": 79,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700369]",
+   "indicator_id": 97,
+   "indicator_name_aff": "Three Black Crows",
+   "indicator_name": "CDL3BLACKCROWS",
+   "indicator_function": 80,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700370]",
+   "indicator_id": 98,
+   "indicator_name_aff": "Three Inside Up/Down",
+   "indicator_name": "CDL3INSIDE",
+   "indicator_function": 81,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700371]",
+   "indicator_id": 99,
+   "indicator_name_aff": "Three-Line Strike",
+   "indicator_name": "CDL3LINESTRIKE",
+   "indicator_function": 82,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700372]",
+   "indicator_id": 100,
+   "indicator_name_aff": "Three Outside Up/Down",
+   "indicator_name": "CDL3OUTSIDE",
+   "indicator_function": 83,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700373]",
+   "indicator_id": 101,
+   "indicator_name_aff": "Three Stars In The South",
+   "indicator_name": "CDL3STARSINSOUTH",
+   "indicator_function": 84,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700374]",
+   "indicator_id": 102,
+   "indicator_name_aff": "Three Advancing White Soldiers",
+   "indicator_name": "CDL3WHITESOLDIERS",
+   "indicator_function": 85,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700375]",
+   "indicator_id": 103,
+   "indicator_name_aff": "Abandoned Baby",
+   "indicator_name": "CDLABANDONEDBABY",
+   "indicator_function": 86,
+   "indicator_parameters": "{\"parameters_id\":[37]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"penetration\":[{\"MAX\":0,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700376]",
+   "indicator_id": 104,
+   "indicator_name_aff": "Advance Block",
+   "indicator_name": "CDLADVANCEBLOCK",
+   "indicator_function": 87,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700377]",
+   "indicator_id": 105,
+   "indicator_name_aff": "Belt-hold",
+   "indicator_name": "CDLBELTHOLD",
+   "indicator_function": 88,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700378]",
+   "indicator_id": 106,
+   "indicator_name_aff": "Breakaway",
+   "indicator_name": "CDLBREAKAWAY",
+   "indicator_function": 89,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700379]",
+   "indicator_id": 107,
+   "indicator_name_aff": "Closing Marubozu",
+   "indicator_name": "CDLCLOSINGMARUBOZU",
+   "indicator_function": 90,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700380]",
+   "indicator_id": 108,
+   "indicator_name_aff": "Concealing Baby Swallow",
+   "indicator_name": "CDLCONCEALBABYSWALL",
+   "indicator_function": 91,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700381]",
+   "indicator_id": 109,
+   "indicator_name_aff": "Counterattack",
+   "indicator_name": "CDLCOUNTERATTACK",
+   "indicator_function": 92,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700382]",
+   "indicator_id": 110,
+   "indicator_name_aff": "Dark Cloud Cover",
+   "indicator_name": "CDLDARKCLOUDCOVER",
+   "indicator_function": 93,
+   "indicator_parameters": "{\"parameters_id\":[37]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"penetration\":[{\"MAX\":0,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700383]",
+   "indicator_id": 111,
+   "indicator_name_aff": "Doji",
+   "indicator_name": "CDLDOJI",
+   "indicator_function": 94,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700384]",
+   "indicator_id": 112,
+   "indicator_name_aff": "Doji Star",
+   "indicator_name": "CDLDOJISTAR",
+   "indicator_function": 95,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700385]",
+   "indicator_id": 113,
+   "indicator_name_aff": "Dragonfly Doji",
+   "indicator_name": "CDLDRAGONFLYDOJI",
+   "indicator_function": 96,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700386]",
+   "indicator_id": 114,
+   "indicator_name_aff": "Engulfing Pattern",
+   "indicator_name": "CDLENGULFING",
+   "indicator_function": 97,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700387]",
+   "indicator_id": 115,
+   "indicator_name_aff": "Evening Doji Star",
+   "indicator_name": "CDLEVENINGDOJISTAR",
+   "indicator_function": 98,
+   "indicator_parameters": "{\"parameters_id\":[37]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"penetration\":[{\"MAX\":0,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700388]",
+   "indicator_id": 116,
+   "indicator_name_aff": "Evening Star",
+   "indicator_name": "CDLEVENINGSTAR",
+   "indicator_function": 99,
+   "indicator_parameters": "{\"parameters_id\":[37]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"penetration\":[{\"MAX\":0,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700389]",
+   "indicator_id": 117,
+   "indicator_name_aff": "Up/Down-gap side-by-side white lines",
+   "indicator_name": "CDLGAPSIDESIDEWHITE",
+   "indicator_function": 100,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700390]",
+   "indicator_id": 118,
+   "indicator_name_aff": "Gravestone Doji",
+   "indicator_name": "CDLGRAVESTONEDOJI",
+   "indicator_function": 101,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700391]",
+   "indicator_id": 119,
+   "indicator_name_aff": "Hammer",
+   "indicator_name": "CDLHAMMER",
+   "indicator_function": 102,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700392]",
+   "indicator_id": 120,
+   "indicator_name_aff": "Hanging Man",
+   "indicator_name": "CDLHANGINGMAN",
+   "indicator_function": 103,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700393]",
+   "indicator_id": 121,
+   "indicator_name_aff": "Harami Pattern",
+   "indicator_name": "CDLHARAMI",
+   "indicator_function": 104,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700394]",
+   "indicator_id": 122,
+   "indicator_name_aff": "Harami Cross Pattern",
+   "indicator_name": "CDLHARAMICROSS",
+   "indicator_function": 105,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700395]",
+   "indicator_id": 123,
+   "indicator_name_aff": "High-Wave Candle",
+   "indicator_name": "CDLHIGHWAVE",
+   "indicator_function": 106,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700396]",
+   "indicator_id": 124,
+   "indicator_name_aff": "Hikkake Pattern",
+   "indicator_name": "CDLHIKKAKE",
+   "indicator_function": 107,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700397]",
+   "indicator_id": 125,
+   "indicator_name_aff": "Modified Hikkake Pattern",
+   "indicator_name": "CDLHIKKAKEMOD",
+   "indicator_function": 108,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700398]",
+   "indicator_id": 126,
+   "indicator_name_aff": "Homing Pigeon",
+   "indicator_name": "CDLHOMINGPIGEON",
+   "indicator_function": 109,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700399]",
+   "indicator_id": 127,
+   "indicator_name_aff": "Identical Three Crows",
+   "indicator_name": "CDLIDENTICAL3CROWS",
+   "indicator_function": 110,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700400]",
+   "indicator_id": 128,
+   "indicator_name_aff": "In-Neck Pattern",
+   "indicator_name": "CDLINNECK",
+   "indicator_function": 111,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700401]",
+   "indicator_id": 129,
+   "indicator_name_aff": "Inverted Hammer",
+   "indicator_name": "CDLINVERTEDHAMMER",
+   "indicator_function": 112,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700402]",
+   "indicator_id": 130,
+   "indicator_name_aff": "Kicking",
+   "indicator_name": "CDLKICKING",
+   "indicator_function": 113,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700403]",
+   "indicator_id": 131,
+   "indicator_name_aff": "Kicking - bull/bear determined by the longer marubozu",
+   "indicator_name": "CDLKICKINGBYLENGTH",
+   "indicator_function": 114,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700404]",
+   "indicator_id": 132,
+   "indicator_name_aff": "Ladder Bottom",
+   "indicator_name": "CDLLADDERBOTTOM",
+   "indicator_function": 115,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700405]",
+   "indicator_id": 133,
+   "indicator_name_aff": "Long Legged Doji",
+   "indicator_name": "CDLLONGLEGGEDDOJI",
+   "indicator_function": 116,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700406]",
+   "indicator_id": 134,
+   "indicator_name_aff": "Long Line Candle",
+   "indicator_name": "CDLLONGLINE",
+   "indicator_function": 117,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700407]",
+   "indicator_id": 135,
+   "indicator_name_aff": "Marubozu",
+   "indicator_name": "CDLMARUBOZU",
+   "indicator_function": 118,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700408]",
+   "indicator_id": 136,
+   "indicator_name_aff": "Matching Low",
+   "indicator_name": "CDLMATCHINGLOW",
+   "indicator_function": 119,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700409]",
+   "indicator_id": 137,
+   "indicator_name_aff": "Mat Hold",
+   "indicator_name": "CDLMATHOLD",
+   "indicator_function": 120,
+   "indicator_parameters": "{\"parameters_id\":[37]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"penetration\":[{\"MAX\":0,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700410]",
+   "indicator_id": 138,
+   "indicator_name_aff": "Morning Doji Star",
+   "indicator_name": "CDLMORNINGDOJISTAR",
+   "indicator_function": 121,
+   "indicator_parameters": "{\"parameters_id\":[37]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"penetration\":[{\"MAX\":0,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700411]",
+   "indicator_id": 139,
+   "indicator_name_aff": "Morning Star",
+   "indicator_name": "CDLMORNINGSTAR",
+   "indicator_function": 122,
+   "indicator_parameters": "{\"parameters_id\":[37]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"penetration\":[{\"MAX\":0,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700412]",
+   "indicator_id": 140,
+   "indicator_name_aff": "On-Neck Pattern",
+   "indicator_name": "CDLONNECK",
+   "indicator_function": 123,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700413]",
+   "indicator_id": 141,
+   "indicator_name_aff": "Piercing Pattern",
+   "indicator_name": "CDLPIERCING",
+   "indicator_function": 124,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700414]",
+   "indicator_id": 142,
+   "indicator_name_aff": "Rickshaw Man",
+   "indicator_name": "CDLRICKSHAWMAN",
+   "indicator_function": 125,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700415]",
+   "indicator_id": 143,
+   "indicator_name_aff": "Rising/Falling Three Methods",
+   "indicator_name": "CDLRISEFALL3METHODS",
+   "indicator_function": 126,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700416]",
+   "indicator_id": 144,
+   "indicator_name_aff": "Separating Lines",
+   "indicator_name": "CDLSEPARATINGLINES",
+   "indicator_function": 127,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700417]",
+   "indicator_id": 145,
+   "indicator_name_aff": "Shooting Star",
+   "indicator_name": "CDLSHOOTINGSTAR",
+   "indicator_function": 128,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700418]",
+   "indicator_id": 146,
+   "indicator_name_aff": "Short Line Candle",
+   "indicator_name": "CDLSHORTLINE",
+   "indicator_function": 129,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700419]",
+   "indicator_id": 147,
+   "indicator_name_aff": "Spinning Top",
+   "indicator_name": "CDLSPINNINGTOP",
+   "indicator_function": 130,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700420]",
+   "indicator_id": 148,
+   "indicator_name_aff": "Stalled Pattern",
+   "indicator_name": "CDLSTALLEDPATTERN",
+   "indicator_function": 131,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700421]",
+   "indicator_id": 149,
+   "indicator_name_aff": "Stick Sandwich",
+   "indicator_name": "CDLSTICKSANDWICH",
+   "indicator_function": 132,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700422]",
+   "indicator_id": 150,
+   "indicator_name_aff": "Takuri (Dragonfly Doji with very long lower shadow)",
+   "indicator_name": "CDLTAKURI",
+   "indicator_function": 133,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700423]",
+   "indicator_id": 151,
+   "indicator_name_aff": "Tasuki Gap",
+   "indicator_name": "CDLTASUKIGAP",
+   "indicator_function": 134,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700424]",
+   "indicator_id": 152,
+   "indicator_name_aff": "Thrusting Pattern",
+   "indicator_name": "CDLTHRUSTING",
+   "indicator_function": 135,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700425]",
+   "indicator_id": 153,
+   "indicator_name_aff": "Tristar Pattern",
+   "indicator_name": "CDLTRISTAR",
+   "indicator_function": 136,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700426]",
+   "indicator_id": 154,
+   "indicator_name_aff": "Unique 3 River",
+   "indicator_name": "CDLUNIQUE3RIVER",
+   "indicator_function": 137,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700427]",
+   "indicator_id": 155,
+   "indicator_name_aff": "Upside Gap Two Crows",
+   "indicator_name": "CDLUPSIDEGAP2CROWS",
+   "indicator_function": 138,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700428]",
+   "indicator_id": 156,
+   "indicator_name_aff": "Upside/Downside Gap Three Methods",
+   "indicator_name": "CDLXSIDEGAP3METHODS",
+   "indicator_function": 139,
+   "indicator_parameters": "{\"parameters_id\":[]}",
+   "indicator_strategies": null,
+   "indicator_default_para": null
+ },
+ {
+   "ID": "[301386,502700429]",
+   "indicator_id": 157,
+   "indicator_name_aff": "Average Price",
+   "indicator_name": "AVGPRICE",
+   "indicator_function": 140,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}]}"
+ },
+ {
+   "ID": "[301386,502700430]",
+   "indicator_id": 158,
+   "indicator_name_aff": "Median Price",
+   "indicator_name": "MEDPRICE",
+   "indicator_function": 141,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700431]",
+   "indicator_id": 159,
+   "indicator_name_aff": "Typical Price",
+   "indicator_name": "TYPPRICE",
+   "indicator_function": 142,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700432]",
+   "indicator_id": 160,
+   "indicator_name_aff": "Weighted Close Price",
+   "indicator_name": "WCLPRICE",
+   "indicator_function": 143,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700433]",
+   "indicator_id": 161,
+   "indicator_name_aff": "Beta",
+   "indicator_name": "BETA",
+   "indicator_function": 144,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700434]",
+   "indicator_id": 162,
+   "indicator_name_aff": "Pearson's Correlation Coefficient (r)",
+   "indicator_name": "CORREL",
+   "indicator_function": 145,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":30}]}"
+ },
+ {
+   "ID": "[301386,502700435]",
+   "indicator_id": 163,
+   "indicator_name_aff": "Linear Regression",
+   "indicator_name": "LINEARREG",
+   "indicator_function": 146,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700436]",
+   "indicator_id": 164,
+   "indicator_name_aff": "Linear Regression Angle",
+   "indicator_name": "LINEARREG_ANGLE",
+   "indicator_function": 147,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700437]",
+   "indicator_id": 165,
+   "indicator_name_aff": "Linear Regression Intercept",
+   "indicator_name": "LINEARREG_INTERCEPT",
+   "indicator_function": 148,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700438]",
+   "indicator_id": 166,
+   "indicator_name_aff": "Linear Regression Slope",
+   "indicator_name": "LINEARREG_SLOPE",
+   "indicator_function": 149,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700439]",
+   "indicator_id": 167,
+   "indicator_name_aff": "Standard Deviation",
+   "indicator_name": "STDDEV",
+   "indicator_function": 150,
+   "indicator_parameters": "{\"parameters_id\":[2,38,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"nbdev\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":1}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700440]",
+   "indicator_id": 168,
+   "indicator_name_aff": "Time Series Forecast",
+   "indicator_name": "TSF",
+   "indicator_function": 151,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700441]",
+   "indicator_id": 169,
+   "indicator_name_aff": "Variance",
+   "indicator_name": "VAR",
+   "indicator_function": 152,
+   "indicator_parameters": "{\"parameters_id\":[2,38,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"nbdev\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":1}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":5}]}"
+ },
+ {
+   "ID": "[301386,502700442]",
+   "indicator_id": 170,
+   "indicator_name_aff": "Average True Range",
+   "indicator_name": "ATR",
+   "indicator_function": 153,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700443]",
+   "indicator_id": 171,
+   "indicator_name_aff": "Normalized Average True Range",
+   "indicator_name": "NATR",
+   "indicator_function": 154,
+   "indicator_parameters": "{\"parameters_id\":[2,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"timeperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":14}]}"
+ },
+ {
+   "ID": "[301386,502700444]",
+   "indicator_id": 172,
+   "indicator_name_aff": "True Range",
+   "indicator_name": "TRANGE",
+   "indicator_function": 155,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700446]",
+   "indicator_id": 173,
+   "indicator_name_aff": "Chaikin A/D Line",
+   "indicator_name": "AD",
+   "indicator_function": 156,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,502700447]",
+   "indicator_id": 174,
+   "indicator_name_aff": "Chaikin A/D Oscillator",
+   "indicator_name": "ADOSC",
+   "indicator_function": 157,
+   "indicator_parameters": "{\"parameters_id\":[4,3,39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"fastperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":3}],\"slowperiod\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":10}]}"
+ },
+ {
+   "ID": "[301386,502700448]",
+   "indicator_id": 175,
+   "indicator_name_aff": "On Balance Volume",
+   "indicator_name": "OBV",
+   "indicator_function": 158,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}]}"
+ },
+ {
+   "ID": "[301386,519432247]",
+   "indicator_id": 176,
+   "indicator_name_aff": "Close",
+   "indicator_name": "CLOSE",
+   "indicator_function": 159,
+   "indicator_parameters": "{\"parameters_id\":[39]}",
+   "indicator_strategies": null,
+   "indicator_default_para": "{\"time\":[{\"MAX\":10000,\"MIN\":0,\"DEFAULT\":0}],\"source\":[{\"VALUES\":[\"close\",\"open\",\"high\",\"low\"],\"DEFAULT\":\"close\"}]}"
+ }
+]

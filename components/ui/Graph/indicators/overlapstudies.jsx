@@ -1,0 +1,22 @@
+export const overlaps = [
+    { indicator: "BBANDS", label: "Bollinger Bands" },
+    { indicator: "DEMA", label: "Double Exponential Moving Average" },
+    { indicator: "EMA", label: "Exponential Moving Average" },
+    {
+        indicator: "HT_TRENDLINE",
+        label: "Hilbert Transform - Instantaneous Trendline",
+    },
+    { indicator: "KAMA", label: "Kaufman Adaptive Moving Average" },
+    { indicator: "MA", label: "Moving average" },
+    { indicator: "MAMA", label: "MESA Adaptive Moving Average" },
+    { indicator: "MAVP", label: "Moving average with variable period" },
+    { indicator: "MIDPOINT", label: "MidPoint over period" },
+    { indicator: "MIDPRICE", label: "Midpoint Price over period" },
+    { indicator: "SAR", label: "Parabolic SAR" },
+    { indicator: "SAREXT", label: "Parabolic SAR - Extended" },
+    { indicator: "SMA", label: "Simple Moving Average" },
+    { indicator: "T3", label: "Triple Exponential Moving Average (T3)" },
+    { indicator: "TEMA", label: "Triple Exponential Moving Average" },
+    { indicator: "TRIMA", label: "Triangular Moving Average" },
+    { indicator: "WMA", label: "Weighted Moving Average" },
+];

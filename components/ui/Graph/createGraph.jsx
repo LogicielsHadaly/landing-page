@@ -44,6 +44,11 @@ var CreateGraph = ({
     }
 
     useEffect(() => {
+        if (indicatorData.length > 1) {
+            console.log("double line");
+            return;
+        }
+
         const chart = LC.createChart(chartContainerRef.current, layout, {
             autosize: true,
         });
@@ -78,7 +83,6 @@ var CreateGraph = ({
             });
         }
 
-        //console.log(indicatorData);
         //console.log(historicData);
         //console.log(markerData);
 
@@ -105,7 +109,6 @@ var CreateGraph = ({
                     };
                     markersList.push(markerToPush);
                 }
-                // markersList = [];
             });
             candleStickSeries.setMarkers(markersList);
         }
