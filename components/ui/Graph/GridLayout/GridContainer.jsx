@@ -2,17 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import "../style/dragNdrop.module.css";
 import indicatorList from "./indicators_params.json";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 let keys = 0;
 
-const GridContainer = ({ stock, url }) => {
-    const [breakpointSize, setBreakpointSize] = useState();
-
-    const [errorMessage, setErrorMessage] = useState("");
+const GridContainer = () => {
     const [showErrorMessage, setShowErrorMessage] = useState("");
     const [goodToSaveStrategyBool, setGoodToSaveStrategyBool] = useState(false);
 
@@ -24,9 +20,6 @@ const GridContainer = ({ stock, url }) => {
 
     const [maxCharacters, setMaxCharacters] = useState(15);
     const [maxAmountofItems, setMaxAmountofItems] = useState(7);
-
-    const [entryReqBody, setEntryReqBody] = useState();
-    const [exitReqBody, setExitReqBody] = useState();
 
     const operators = [" + ", "-", "and", "or", "crossover"];
     const relational = ["<", ">", "="];
@@ -44,7 +37,7 @@ const GridContainer = ({ stock, url }) => {
         "slowk_matype",
     ];
 
-    const [switchGridState, setSwitchGridState] = useState("ENTRY");
+    const [gridAreaState, setSwitchGridState] = useState("ENTRY");
     const [layoutEntry, setLayoutEntry] = useState({
         lg: [],
         md: [],
@@ -76,14 +69,11 @@ const GridContainer = ({ stock, url }) => {
         xxs: maxAmountofItems,
     };
 
-    const [positionOfItemsNamesEntry, setPositionOfItemsNamesEntry] = useState(
-        []
-    );
-    const [positionOfItemsNamesExit, setPositionofItemsNamesExit] = useState(
-        []
-    );
-    const [strategyText, setStrategyText] = useState("");
+    const [itemsPositionEntry, setItemsPositionEntry] = useState([]);
+    const [itemsPositionExit, setItemsPositionExit] = useState([]);
+
     const [selectedItem, setSelectedItem] = useState("Select...");
+    const [number, setNumber] = useState();
 
     const [exposure, setExposure] = useState(1000);
 
@@ -91,36 +81,15 @@ const GridContainer = ({ stock, url }) => {
     const [takeProfit, setTakeProfit] = useState({ status: 1, value: "10" });
     const [trailingStop, setTrailingStop] = useState({ status: 1, value: "3" });
     const [security, setSecurity] = useState();
-    const [requestBody, setRequestBody] = useState(null);
 
-    useEffect(() => {
-        if (requestBody === null) return;
-        console.log(requestBody);
-        const stringifyPart1 = JSON.stringify(requestBody);
-        const stringifyPart2 = {
-            strategy: stringifyPart1,
-            stock: stock,
-        };
-        fetch(url, {
-            headers: {
-                "Content-type": "application/json",
-            },
-            method: "POST",
-            body: JSON.stringify(stringifyPart2),
-        })
-            .then((response) => {
-                if (response.status === 200) {
-                    console.log("We're good!");
-                }
-                return response.json();
-            })
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, [requestBody]);
+    const [deletePressed, setDeletePressed] = useState(null);
+    const [modifyPressed, setModifyPressed] = useState(null);
+    const [modifyNumberPressed, setModifyNumberPressed] = useState(null);
+    const [modifyingNumber, setModifyingNumber] = useState();
+    const [numberModifyArea, setNumberModifyArea] = useState(null);
+    const [inModify, setInModify] = useState(-1);
+
+    const [requestBody, setRequestBody] = useState(null);
 
     //Populates the indicator dropdown
     useEffect(() => {
@@ -136,19 +105,21 @@ const GridContainer = ({ stock, url }) => {
     }, []);
 
     const createRequestBody = () => {
-        const entryInOrder = layoutEntry.lg.reduce((acc, item) => {
-            if (positionOfItemsNamesEntry.includes(item.i)) {
-                acc.push(layoutEntry.lg.find((entry) => entry.i === item.i));
-            }
-            return acc;
-        }, []);
+        const entryInOrder = layoutEntry.lg;
+        // .reduce((acc, item) => {
+        //     if (itemsPositionEntry.includes(item.i)) {
+        //         acc.push(layoutEntry.lg.find((entry) => entry.i === item.i));
+        //     }
+        //     return acc;
+        // }, []);
 
-        const exitInOrder = layoutExit.lg.reduce((acc, item) => {
-            if (positionOfItemsNamesExit.includes(item.i)) {
-                acc.push(layoutExit.lg.find((exit) => exit.i === item.i));
-            }
-            return acc;
-        }, []);
+        const exitInOrder = layoutExit.lg;
+        // .reduce((acc, item) => {
+        //     if (itemsPositionExit.includes(item.i)) {
+        //         acc.push(layoutExit.lg.find((exit) => exit.i === item.i));
+        //     }
+        //     return acc;
+        // }, []);
 
         const exitLogic = [];
         const exitIndicator = [];
@@ -165,6 +136,15 @@ const GridContainer = ({ stock, url }) => {
             if (item.type === "operator") {
                 const operator = " " + item.i + " ";
                 exitLogic.push({ [operator]: {} });
+            }
+            if (item.type === "number") {
+                const number = item.i;
+                const numb = {
+                    [number]: {
+                        num: number.toString(),
+                    },
+                };
+                exitLogic.push(numb);
             }
         });
 
@@ -184,9 +164,20 @@ const GridContainer = ({ stock, url }) => {
                 const operator = " " + item.i + " ";
                 entryLogic.push({ [operator]: {} });
             }
+            if (item.type === "number") {
+                const number = item.i;
+                const numb = {
+                    [number]: {
+                        num: number.toString(),
+                    },
+                };
+                entryLogic.push(numb);
+            }
         });
 
-        setRequestBody({
+        const stock = "AAPL";
+
+        const strategy = {
             EXIT: {
                 LOGIC: exitLogic,
                 EXPOSURE: exposure,
@@ -202,35 +193,73 @@ const GridContainer = ({ stock, url }) => {
                 take_profit: takeProfit,
                 trailing_stop: trailingStop,
             },
-        });
+        };
+
+        console.log(strategy);
+
+        const reqBody = {
+            strategy: JSON.stringify(strategy),
+            stock: stock,
+        };
+        setRequestBody(reqBody);
+        console.log(reqBody);
     };
+
+    useEffect(() => {
+        if (requestBody === null) return;
+        fetch("https://hadalyapi-production.up.railway.app/engine", {
+            headers: {
+                "Content-type": "application/json",
+            },
+            method: "POST",
+            body: JSON.stringify(requestBody),
+        })
+            .then((response) => {
+                if (response.status === 200) return response.json();
+                else console.log("not good");
+            })
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, [requestBody]);
 
     //Handle whenever dragging an item.
     //Updates the list based on the x position
     const handleGridItemDragStop = (layout, area) => {
         const sortedItems = [...layout].sort((a, b) => a.x - b.x);
+
+        const updatedItems = sortedItems.map((item) => {
+            return {
+                ...item,
+                i: item.i.replace(/\d+$/, ""),
+            };
+        });
+
+        //console.log(updatedItems);
+        let newLayout = [];
         if (area === "ENTRY") {
-            setPositionOfItemsNamesEntry(
-                sortedItems.map((item) => item.i.replace(/\d+/g, ""))
-            );
+            for (let i = 0; i < sortedItems.length; i++) {
+                for (let j = 0; j < layoutEntry.lg.length; j++) {
+                    if (sortedItems[i].i === layoutEntry.lg[j].key) {
+                        newLayout.push(layoutEntry.lg[j]);
+                    }
+                }
+            }
+            setItemsPositionEntry(newLayout);
         } else if (area === "EXIT") {
-            setPositionofItemsNamesExit(
-                sortedItems.map((item) => item.i.replace(/\d+/g, ""))
-            );
+            for (let i = 0; i < sortedItems.length; i++) {
+                for (let j = 0; j < layoutExit.lg.length; j++) {
+                    if (sortedItems[i].i === layoutExit.lg[j].key) {
+                        newLayout.push(layoutExit.lg[j]);
+                    }
+                }
+            }
+            setItemsPositionExit(newLayout);
         }
     };
-
-    //Strategy Module text to show
-    useEffect(() => {
-        setStrategyText(
-            <span>
-                <br />
-                Entry: {positionOfItemsNamesEntry}
-                <br />
-                Exit: {positionOfItemsNamesExit}
-            </span>
-        );
-    }, [positionOfItemsNamesEntry, positionOfItemsNamesExit]);
 
     //Show and hide Delete and Modify menu when hovering on item
     const handleGridItemHover = (area, index, isHovered) => {
@@ -267,24 +296,22 @@ const GridContainer = ({ stock, url }) => {
     // + < RSI > EMA AVG => Not good
     // RSI + AVG = EMA => Good
     const handleStrategyCorrectness = () => {
-        const entryList = positionOfItemsNamesEntry;
-        const exitList = positionOfItemsNamesExit;
+        const entryList = itemsPositionEntry;
+        const exitList = itemsPositionExit;
 
         let errorMessageHandle = "";
 
         if (entryList.length < 2)
             errorMessageHandle = errorMessageHandle.concat(
-                `
-                The entry list does not have enough items.
-                `
+                `The entry list does not have enough items. `
             );
         if (exitList.length < 2)
             errorMessageHandle = errorMessageHandle.concat(
-                `
-                The exit list does not have enough items.
-
-                `
+                `The exit list does not have enough items. `
             );
+
+        // console.log(entryList);
+        // console.log(exitList);
 
         errorMessageHandle = errorMessageHandle.concat(
             handleCorrectStrategy(entryList, "entry")
@@ -299,11 +326,14 @@ const GridContainer = ({ stock, url }) => {
         errorMessageHandle = errorMessageHandle.concat(
             handleParentheses(exitList, "exit")
         );
-        errorMessageHandle = errorMessageHandle.concat(handleStrategyName());
+        if (inModify < -1) {
+            errorMessageHandle = errorMessageHandle.concat(
+                handleStrategyName()
+            );
+        }
 
-        //Set the state to good!
         setShowErrorMessage(errorMessageHandle);
-        setErrorMessage(errorMessageHandle);
+
         if (errorMessageHandle === "") {
             setGoodToSaveStrategyBool(true);
             createRequestBody();
@@ -313,32 +343,24 @@ const GridContainer = ({ stock, url }) => {
     const handleCorrectStrategy = (itemList, area) => {
         //Makes sure there are more than 2 items on grid
         //If the first or second item is an operator, not good
+        //console.log(itemList);
         if (operators.includes(itemList[0]))
-            return `
-            
-            There is an operator at the begining of ${area} grid.
-            
-            `;
+            return ` There is an operator at the begining of ${area} grid. `;
         else if (operators.includes(itemList[itemList.length - 1]))
-            return `
-            
-            There is an operator at the end ${area} grid.
-            
-            `;
+            return `There is an operator at the end ${area} grid. `;
         if (relational.includes(itemList[0]))
-            return `
-        There is a relational at the begining of ${area} grid.
-        `;
+            return `There is a relational at the begining of ${area} grid. `;
         else if (relational.includes(itemList[itemList.length - 1]))
-            return `
-        There is a relational at the end of ${area} grid.
-        `;
+            return `There is a relational at the end of ${area} grid. `;
         //Iterate through the items
 
         let relationalCount = 0;
 
+        console.log(area);
+        console.log(itemList);
+
         for (let i = 1; i < itemList.length; i++) {
-            if (relational.includes(itemList[i])) {
+            if (relational.includes(itemList[i].i)) {
                 relationalCount++;
             }
             //If the item is an operator...
@@ -346,9 +368,7 @@ const GridContainer = ({ stock, url }) => {
                 const previousItem = itemList[i - 1];
                 if (operators.includes(previousItem))
                     //If it's followed by another operator, not good
-                    return `
-                    There are operators following each other in the ${area} grid
-                    `;
+                    return `There are operators following each other in the ${area} grid `;
             }
             //If the item is an indicator...
             else if (indicators.some((item) => item.value === itemList[i])) {
@@ -356,20 +376,12 @@ const GridContainer = ({ stock, url }) => {
                 if (
                     indicators.some((item) => item.value === previousItem) //If the previous Item is also and indicator, not good
                 )
-                    return `
-                    
-                    There are indicators following each other in the ${area} grid.
-                    
-                    `;
+                    return `There are indicators following each other in the ${area} grid. `;
             }
         }
 
         if (relationalCount === 0)
-            return `
-           
-            Missing a relational operator (<, >, =) in the ${area} grid.
-            
-            `;
+            return ` Missing a relational operator (<, >, =) in the ${area} grid. `;
         // If it passes all checks, it's good!
         return "";
     };
@@ -382,21 +394,13 @@ const GridContainer = ({ stock, url }) => {
                 stack.push("(");
             } else if (item === ")") {
                 if (stack.length === 0 || stack.pop() !== "(") {
-                    return `
-                    
-                    There are parentheses in the wrong order in the ${area} grid.
-                   
-                    `;
+                    return ` There are parentheses in the wrong order in the ${area} grid. `;
                 }
             }
         }
 
         if (stack.length > 0) {
-            return `
-            
-            Missing right parentheses in the ${area} grid.
-            
-            `;
+            return ` Missing right parentheses in the ${area} grid. `;
         } else {
             return "";
         }
@@ -404,53 +408,58 @@ const GridContainer = ({ stock, url }) => {
 
     //Makes sure two strategies don't have the same name.
     const handleStrategyName = () => {
-        const updatedModules = modules;
-        if (updatedModules.some((item) => item.name === strategyName)) {
-            return "Cannot have two strategies with the same name";
-        } else return "";
+        let toReturn = "";
+        const checkModules = modules;
+        if (checkModules.some((item) => item.name === strategyName)) {
+            toReturn = toReturn.concat(
+                "Cannot have two strategies with the same name. "
+            );
+        }
+        return toReturn;
     };
 
     //Add item from dropdown to grid
+
     const handleItemAddToGrid = (event, area) => {
         let updatedLayout;
-        if (switchGridState === "ENTRY") {
+        if (gridAreaState === "ENTRY") {
             updatedLayout = { ...layoutEntry };
-        } else if (switchGridState === "EXIT") {
+        } else if (gridAreaState === "EXIT") {
             updatedLayout = { ...layoutExit };
         }
+        //console.log(updatedLayout);
         //If it reached the max amount of items, the item will not be added
         if (updatedLayout.lg.length >= maxAmountofItems) {
-            setErrorMessage("Max amount of items on grid");
             return;
         }
 
         //Creation of new item.
         const selectedItemValue = event.target.value;
         const selectedItemName = event.target[event.target.selectedIndex].text;
-        const eventName = event.target.name;
+        const selectedItemType = event.target.name;
         let newItem = null;
 
-        if (eventName === "indicators") {
+        if (selectedItemType === "indicators") {
             newItem = createNewIndicator(
                 selectedItemValue,
                 selectedItemName,
-                switchGridState,
+                gridAreaState,
                 getParamsFromJson(selectedItemValue)
             );
-            showGridItemModifyMenu(newItem);
+            showIndicatorModifyMenu(newItem);
         } else {
             newItem = createNewOperator(
                 selectedItemValue,
                 selectedItemName,
-                switchGridState
+                gridAreaState
             );
         }
 
         //Add new item to grid
         updatedLayout.lg.push(newItem);
-        if (switchGridState === "ENTRY") setLayoutEntry(updatedLayout);
-        else if (switchGridState === "EXIT") setLayoutExit(updatedLayout);
-        handleGridItemDragStop(updatedLayout.lg, switchGridState);
+        if (gridAreaState === "ENTRY") setLayoutEntry(updatedLayout);
+        else if (gridAreaState === "EXIT") setLayoutExit(updatedLayout);
+        handleGridItemDragStop(updatedLayout.lg, gridAreaState);
     };
 
     const constraintText = (conditionParam) => {
@@ -470,8 +479,123 @@ const GridContainer = ({ stock, url }) => {
         return <span>{textToReturn}</span>;
     };
 
+    const showNumberModifyMenu = (numberItem) => {
+        //console.log(numberItem);
+        if (numberItem.type === "number") {
+            setIndicatorMenu(
+                <div
+                    style={{
+                        minWidth: "300px",
+                        zIndex: "100",
+                        border: "1px solid",
+                        background: "white",
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translateX(-50%) translateY(-50%)",
+                    }}
+                >
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                        }}
+                    >
+                        <h5 style={{ margin: "0 0.9em" }}>
+                            Number: {numberItem.name}
+                        </h5>
+                        <input
+                            style={{ paddingTop: "2px" }}
+                            type="button"
+                            value="X"
+                            onClick={closeModifySetting} //
+                        />
+                    </div>
+                    <br />
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyItems: "left",
+                            alignItems: "center",
+                            marginBottom: "2em",
+                        }}
+                    >
+                        <form>
+                            <label style={{ marginTop: "5px" }}>Number</label>
+                            <br />
+                            <input
+                                type="text"
+                                // style={{ marginBottom: "1em" }}
+                                placeholder={numberItem.value}
+                                // value={modifyingNumber}
+                                onChange={(e) => {
+                                    setModifyingNumber(e.target.value);
+                                }}
+                            />
+                            <input
+                                type="button"
+                                value="Submit"
+                                style={{ marginTop: "10px" }}
+                                onClick={(e) => {
+                                    // setDeletePressed(numberItem);
+                                    // addNumberToGrid(numberItem.area);
+                                    setModifyNumberPressed(numberItem);
+                                }}
+                            />
+                        </form>
+                    </div>
+                </div>
+            );
+            return;
+        }
+    };
+
+    useEffect(() => {
+        if (modifyNumberPressed === null) return;
+        modifyNumber(modifyNumberPressed);
+        setModifyNumberPressed(null);
+    }, [modifyNumberPressed]);
+
+    const modifyNumber = (itemToModify) => {
+        console.log(itemToModify);
+
+        let updatedLayout;
+
+        if (itemToModify.area === "ENTRY") {
+            updatedLayout = { ...layoutEntry };
+        } else if (itemToModify.area === "EXIT") {
+            updatedLayout = { ...layoutExit };
+        }
+        // console.log(updatedLayout.lg[0].i);
+        // console.log(item.i);
+
+        let index = -1;
+        for (var i = 0; i < updatedLayout.lg.length; i++) {
+            if (updatedLayout.lg[i]["name"] === itemToModify.name) {
+                index = i;
+            }
+        }
+        console.log(index);
+        handleGridItemDelete(itemToModify.area, index);
+        setNumber(modifyingNumber);
+        setNumberModifyArea(itemToModify.area);
+
+        // console.log("Index of: " + index);
+    };
+
+    useEffect(() => {
+        if (numberModifyArea === null) return;
+        console.log(number);
+        addNumberToGrid(numberModifyArea);
+        setNumberModifyArea(null);
+    }, [numberModifyArea]);
+
     //Creates the modify menu for the items on the grid
-    const showGridItemModifyMenu = (indicatorItem) => {
+    const showIndicatorModifyMenu = (indicatorItem) => {
+        // console.log(indicatorItem);
+
         const parameters = indicatorItem.parameters;
         //console.log(parameters);
         const indicator = indicatorList.find(
@@ -487,7 +611,7 @@ const GridContainer = ({ stock, url }) => {
                     border: "1px solid",
                     background: "white",
                     position: "absolute",
-                    top: "118%",
+                    top: "50%",
                     left: "50%",
                     transform: "translateX(-50%) translateY(-50%)",
                 }}
@@ -521,25 +645,16 @@ const GridContainer = ({ stock, url }) => {
                     <form>
                         {parameters.map((item, index) => (
                             <div key={index}>
-                                <div style={{ display: "flex" }}>
-                                    <label
-                                        htmlFor={item.param}
-                                        style={{
-                                            marginTop: "5px",
-                                        }}
-                                    >
-                                        {item.param}
-                                        <span
-                                            style={{
-                                                color: "grey",
-                                                marginLeft: "10px",
-                                            }}
-                                        >
-                                            {constraintText(item.conditions)}
-                                        </span>
-                                    </label>
+                                <label
+                                    htmlFor={item.param}
+                                    style={{ marginTop: "5px" }}
+                                >
+                                    {item.param}
                                     <br />
-                                </div>
+                                    {constraintText(item.conditions)}
+                                </label>
+                                <br />
+
                                 {paramsNeedingDropdown.indexOf(item.param) >=
                                 0 ? (
                                     <select
@@ -573,7 +688,7 @@ const GridContainer = ({ stock, url }) => {
                                         id={item.param}
                                         type="text"
                                         // style={{ marginBottom: "1em" }}
-                                        placeholder={`Value at: ${item.value}`}
+                                        placeholder={item.value}
                                     />
                                 )}
                             </div>
@@ -609,12 +724,11 @@ const GridContainer = ({ stock, url }) => {
             xxs: [],
         });
         setShowErrorMessage("");
-        setErrorMessage("");
     };
 
     //This creates a new indicator item
     const createNewIndicator = (value, name, area, param) => {
-        const newItem = {
+        const newIndicator = {
             parameters: param,
             key: value + keys,
             name: name,
@@ -627,12 +741,12 @@ const GridContainer = ({ stock, url }) => {
             h: 1,
         };
         keys++;
-        return newItem;
+        return newIndicator;
     };
 
     //This creates a new operator item
     const createNewOperator = (value, name, area) => {
-        const newItem = {
+        const newOperator = {
             key: value + keys,
             name: name,
             type: "operator",
@@ -644,7 +758,23 @@ const GridContainer = ({ stock, url }) => {
             h: 1,
         };
         keys++;
-        return newItem;
+        return newOperator;
+    };
+
+    const createNewNumber = (value, name, area) => {
+        const newNumber = {
+            key: value + keys,
+            name: name,
+            type: "number",
+            area: area,
+            i: value,
+            x: 0,
+            y: 0,
+            w: 1,
+            h: 1,
+        };
+        keys++;
+        return newNumber;
     };
 
     const getParamsFromJson = (item) => {
@@ -716,10 +846,27 @@ const GridContainer = ({ stock, url }) => {
     };
 
     const handleConstraints = (value, constraints) => {
-        // let keys = Object.keys(constraints);
         if (value < constraints["MIN"] || value > constraints["MAX"])
             return false;
         else return true;
+    };
+
+    const addNumberToGrid = (area) => {
+        let newNumber = createNewNumber(number, number, area);
+        // console.log(number);
+
+        let updatedLayout;
+        if (area === "ENTRY") {
+            updatedLayout = { ...layoutEntry };
+        } else if (area === "EXIT") {
+            updatedLayout = { ...layoutExit };
+        }
+
+        //console.log(updatedLayout);
+        updatedLayout.lg.push(newNumber);
+        if (area === "ENTRY") setLayoutEntry(updatedLayout);
+        else if (area === "EXIT") setLayoutExit(updatedLayout);
+        handleGridItemDragStop(updatedLayout.lg, area);
     };
 
     const makeStrategy = (layout) => {
@@ -734,61 +881,72 @@ const GridContainer = ({ stock, url }) => {
 
     //Module/Strategy creation
     useEffect(() => {
-        if (strategyName.length > maxCharacters) {
-            setShowErrorMessage(
-                `Strategy name must be maximum ${maxCharacters} characters long!`
-            );
-            return;
-        }
-
+        //console.log(itemsPositionEntry);
         if (!goodToSaveStrategyBool) return;
 
         const modulesArray = modules;
+
         let entryText = "";
-        positionOfItemsNamesEntry.forEach((item) => {
-            entryText = entryText.concat(item + " ");
+        itemsPositionEntry.forEach((item) => {
+            entryText = entryText.concat(item.i + " ");
         });
+
         let exitText = "";
-        positionOfItemsNamesExit.forEach((item) => {
-            exitText = exitText.concat(item + " ");
+        itemsPositionExit.forEach((item) => {
+            exitText = exitText.concat(item.i + " ");
         });
-        //console.log(layoutEntry.lg);
 
-        const entryStrategy = makeStrategy(layoutEntry.lg);
-        const exitStrategy = makeStrategy(layoutExit.lg);
-
-        const strategy = { ENTRY: entryStrategy, EXIT: exitStrategy };
-        //console.log(strategy);
-
-        const text = (
-            <span>
-                Entry: {entryText}
-                <br />
-                Exit: {exitText}
-            </span>
-        );
+        //console.log(itemsPositionEntry);
 
         const newModule = {
             name: strategyName,
-            value: strategy,
-            text: text,
+            value: {
+                ENTRY: makeStrategy(itemsPositionEntry),
+                EXIT: makeStrategy(itemsPositionExit),
+            },
+            text: (
+                <span>
+                    Entry: {entryText}
+                    <br />
+                    Exit: {exitText}
+                </span>
+            ),
         };
-        modulesArray.push(newModule);
+
+        if (inModify > -1) {
+            modulesArray[inModify] = newModule;
+            setInModify(-1);
+        } else {
+            modulesArray.push(newModule);
+        }
+
+        //console.log(modulesArray);
+
+        setItemsPositionEntry([]);
+        setItemsPositionExit([]);
         setModules(modulesArray);
-        setPositionOfItemsNamesEntry([]);
-        setPositionofItemsNamesExit([]);
+        setGoodToSaveStrategyBool(false);
         clearGrid();
     }, [goodToSaveStrategyBool]);
 
-    const deleteStrategy = (index) => {
+    //Delete Strategy
+    useEffect(() => {
+        if (deletePressed === null) return;
+        let index = deletePressed;
         const updatedModules = modules;
         updatedModules.splice(index, 1);
         setModules(updatedModules);
-        clearGrid();
-    };
+        setDeletePressed(null);
+    }, [deletePressed]);
 
-    const modifyStrategy = (index) => {
-        //console.log(modules);
+    //Puts items on grid when pressing modify
+    useEffect(() => {
+        if (modifyPressed === null) return;
+        // console.log(layoutEntry);
+        // console.log(layoutExit);
+        const index = modifyPressed;
+        console.log(modules);
+
         let values = modules[index].value;
 
         let updatedLayoutEntry = { ...layoutEntry };
@@ -797,49 +955,101 @@ const GridContainer = ({ stock, url }) => {
         const entry = values.ENTRY;
         const exit = values.EXIT;
 
-        entry.forEach((item, i) => {
-            //console.log(item);
-            if (item.type === "indicator") {
+        //console.log(entry);
+
+        for (let i = entry.length - 1; i >= 0; i--) {
+            if (entry[i].type === "indicator") {
                 updatedLayoutEntry.lg.push(
                     createNewIndicator(
-                        item.value,
-                        item.name,
-                        item.area,
-                        item.param
+                        entry[i].value,
+                        entry[i].name,
+                        entry[i].area,
+                        entry[i].param
                     )
                 );
             } else {
                 updatedLayoutEntry.lg.push(
-                    createNewOperator(item.value, item.name, item.area)
-                );
-            }
-        });
-        exit.forEach((item, i) => {
-            if (item.type === "indicator")
-                updatedLayoutExit.lg.push(
-                    createNewIndicator(
-                        item.value,
-                        item.name,
-                        item.area,
-                        item.param
+                    createNewOperator(
+                        entry[i].value,
+                        entry[i].name,
+                        entry[i].area
                     )
                 );
-            else
+            }
+        }
+
+        for (let i = exit.length - 1; i >= 0; i--) {
+            if (exit[i].type === "indicator") {
                 updatedLayoutExit.lg.push(
-                    createNewOperator(item.value, item.name, item.area)
+                    createNewIndicator(
+                        exit[i].value,
+                        exit[i].name,
+                        exit[i].area,
+                        exit[i].param
+                    )
                 );
-        });
+            } else {
+                updatedLayoutExit.lg.push(
+                    createNewOperator(exit[i].value, exit[i].name, exit[i].area)
+                );
+            }
+        }
 
         setLayoutEntry(updatedLayoutEntry);
         setLayoutExit(updatedLayoutExit);
         setStrategyName(modules[index].name);
-        deleteStrategy(index);
+        // setDeletePressed(index);
+        setInModify(index);
+        setModifyPressed(null);
+    }, [modifyPressed]);
+
+    const strategyModuleView = (item, index) => {
+        //console.log(item);
+        return (
+            <div
+                style={{
+                    width: "19em",
+                    marginBottom: "1em",
+                    border: "1px solid",
+                }}
+                key={index}
+            >
+                <div style={{ display: "flex" }}>
+                    <h4 style={{ width: "300px" }}>{item.name}</h4>
+                    <input
+                        type="button"
+                        value="Delete"
+                        style={{
+                            height: "30px",
+                            marginTop: "0.6em",
+                            marginRight: "0.6em",
+                            marginLeft: "auto",
+                        }}
+                        onClick={() => setDeletePressed(index)}
+                    />
+                    <input
+                        type="button"
+                        value="Modify"
+                        style={{
+                            height: "30px",
+                            marginTop: "0.6em",
+                            marginRight: "0.6em",
+                            marginLeft: "auto",
+                        }}
+                        onClick={() => setModifyPressed(index)}
+                    />
+                </div>
+                <p>{item.text}</p>
+            </div>
+        );
     };
 
     return (
         <div>
+            <h1 style={{ margin: "2em" }}>TESTING OF DRAG AND DROP</h1>
             <div>{indicatorMenu}</div>
-            <div>
+
+            <div style={{ margin: "120px 300px" }}>
                 {/* Grid and Items */}
                 <div>
                     <input
@@ -847,7 +1057,7 @@ const GridContainer = ({ stock, url }) => {
                         id="entry"
                         name="entry_exit"
                         value="ENTRY"
-                        checked={switchGridState === "ENTRY"}
+                        checked={gridAreaState === "ENTRY"}
                         onChange={() => setSwitchGridState("ENTRY")}
                     />
                     <label htmlFor="entry">Entry</label>
@@ -857,7 +1067,7 @@ const GridContainer = ({ stock, url }) => {
                         id="exit"
                         name="entry_exit"
                         value="EXIT"
-                        checked={switchGridState === "EXIT"}
+                        checked={gridAreaState === "EXIT"}
                         onChange={() => setSwitchGridState("EXIT")}
                     />
                     <label htmlFor="exit">Exit</label>
@@ -885,9 +1095,6 @@ const GridContainer = ({ stock, url }) => {
                         onDragStop={(layout) =>
                             handleGridItemDragStop(layout, "ENTRY")
                         }
-                        onBreakpointChange={(item) => {
-                            setBreakpointSize(item);
-                        }}
                         style={{ userSelect: "none" }}
                     >
                         {layoutEntry.lg.map((item, index) => (
@@ -947,7 +1154,8 @@ const GridContainer = ({ stock, url }) => {
                                         </div>
                                     </div>
                                     {/* Modify Button */}
-                                    {item.type === "indicator" && (
+                                    {(item.type === "indicator" ||
+                                        item.type === "number") && (
                                         <div
                                             className={
                                                 item.isHovered
@@ -971,9 +1179,15 @@ const GridContainer = ({ stock, url }) => {
                                             onDoubleClick={(event) =>
                                                 event.preventDefault()
                                             }
-                                            onClick={() =>
-                                                showGridItemModifyMenu(item)
-                                            }
+                                            onClick={() => {
+                                                if (item.type === "indicator") {
+                                                    showIndicatorModifyMenu(
+                                                        item
+                                                    );
+                                                } else {
+                                                    showNumberModifyMenu(item);
+                                                }
+                                            }}
                                             style={{
                                                 marginTop: "-28px",
                                                 paddingLeft: "1px",
@@ -1000,13 +1214,13 @@ const GridContainer = ({ stock, url }) => {
                                 <div className="grid-item">
                                     <div
                                         className="drag-handle"
-                                        onMouseEnter={() =>
+                                        onMouseEnter={() => {
                                             handleGridItemHover(
                                                 item.area,
                                                 index,
                                                 true
-                                            )
-                                        }
+                                            );
+                                        }}
                                         onMouseLeave={() =>
                                             handleGridItemHover(
                                                 item.area,
@@ -1046,17 +1260,14 @@ const GridContainer = ({ stock, url }) => {
                         layouts={layoutExit}
                         breakpoints={breakpoints}
                         cols={cols}
-                        rowHeight={20}
-                        maxRows={3}
+                        rowHeight={50}
+                        maxRows={2}
                         draggableHandle=".drag-handle"
                         compactType="horizontal"
                         isResizable={false}
                         onDragStop={(layout) =>
                             handleGridItemDragStop(layout, "EXIT")
                         }
-                        onBreakpointChange={(item) => {
-                            setBreakpointSize(item);
-                        }}
                         style={{ userSelect: "none" }}
                     >
                         {layoutExit.lg.map((item, index) => (
@@ -1075,13 +1286,13 @@ const GridContainer = ({ stock, url }) => {
                                         className={
                                             item.isHovered ? "active" : "hidden"
                                         }
-                                        onMouseEnter={() =>
+                                        onMouseEnter={() => {
                                             handleGridItemHover(
                                                 item.area,
                                                 index,
                                                 true
-                                            )
-                                        }
+                                            );
+                                        }}
                                         onMouseLeave={() =>
                                             handleGridItemHover(
                                                 item.area,
@@ -1118,7 +1329,8 @@ const GridContainer = ({ stock, url }) => {
                                         </div>
                                     </div>
                                     {/* Modify Button */}
-                                    {item.type === "indicator" && (
+                                    {(item.type === "indicator" ||
+                                        item.type === "number") && (
                                         <div
                                             className={
                                                 item.isHovered
@@ -1141,9 +1353,15 @@ const GridContainer = ({ stock, url }) => {
                                             onDoubleClick={(event) =>
                                                 event.preventDefault()
                                             }
-                                            onClick={() =>
-                                                showGridItemModifyMenu(item)
-                                            }
+                                            onClick={() => {
+                                                if (item.type === "indicator") {
+                                                    showIndicatorModifyMenu(
+                                                        item
+                                                    );
+                                                } else {
+                                                    showNumberModifyMenu(item);
+                                                }
+                                            }}
                                             style={{
                                                 marginTop: "-28px",
                                                 paddingLeft: "1px",
@@ -1170,13 +1388,13 @@ const GridContainer = ({ stock, url }) => {
                                 <div className="grid-item">
                                     <div
                                         className="drag-handle"
-                                        onMouseEnter={() =>
+                                        onMouseEnter={() => {
                                             handleGridItemHover(
                                                 item.area,
                                                 index,
                                                 true
-                                            )
-                                        }
+                                            );
+                                        }}
                                         onMouseLeave={() =>
                                             handleGridItemHover(
                                                 item.area,
@@ -1219,7 +1437,7 @@ const GridContainer = ({ stock, url }) => {
                                 id="indicators"
                                 value={selectedItem}
                                 onChange={(event) => {
-                                    handleItemAddToGrid(event, switchGridState);
+                                    handleItemAddToGrid(event, gridAreaState);
                                 }}
                                 style={{ marginLeft: "5px" }}
                             >
@@ -1242,7 +1460,7 @@ const GridContainer = ({ stock, url }) => {
                                 id="oprators"
                                 value={selectedItem}
                                 onChange={(event) => {
-                                    handleItemAddToGrid(event, switchGridState);
+                                    handleItemAddToGrid(event, gridAreaState);
                                 }}
                                 style={{ marginLeft: "5px" }}
                             >
@@ -1269,7 +1487,7 @@ const GridContainer = ({ stock, url }) => {
                                 id="relational"
                                 value={selectedItem}
                                 onChange={(event) => {
-                                    handleItemAddToGrid(event, switchGridState);
+                                    handleItemAddToGrid(event, gridAreaState);
                                 }}
                                 style={{ marginLeft: "5px" }}
                             >
@@ -1280,6 +1498,27 @@ const GridContainer = ({ stock, url }) => {
                                     </option>
                                 ))}
                             </select>
+                            <label
+                                htmlFor="number"
+                                className="grid-form-label"
+                                style={{ marginRight: "5px" }}
+                            >
+                                Number
+                            </label>
+                            <input
+                                type="text"
+                                value={number}
+                                onChange={(e) => {
+                                    setNumber(e.target.value);
+                                }}
+                                style={{ marginTop: "5px" }}
+                                maxLength={maxCharacters}
+                            />
+                            <input
+                                type="button"
+                                value="Add Number"
+                                onClick={() => addNumberToGrid(gridAreaState)}
+                            />
                         </form>
                     </div>
                 </div>
@@ -1293,10 +1532,11 @@ const GridContainer = ({ stock, url }) => {
                         value={strategyName}
                         onChange={(e) => setStrategyName(e.target.value)}
                         style={{ marginRight: "5px" }}
+                        maxLength={maxCharacters}
                     />
                     <input
                         type="button"
-                        value="Submit Strategy"
+                        value="Save Strategy"
                         onClick={handleStrategyCorrectness}
                     />
                     <input
@@ -1310,46 +1550,9 @@ const GridContainer = ({ stock, url }) => {
                     <br />
                     <p style={{ color: "red" }}>{showErrorMessage}</p>
                     <div>
-                        {modules.map((item, index) => (
-                            <div
-                                style={{
-                                    width: "19em",
-                                    marginBottom: "1em",
-                                    border: "1px solid",
-                                }}
-                                key={index}
-                            >
-                                <div style={{ display: "flex" }}>
-                                    <h4 style={{ width: "300px" }}>
-                                        {item.name}
-                                    </h4>
-
-                                    <input
-                                        type="button"
-                                        value="Delete"
-                                        style={{
-                                            height: "30px",
-                                            marginTop: "0.6em",
-                                            marginRight: "0.6em",
-                                            marginLeft: "auto",
-                                        }}
-                                        onClick={() => deleteStrategy(index)}
-                                    />
-                                    <input
-                                        type="button"
-                                        value="Modify"
-                                        style={{
-                                            height: "30px",
-                                            marginTop: "0.6em",
-                                            marginRight: "0.6em",
-                                            marginLeft: "auto",
-                                        }}
-                                        onClick={() => modifyStrategy(index)}
-                                    />
-                                </div>
-                                <p>{item.text}</p>
-                            </div>
-                        ))}
+                        {modules.map((item, index) =>
+                            strategyModuleView(item, index)
+                        )}
                     </div>
                 </div>
             </div>

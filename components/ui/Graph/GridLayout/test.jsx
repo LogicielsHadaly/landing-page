@@ -1,3 +1,10 @@
+/**
+ * EXIT: RSI > 50
+ * ENTRY: MIDPOINT crossover MIDPRICE < 45
+ *
+ *
+ */
+
 const example = {
     strategy: {
         EXIT: {
