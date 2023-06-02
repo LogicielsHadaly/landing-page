@@ -8,6 +8,8 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 
 let keys = 0;
 
+//I do not know why all the info gets sent to 'stock'
+//as a dictionnary but I do not care now
 const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
     const url = stock.url;
     const start = stock.start;
@@ -128,13 +130,15 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         const exitIndicator = [];
         exits.forEach((item) => {
             if (item.type === "indicator") {
-                const dictionary = item.parameters.reduce((acc, obj) => {
-                    acc[obj.param] = obj.value;
-                    return acc;
-                }, {});
-                const obj = { [item.i]: dictionary };
-                exitLogic.push(obj);
-                exitIndicator.push(obj);
+                if (item.parameters !== undefined) {
+                    const dictionary = item.parameters.reduce((acc, obj) => {
+                        acc[obj.param] = obj.value;
+                        return acc;
+                    }, {});
+                    const obj = { [item.i]: dictionary };
+                    exitLogic.push(obj);
+                    exitIndicator.push(obj);
+                }
             }
             if (item.type === "operator") {
                 const operator = " " + item.i + " ";
@@ -155,13 +159,16 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         const entryIndicator = [];
         entries.forEach((item) => {
             if (item.type === "indicator") {
-                const dictionary = item.parameters.reduce((acc, obj) => {
-                    acc[obj.param] = obj.value;
-                    return acc;
-                }, {});
-                const obj = { [item.i]: dictionary };
-                entryLogic.push(obj);
-                entryIndicator.push(obj);
+                //console.log(item.parameters === undefined);
+                if (item.parameters !== undefined) {
+                    const dictionary = item.parameters.reduce((acc, obj) => {
+                        acc[obj.param] = obj.value;
+                        return acc;
+                    }, {});
+                    const obj = { [item.i]: dictionary };
+                    entryLogic.push(obj);
+                    entryIndicator.push(obj);
+                }
             }
             if (item.type === "operator") {
                 const operator = " " + item.i + " ";
@@ -616,8 +623,12 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
 
     //Creates the modify menu for the items on the grid
     const showIndicatorModifyMenu = (indicatorItem) => {
-        // console.log(indicatorItem);
-
+        //console.log(indicatorItem);
+        if (
+            indicatorItem.parameters === undefined ||
+            indicatorItem.parameters === null
+        )
+            return;
         const parameters = indicatorItem.parameters;
         //console.log(parameters);
         const indicator = indicatorList.find(
@@ -802,6 +813,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
     const getParamsFromJson = (item) => {
         const indicator = indicatorList.find((i) => i.indicator_name === item);
         const parsedParameters = JSON.parse(indicator.indicator_default_para);
+        if (parsedParameters === null) return;
         const parsedParametersKeys = Object.keys(parsedParameters);
         const parsedParametersValues = Object.values(parsedParameters);
 
@@ -963,8 +975,9 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         setDeletePressed(null);
     }, [deletePressed]);
 
-    //Puts items on grid when pressing modify
+    //Modify button on a Strategy Module
     useEffect(() => {
+        clearGrid();
         if (modifyPressed === null) return;
         // console.log(layoutEntry);
         // console.log(layoutExit);
@@ -985,7 +998,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
             let data = entry[i];
             if (data.type === "number") {
                 addNumberToGrid(data.area, data.name);
-                console.log(data);
+                //console.log(data);
             } else if (data.type === "indicator") {
                 updatedLayoutEntry.lg.push(
                     createNewIndicator(
@@ -1586,7 +1599,6 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
                     </div>
                 </div>
             </div>
-            <p>{JSON.stringify(requestBody)}</p>
         </div>
     );
 };

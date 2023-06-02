@@ -17,6 +17,7 @@ import { IndicatorList } from "./indicators/indicatorList";
 import { PatternList } from "./indicators/patternsExport";
 import GridContainer from "./GridLayout/GridContainer";
 import { Alert } from "@mui/material";
+import dayjs from "dayjs";
 
 let count = 0;
 
@@ -28,7 +29,7 @@ function Graph() {
     ];
 
     //I don't understand why some need to be states and others not....
-    //It works. don't touch
+    //It works. don't touch!
     //Lists
     const stockNames = stocksList;
     const [indicatorList, setIndicatorList] = useState(IndicatorList);
@@ -44,8 +45,10 @@ function Graph() {
     const [inputValue, setInputValue] = useState("");
 
     //User Inputs
-    const [endDateState, setEndDate] = useState(null);
-    const [startDateState, setStartDate] = useState(null);
+    const [endDateState, setEndDateState] = useState();
+    const [startDateState, setStartDateState] = useState();
+    let lastStartDate = null;
+    let lastEndDate = null;
     const [intervalState, setIntervalState] = useState("");
     const [stockSymbolState, setStockSymbolState] = useState("");
     const [indicatorState, setIndicatorState] = useState("");
@@ -105,10 +108,14 @@ function Graph() {
         let day = today.getUTCDate();
         let month = today.getUTCMonth() + 1;
         let year = today.getUTCFullYear();
-        setEndDate(`${year}-${month}-${day}`);
-        setStartDate(`${year - 1}-${month}-${day}`);
+        let startDate = `${year - 1}-${month}-${day}`;
+        let endDate = `${year}-${month}-${day}`;
+        setStartDateState(startDate);
+        setEndDateState(endDate);
+        lastStartDate = startDate;
+        lastEndDate = endDate;
         //setIndicatorChosenList([indicatorList[0].indicator]);
-        setPatternChosenList(["CDL3OUTSIDE", "CDLINVERTEDHAMMER"]);
+        //setPatternChosenList(["CDL3OUTSIDE", "CDLINVERTEDHAMMER"]);
     }, []);
 
     //Calls fetchHistoricResult
@@ -312,6 +319,7 @@ function Graph() {
     useEffect(() => {
         //console.log(patternApiData);
         if (patternApiData === null) return;
+        if (patternApiData.length <= 25) return;
         if (patternApiData.length > 0) {
             //console.log("here");
             const cleanResponse = patternApiData.replace(/NaN/g, 0);
@@ -466,46 +474,55 @@ function Graph() {
 
         //////////////////
 
+        console.log(patternResultParsed);
+
         //MARKERS FOR CHART
-        let dataToPatterns = [];
-        //console.log("here");
-        const unfilteredArray = Object.values(patternResultParsed.indicators);
-        const withInfoUnfilteredArray = [];
-        unfilteredArray.map((element, index) => {
-            let subArrayToPush = [];
-            element.map((e, i) => {
-                let date = new Date(historicApiData.close_time[i]);
-                let toPush = {
-                    time: {
-                        year: date.getUTCFullYear(),
-                        month: date.getUTCMonth() + 1,
-                        day: date.getUTCDate(),
-                    },
-                    value: e,
-                    index: index,
-                };
-                subArrayToPush.push(toPush);
+        if (patternResultParsed.length > 0) {
+            let dataToPatterns = [];
+
+            //console.log("here");
+            console.log(unfilteredArray);
+            const unfilteredArray = Object.values(
+                patternResultParsed.indicators
+            );
+            const withInfoUnfilteredArray = [];
+            unfilteredArray.map((element, index) => {
+                let subArrayToPush = [];
+                element.map((e, i) => {
+                    let date = new Date(historicApiData.close_time[i]);
+                    let toPush = {
+                        time: {
+                            year: date.getUTCFullYear(),
+                            month: date.getUTCMonth() + 1,
+                            day: date.getUTCDate(),
+                        },
+                        value: e,
+                        index: index,
+                    };
+                    subArrayToPush.push(toPush);
+                });
+                withInfoUnfilteredArray.push(subArrayToPush);
             });
-            withInfoUnfilteredArray.push(subArrayToPush);
-        });
 
-        //console.log(withInfoUnfilteredArray);
+            //console.log(withInfoUnfilteredArray);
 
-        const flattenedArray = withInfoUnfilteredArray.flat();
+            const flattenedArray = withInfoUnfilteredArray.flat();
 
-        // Step 2: Filter out elements with a value of 0
-        const filteredArray = flattenedArray.filter((item) => item.value !== 0);
+            // Step 2: Filter out elements with a value of 0
+            const filteredArray = flattenedArray.filter(
+                (item) => item.value !== 0
+            );
 
-        // Step 3: Sort the remaining elements by time
-        dataToPatterns = filteredArray.sort((a, b) => {
-            // Assuming the 'time' property is an object with 'year', 'month', and 'day' properties
-            const timeA = new Date(a.time.year, a.time.month, a.time.day);
-            const timeB = new Date(b.time.year, b.time.month, b.time.day);
+            // Step 3: Sort the remaining elements by time
+            dataToPatterns = filteredArray.sort((a, b) => {
+                // Assuming the 'time' property is an object with 'year', 'month', and 'day' properties
+                const timeA = new Date(a.time.year, a.time.month, a.time.day);
+                const timeB = new Date(b.time.year, b.time.month, b.time.day);
 
-            return timeA - timeB;
-        });
-
-        setPatternDataInputs(dataToPatterns);
+                return timeA - timeB;
+            });
+            setPatternDataInputs(dataToPatterns);
+        }
     }, [indicatorResultParsed, historicApiData, patternResultParsed]);
 
     //This creates the graph by sending the appropriate values
@@ -541,12 +558,21 @@ function Graph() {
     }, []);
 
     useEffect(() => {
-        if (!dateError) return;
-        setShowDateError(
-            <Alert severity="error">
-                This is an error alert — check it out!
-            </Alert>
-        );
+        const testStartDate = new Date(startDateState);
+        const testEndDate = new Date(endDateState);
+        let check = testEndDate - testStartDate < 0;
+        setPatternApiData(null);
+        setDateError(check);
+    }, [startDateState, endDateState]);
+
+    useEffect(() => {
+        if (!dateError) setShowDateError(null);
+        else
+            setShowDateError(
+                <Alert variant="filled" severity="error">
+                    Check the dates!
+                </Alert>
+            );
     }, [dateError]);
 
     /////////////////////////////////////////////////////////
@@ -652,13 +678,21 @@ function Graph() {
                                             label="Start Date"
                                             inputFormat="YYYY-MM-DD"
                                             format="YYYY-MM-DD"
-                                            onChange={(startDate) => {
+                                            // value={startDateState}
+                                            onAccept={(startDate) => {
                                                 let startDateFormatted =
                                                     startDate
                                                         .format("YYYY-MM-DD")
                                                         .toString();
-                                                setStartDate(
+                                                setStartDateState(
                                                     startDateFormatted
+                                                );
+                                                lastStartDate =
+                                                    startDateFormatted;
+                                            }}
+                                            onClose={() => {
+                                                setStartDateState(
+                                                    lastStartDate
                                                 );
                                             }}
                                         />
@@ -672,11 +706,18 @@ function Graph() {
                                             label="End Date"
                                             inputFormat="YYYY-MM-DD"
                                             format="YYYY-MM-DD"
-                                            onChange={(endDate) => {
+                                            // value={endDateState}
+                                            onAccept={(endDate) => {
                                                 let endDateFormatted = endDate
                                                     .format("YYYY-MM-DD")
                                                     .toString();
-                                                setEndDate(endDateFormatted);
+                                                setEndDateState(
+                                                    endDateFormatted
+                                                );
+                                                lastEndDate = endDateFormatted;
+                                            }}
+                                            onClose={() => {
+                                                setEndDateState(lastEndDate);
                                             }}
                                         />
                                     </LocalizationProvider>

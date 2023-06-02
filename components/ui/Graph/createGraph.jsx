@@ -110,7 +110,11 @@ var CreateGraph = ({
                     markersList.push(markerToPush);
                 }
             });
-            candleStickSeries.setMarkers(markersList);
+            try {
+                candleStickSeries.setMarkers(markersList);
+            } catch (error) {
+                console.log(error);
+            }
         }
 
         chartRef.current = chart;
