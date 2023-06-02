@@ -1,10 +1,3 @@
-/**
- * EXIT: RSI > 50
- * ENTRY: MIDPOINT crossover MIDPRICE < 45
- *
- *
- */
-
 const example = {
     strategy: {
         EXIT: {
@@ -41,9 +34,11 @@ const example = {
             trailing_stop: { status: 1, value: "3" },
         },
     },
-    stock: "AAPL",
-};
 
+    stock: "AAPL",
+    start_date: "2022-03-21",
+    end_date: "2023-05-31",
+};
 // {
 //   "strategy": "{\"EXIT\": {\"LOGIC\": [{\"RSI\": {\"time\": \"0\", \"source\": \"close\", \"timeperiod\": \"14\"}}, {\" > \": {}}, {\"50\": {\"num\": \"50\"}}], \"EXPOSURE\": \"1000\", \"INDICATORS\": [{\"RSI\": {\"time\": \"0\", \"source\": \"close\", \"timeperiod\": \"14\"}}]}, \"ENTRY\": {\"LOGIC\": [{\"MIDPRICE\": {\"time\": \"0\", \"timeperiod\": \"14\"}}, {\" crossover \": {}}, {\"MIDPOINT\": {\"time\": \"0\", \"source\": \"close\", \"timeperiod\": \"14\"}}, {\" and \": {}}, {\"RSI\": {\"time\": \"0\", \"source\": \"close\", \"timeperiod\": \"14\"}}, {\" < \": {}}, {\"45\": {\"num\": \"45\"}}], \"EXPOSURE\": \"1000\", \"INDICATORS\": [{\"MIDPRICE\": {\"time\": \"0\", \"timeperiod\": \"14\"}}, {\"MIDPOINT\": {\"time\": \"0\", \"source\": \"close\", \"timeperiod\": \"14\"}}, {\"RSI\": {\"time\": \"0\", \"source\": \"close\", \"timeperiod\": \"14\"}}]}, \"SECURITY\": {\"stop_loss\": {\"status\": 1, \"value\": \"3\"}, \"take_profit\": {\"status\": 1, \"value\": \"10\"}, \"trailing_stop\": {\"status\": 1, \"value\": \"3\"}}}",
 //   "stock": "AAPL"

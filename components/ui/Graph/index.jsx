@@ -16,6 +16,7 @@ import { stocksList } from "./stocksList";
 import { IndicatorList } from "./indicators/indicatorList";
 import { PatternList } from "./indicators/patternsExport";
 import GridContainer from "./GridLayout/GridContainer";
+import { Alert } from "@mui/material";
 
 let count = 0;
 
@@ -77,7 +78,9 @@ function Graph() {
         "https://hadalyapi-production.up.railway.app/indicators";
     // Historic API URL for reference
     // `https://hadalyapi-production.up.railway.app/historic?symbol=${stockSymbol}&start_date=${startDateState}&end_date=${endDateState}&interval=${intervalState}`
-    const engineUrl = "https://hadalyapi-production.up.railway.app/engine";
+    const [engineUrl, setEngineUrl] = useState(
+        "https://hadalyapi-production.up.railway.app/engine"
+    );
     //Fetch interval wait time
     const waitTime = 500;
 
@@ -86,6 +89,9 @@ function Graph() {
     const [indicatorDataInputs, setIndicatorDataInputs] = useState([]);
     const [patternDataInputs, setPatternDataInputs] = useState([]);
     const [chartPlan, setChartPlan] = useState();
+
+    const [dateError, setDateError] = useState(false);
+    const [showDateError, setShowDateError] = useState(null);
 
     //////////////////////////////////////////////////////////////////
     /**** GET HISTORIC ****/
@@ -534,6 +540,15 @@ function Graph() {
         });
     }, []);
 
+    useEffect(() => {
+        if (!dateError) return;
+        setShowDateError(
+            <Alert severity="error">
+                This is an error alert — check it out!
+            </Alert>
+        );
+    }, [dateError]);
+
     /////////////////////////////////////////////////////////
     //This is for the autocomplete when you press enterS
     // !!!DO NOT TOUCH I HAVE NO IDEA HOW IT WORKS BUT IT DOES!!!
@@ -547,6 +562,7 @@ function Graph() {
 
     return (
         <div className={style.body}>
+            <div>{showDateError}</div>
             <div className="relative max-w-xl mx-auto text-center">
                 <h1
                     className="text-gray-800 text-3xl font-semibold sm:text-4xl"
@@ -807,7 +823,12 @@ function Graph() {
                     {/* END USER INPUTS || END USER INPUTS */}
                 </div>
                 <div></div>
-                <GridContainer stock={stockSymbolState} url={engineUrl} />
+                <GridContainer
+                    stock={stockSymbolState}
+                    url={engineUrl}
+                    start={startDateState}
+                    end={endDateState}
+                />
                 {/* End container */}
             </div>
         </div>

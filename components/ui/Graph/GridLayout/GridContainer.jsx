@@ -8,7 +8,10 @@ const ResponsiveGridLayout = WidthProvider(Responsive);
 
 let keys = 0;
 
-const GridContainer = () => {
+const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
+    const url = stock.url;
+    const start = stock.start;
+    const end = stock.end;
     const [showErrorMessage, setShowErrorMessage] = useState("");
     const [goodToSaveStrategyBool, setGoodToSaveStrategyBool] = useState(false);
 
@@ -105,7 +108,7 @@ const GridContainer = () => {
     }, []);
 
     const createRequestBody = () => {
-        const entryInOrder = layoutEntry.lg;
+        const entries = layoutEntry.lg;
         // .reduce((acc, item) => {
         //     if (itemsPositionEntry.includes(item.i)) {
         //         acc.push(layoutEntry.lg.find((entry) => entry.i === item.i));
@@ -113,7 +116,7 @@ const GridContainer = () => {
         //     return acc;
         // }, []);
 
-        const exitInOrder = layoutExit.lg;
+        const exits = layoutExit.lg;
         // .reduce((acc, item) => {
         //     if (itemsPositionExit.includes(item.i)) {
         //         acc.push(layoutExit.lg.find((exit) => exit.i === item.i));
@@ -123,7 +126,7 @@ const GridContainer = () => {
 
         const exitLogic = [];
         const exitIndicator = [];
-        exitInOrder.forEach((item) => {
+        exits.forEach((item) => {
             if (item.type === "indicator") {
                 const dictionary = item.parameters.reduce((acc, obj) => {
                     acc[obj.param] = obj.value;
@@ -150,7 +153,7 @@ const GridContainer = () => {
 
         const entryLogic = [];
         const entryIndicator = [];
-        entryInOrder.forEach((item) => {
+        entries.forEach((item) => {
             if (item.type === "indicator") {
                 const dictionary = item.parameters.reduce((acc, obj) => {
                     acc[obj.param] = obj.value;
@@ -175,16 +178,35 @@ const GridContainer = () => {
             }
         });
 
-        const stock = "AAPL";
+        const entryOrder = [];
+        const exitOrder = [];
+        const entryIndiOrder = [];
+        const exitIndiOrder = [];
+
+        for (let i = entryLogic.length - 1; i >= 0; i--) {
+            entryOrder.push(entryLogic[i]);
+        }
+
+        for (let i = entryIndicator.length - 1; i >= 0; i--) {
+            entryIndiOrder.push(entryIndicator[i]);
+        }
+
+        for (let i = exitLogic.length - 1; i >= 0; i--) {
+            exitOrder.push(exitLogic[i]);
+        }
+
+        for (let i = exitIndicator.length - 1; i >= 0; i--) {
+            exitIndiOrder.push(exitIndicator[i]);
+        }
 
         const strategy = {
             EXIT: {
-                LOGIC: exitLogic,
+                LOGIC: exitOrder,
                 EXPOSURE: exposure,
                 INDICATORS: exitIndicator,
             },
             ENTRY: {
-                LOGIC: entryLogic,
+                LOGIC: entryOrder,
                 EXPOSURE: exposure,
                 INDICATORS: entryIndicator,
             },
@@ -195,19 +217,21 @@ const GridContainer = () => {
             },
         };
 
-        console.log(strategy);
+        //console.log(strategy);
 
         const reqBody = {
             strategy: JSON.stringify(strategy),
-            stock: stock,
+            stock: stock.stock,
+            start_date: stock.start,
+            end_date: stock.end,
         };
         setRequestBody(reqBody);
-        console.log(reqBody);
+        //console.log(reqBody);
     };
 
     useEffect(() => {
         if (requestBody === null) return;
-        fetch("https://hadalyapi-production.up.railway.app/engine", {
+        fetch(stock.url, {
             headers: {
                 "Content-type": "application/json",
             },
@@ -231,12 +255,12 @@ const GridContainer = () => {
     const handleGridItemDragStop = (layout, area) => {
         const sortedItems = [...layout].sort((a, b) => a.x - b.x);
 
-        const updatedItems = sortedItems.map((item) => {
-            return {
-                ...item,
-                i: item.i.replace(/\d+$/, ""),
-            };
-        });
+        // const updatedItems = sortedItems.map((item) => {
+        //     return {
+        //         ...item,
+        //         i: item.i.replace(/\d+$/, ""),
+        //     };
+        // });
 
         //console.log(updatedItems);
         let newLayout = [];
@@ -490,7 +514,7 @@ const GridContainer = () => {
                         border: "1px solid",
                         background: "white",
                         position: "absolute",
-                        top: "50%",
+                        top: "120%",
                         left: "50%",
                         transform: "translateX(-50%) translateY(-50%)",
                     }}
@@ -556,11 +580,10 @@ const GridContainer = () => {
         if (modifyNumberPressed === null) return;
         modifyNumber(modifyNumberPressed);
         setModifyNumberPressed(null);
+        setIndicatorMenu(null);
     }, [modifyNumberPressed]);
 
     const modifyNumber = (itemToModify) => {
-        console.log(itemToModify);
-
         let updatedLayout;
 
         if (itemToModify.area === "ENTRY") {
@@ -577,7 +600,7 @@ const GridContainer = () => {
                 index = i;
             }
         }
-        console.log(index);
+        // console.log(index);
         handleGridItemDelete(itemToModify.area, index);
         setNumber(modifyingNumber);
         setNumberModifyArea(itemToModify.area);
@@ -587,7 +610,6 @@ const GridContainer = () => {
 
     useEffect(() => {
         if (numberModifyArea === null) return;
-        console.log(number);
         addNumberToGrid(numberModifyArea);
         setNumberModifyArea(null);
     }, [numberModifyArea]);
@@ -611,7 +633,7 @@ const GridContainer = () => {
                     border: "1px solid",
                     background: "white",
                     position: "absolute",
-                    top: "50%",
+                    top: "120%",
                     left: "50%",
                     transform: "translateX(-50%) translateY(-50%)",
                 }}
@@ -851,8 +873,9 @@ const GridContainer = () => {
         else return true;
     };
 
-    const addNumberToGrid = (area) => {
-        let newNumber = createNewNumber(number, number, area);
+    const addNumberToGrid = (area, value = number) => {
+        //console.log(area);
+        let newNumber = createNewNumber(value, value, area);
         // console.log(number);
 
         let updatedLayout;
@@ -867,6 +890,7 @@ const GridContainer = () => {
         if (area === "ENTRY") setLayoutEntry(updatedLayout);
         else if (area === "EXIT") setLayoutExit(updatedLayout);
         handleGridItemDragStop(updatedLayout.lg, area);
+        setNumber("");
     };
 
     const makeStrategy = (layout) => {
@@ -945,7 +969,7 @@ const GridContainer = () => {
         // console.log(layoutEntry);
         // console.log(layoutExit);
         const index = modifyPressed;
-        console.log(modules);
+        //console.log(modules);
 
         let values = modules[index].value;
 
@@ -958,39 +982,43 @@ const GridContainer = () => {
         //console.log(entry);
 
         for (let i = entry.length - 1; i >= 0; i--) {
-            if (entry[i].type === "indicator") {
+            let data = entry[i];
+            if (data.type === "number") {
+                addNumberToGrid(data.area, data.name);
+                console.log(data);
+            } else if (data.type === "indicator") {
                 updatedLayoutEntry.lg.push(
                     createNewIndicator(
-                        entry[i].value,
-                        entry[i].name,
-                        entry[i].area,
-                        entry[i].param
+                        data.value,
+                        data.name,
+                        data.area,
+                        data.param
                     )
                 );
             } else {
                 updatedLayoutEntry.lg.push(
-                    createNewOperator(
-                        entry[i].value,
-                        entry[i].name,
-                        entry[i].area
-                    )
+                    createNewOperator(data.value, data.name, data.area)
                 );
             }
         }
 
         for (let i = exit.length - 1; i >= 0; i--) {
-            if (exit[i].type === "indicator") {
+            let data = exit[i];
+            if (data.type === "number") {
+                addNumberToGrid(data.area, data.name);
+                //console.log(data);
+            } else if (data.type === "indicator") {
                 updatedLayoutExit.lg.push(
                     createNewIndicator(
-                        exit[i].value,
-                        exit[i].name,
-                        exit[i].area,
-                        exit[i].param
+                        data.value,
+                        data.name,
+                        data.area,
+                        data.param
                     )
                 );
             } else {
                 updatedLayoutExit.lg.push(
-                    createNewOperator(exit[i].value, exit[i].name, exit[i].area)
+                    createNewOperator(data.value, data.name, data.area)
                 );
             }
         }
@@ -1046,10 +1074,12 @@ const GridContainer = () => {
 
     return (
         <div>
-            <h1 style={{ margin: "2em" }}>TESTING OF DRAG AND DROP</h1>
             <div>{indicatorMenu}</div>
 
             <div style={{ margin: "120px 300px" }}>
+                <h1 class="mb-4 text-4xl font-bold leading-none tracking-tight md:text-5xl lg:text-6xl">
+                    Strategy
+                </h1>{" "}
                 {/* Grid and Items */}
                 <div>
                     <input
@@ -1556,6 +1586,7 @@ const GridContainer = () => {
                     </div>
                 </div>
             </div>
+            <p>{JSON.stringify(requestBody)}</p>
         </div>
     );
 };
