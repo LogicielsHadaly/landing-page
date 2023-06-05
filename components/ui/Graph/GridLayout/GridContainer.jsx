@@ -1,8 +1,15 @@
+/**
+ * Author: Ariel Cohen
+ * Date: 29-05-2023
+ * Description: Drag and drop element to send strategies created
+ *              by the user
+ */
+
 import React, { useEffect, useState } from "react";
 import { Responsive, WidthProvider } from "react-grid-layout";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
-import indicatorList from "./indicators_params.json";
+import indicatorList from "../indicators/indicators_params.json";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -24,7 +31,8 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
     const [strategyName, setStrategyName] = useState("Strategy");
 
     const [maxCharacters, setMaxCharacters] = useState(15);
-    const [maxAmountofItems, setMaxAmountofItems] = useState(7);
+    const [maxCols, steMaxCols] = useState(7);
+    const [maxRows, setMaxRows] = useState(2);
 
     const operators = [" + ", "-", "and", "or", "crossover"];
     const relational = ["<", ">", "="];
@@ -67,11 +75,11 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
     };
 
     const cols = {
-        lg: maxAmountofItems,
-        md: maxAmountofItems,
-        sm: maxAmountofItems,
-        xs: maxAmountofItems,
-        xxs: maxAmountofItems,
+        lg: maxCols,
+        md: maxCols,
+        sm: maxCols,
+        xs: maxCols,
+        xxs: maxCols,
     };
 
     const [itemsPositionEntry, setItemsPositionEntry] = useState([]);
@@ -108,6 +116,14 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         });
         setIndicators(toReturn);
     }, []);
+
+    const reverseListOrder = (list) => {
+        let listToReturn = [];
+        for (let i = list.length - 1; i >= 0; i--) {
+            listToReturn.push(list[i]);
+        }
+        return listToReturn;
+    };
 
     const createRequestBody = () => {
         const entries = layoutEntry.lg;
@@ -185,37 +201,21 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
             }
         });
 
-        const entryOrder = [];
-        const exitOrder = [];
-        const entryIndiOrder = [];
-        const exitIndiOrder = [];
-
-        for (let i = entryLogic.length - 1; i >= 0; i--) {
-            entryOrder.push(entryLogic[i]);
-        }
-
-        for (let i = entryIndicator.length - 1; i >= 0; i--) {
-            entryIndiOrder.push(entryIndicator[i]);
-        }
-
-        for (let i = exitLogic.length - 1; i >= 0; i--) {
-            exitOrder.push(exitLogic[i]);
-        }
-
-        for (let i = exitIndicator.length - 1; i >= 0; i--) {
-            exitIndiOrder.push(exitIndicator[i]);
-        }
+        const entryOrder = reverseListOrder(entryLogic);
+        const exitOrder = reverseListOrder(exitLogic);
+        const entryIndiOrder = reverseListOrder(entryIndicator);
+        const exitIndiOrder = reverseListOrder(exitIndicator);
 
         const strategy = {
             EXIT: {
                 LOGIC: exitOrder,
                 EXPOSURE: exposure,
-                INDICATORS: exitIndicator,
+                INDICATORS: exitIndiOrder,
             },
             ENTRY: {
                 LOGIC: entryOrder,
                 EXPOSURE: exposure,
-                INDICATORS: entryIndicator,
+                INDICATORS: entryIndiOrder,
             },
             SECURITY: {
                 stop_loss: stopLoss,
@@ -232,8 +232,8 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
             start_date: stock.start,
             end_date: stock.end,
         };
-        setRequestBody(reqBody);
         //console.log(reqBody);
+        setRequestBody(reqBody);
     };
 
     useEffect(() => {
@@ -260,16 +260,26 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
     //Handle whenever dragging an item.
     //Updates the list based on the x position
     const handleGridItemDragStop = (layout, area) => {
-        const sortedItems = [...layout].sort((a, b) => a.x - b.x);
+        const rows = {};
+        for (const item of layout) {
+            const { y } = item;
+            if (!rows[y]) {
+                rows[y] = [];
+            }
+            rows[y].push(item);
+        }
 
-        // const updatedItems = sortedItems.map((item) => {
-        //     return {
-        //         ...item,
-        //         i: item.i.replace(/\d+$/, ""),
-        //     };
-        // });
+        // Step 2: Sort each row by 'x' coordinate
+        for (const y in rows) {
+            rows[y].sort((a, b) => a.x - b.x);
+        }
 
-        //console.log(updatedItems);
+        // Step 3: Flatten the sorted rows into a single list
+        const sortedItems = Object.values(rows).reduce(
+            (result, row) => [...result, ...row],
+            []
+        );
+
         let newLayout = [];
         if (area === "ENTRY") {
             for (let i = 0; i < sortedItems.length; i++) {
@@ -290,6 +300,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
             }
             setItemsPositionExit(newLayout);
         }
+        //console.log(sortedItems);
     };
 
     //Show and hide Delete and Modify menu when hovering on item
@@ -309,6 +320,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
 
     //Delete Item depending on the index
     const handleGridItemDelete = (area, index) => {
+        setShowErrorMessage("");
         let updatedLayout;
         if (area === "ENTRY") {
             updatedLayout = { ...layoutEntry };
@@ -450,8 +462,8 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
     };
 
     //Add item from dropdown to grid
-
     const handleItemAddToGrid = (event, area) => {
+        setShowErrorMessage("");
         let updatedLayout;
         if (gridAreaState === "ENTRY") {
             updatedLayout = { ...layoutEntry };
@@ -460,9 +472,6 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         }
         //console.log(updatedLayout);
         //If it reached the max amount of items, the item will not be added
-        if (updatedLayout.lg.length >= maxAmountofItems) {
-            return;
-        }
 
         //Creation of new item.
         const selectedItemValue = event.target.value;
@@ -485,7 +494,13 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
                 gridAreaState
             );
         }
-
+        if (updatedLayout.lg.length >= maxCols) {
+            newItem.y += 1;
+        }
+        if (updatedLayout.lg.length === maxCols * 2) {
+            setShowErrorMessage("Grid is full.");
+            return;
+        }
         //Add new item to grid
         updatedLayout.lg.push(newItem);
         if (gridAreaState === "ENTRY") setLayoutEntry(updatedLayout);
@@ -493,6 +508,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         handleGridItemDragStop(updatedLayout.lg, gridAreaState);
     };
 
+    //Text that defines the max and min of some parameters in indicators
     const constraintText = (conditionParam) => {
         const condition = conditionParam[0];
         const keys = Object.keys(condition);
@@ -510,6 +526,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         return <span>{textToReturn}</span>;
     };
 
+    // Div to modify the number
     const showNumberModifyMenu = (numberItem) => {
         //console.log(numberItem);
         if (numberItem.type === "number") {
@@ -583,6 +600,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         }
     };
 
+    //Modify number submit detection
     useEffect(() => {
         if (modifyNumberPressed === null) return;
         modifyNumber(modifyNumberPressed);
@@ -590,6 +608,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         setIndicatorMenu(null);
     }, [modifyNumberPressed]);
 
+    //Modify the number by deleting and making a new number item
     const modifyNumber = (itemToModify) => {
         let updatedLayout;
 
@@ -615,6 +634,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         // console.log("Index of: " + index);
     };
 
+    // Reset the number modify area once number is added
     useEffect(() => {
         if (numberModifyArea === null) return;
         addNumberToGrid(numberModifyArea);
@@ -740,7 +760,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         );
     };
 
-    //Makes the grid equal to []
+    //Clears the grid... hence the name of the function
     const clearGrid = () => {
         setLayoutEntry({
             lg: [],
@@ -794,6 +814,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
         return newOperator;
     };
 
+    //And this creates a new number item.
     const createNewNumber = (value, name, area) => {
         const newNumber = {
             key: value + keys,
@@ -1090,8 +1111,8 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
             <div>{indicatorMenu}</div>
 
             <div style={{ margin: "120px 300px" }}>
-                <h1 class="mb-4 text-4xl font-bold leading-none tracking-tight md:text-5xl lg:text-6xl">
-                    Strategy
+                <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight md:text-5xl lg:text-6xl">
+                    Strategies Creation
                 </h1>{" "}
                 {/* Grid and Items */}
                 <div>
@@ -1131,7 +1152,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
                         breakpoints={breakpoints}
                         cols={cols}
                         rowHeight={50}
-                        maxRows={2}
+                        maxRows={maxRows}
                         draggableHandle=".drag-handle"
                         compactType="horizontal"
                         isResizable={false}
@@ -1304,7 +1325,7 @@ const GridContainer = (stock, urlInfo, startInfo, endInfo) => {
                         breakpoints={breakpoints}
                         cols={cols}
                         rowHeight={50}
-                        maxRows={2}
+                        maxRows={maxRows}
                         draggableHandle=".drag-handle"
                         compactType="horizontal"
                         isResizable={false}

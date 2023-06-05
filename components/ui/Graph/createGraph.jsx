@@ -44,10 +44,7 @@ var CreateGraph = ({
     }
 
     useEffect(() => {
-        if (indicatorData.length > 1) {
-            console.log("double line");
-            return;
-        }
+        console.log(indicatorData);
 
         const chart = LC.createChart(chartContainerRef.current, layout, {
             autosize: true,
@@ -84,7 +81,7 @@ var CreateGraph = ({
         }
 
         //console.log(historicData);
-        //console.log(markerData);
+        // console.log(markerData);
 
         let markersList = [];
         if (markerData.length > 0) {
