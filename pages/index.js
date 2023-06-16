@@ -9,6 +9,7 @@ import LogoGrid from "../components/ui/LogoGrid";
 import Stats from "../components/ui/Stats";
 import Navbar from "../components/ui/Navbar";
 import Footer from "../components/ui/Footer";
+import DecisionMaking from "../components/ui/DecisionMaking";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <Hero />
+      <DecisionMaking/>
       <LogoGrid />
       <CenteredCTAText />
       <CTA />

@@ -9,10 +9,11 @@ const Hero = () => (
         >
             <div className="space-y-5 max-w-4xl mx-auto text-center">
                 <h1 className="text-4xl text-gray-800 font-extrabold mx-auto sm:text-6xl">
-                Boost Engagement and Confidence with Hadaly's   {" "}
+                Streamline your  {" "}
                     <span className=" bg-clip-text text-transparent bg-gradient-to-r from-[#1E3A8A] to-[#F3B3A7]">
-                    AI-Driven Financial Analytics
+                    Asset 
                     </span>
+                 {" "}Portfolio Process
                 </h1>
                 <p className="max-w-xl mx-auto">
                 Maximize engagement with tailored financial analytics.

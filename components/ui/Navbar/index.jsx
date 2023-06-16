@@ -7,10 +7,10 @@ const Navbar = () => {
   const menuBtnEl = useRef();
 
   const navigation = [
-    { name: "Features", href: "#features" },
+    { name: "Solutions", href: "#features" },
     //{ name: "Pricing", href: "/pricing" },
-    { name: "FAQs", href: "#faqs" },
-    { name: "Contact", href: "#contact" },
+    { name: "Use Cases", href: "#faqs" },
+    { name: "Company", href: "#contact" },
     //{ name: "Dev", href: "/dev" },
   ];
 
@@ -72,7 +72,7 @@ const Navbar = () => {
                                 href="https://test.hadaly.ca"
                                 className="flex items-center justify-center gap-x-1 text-sm text-white font-medium bg-gray-800 hover:bg-gray-600 active:bg-gray-900 md:inline-flex"
                             >
-                                Open the app
+                                Book a demo
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20"
