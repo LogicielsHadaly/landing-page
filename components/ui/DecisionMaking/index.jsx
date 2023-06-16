@@ -1,11 +1,8 @@
 import Image from 'next/image'
 import SectionWrapper from "../../SectionWrapper"
-import NavLink from "../NavLink"
-import cta_image from '../../../public/cta-img.svg'
-import after_hadaly_coverage_image from '../../../public/after_hadaly_coverage.svg'
 import house_graph from "../../../public/house-graph.svg"
 
-const SolutionLeft = () =>{
+const DecisionMaking = () =>{
     return (<SectionWrapper id="cta" className="overflow-hidden">
     <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
         <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
@@ -26,4 +23,4 @@ From data ingestion to insightful decision generation and data governance, our p
 </SectionWrapper>)
 }
 
-export default SolutionLeft
+export default DecisionMaking

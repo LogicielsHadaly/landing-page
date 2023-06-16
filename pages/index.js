@@ -10,6 +10,9 @@ import Stats from "../components/ui/Stats";
 import Navbar from "../components/ui/Navbar";
 import Footer from "../components/ui/Footer";
 import DecisionMaking from "../components/ui/DecisionMaking";
+import DataIngestion from "../components/ui/DataIngestion";
+import InsightGen from "../components/ui/InsightGen";
+import DataGov from "../components/ui/DataGovernance"
 
 export default function Home() {
   return (
@@ -20,6 +23,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <DecisionMaking/>
+      <DataIngestion />
+      <InsightGen />
+      <DataGov />
       <LogoGrid />
       <CenteredCTAText />
       <CTA />
