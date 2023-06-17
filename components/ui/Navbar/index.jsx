@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import NavHeader from "../NavHeader";
 import NavLink from "../NavLink";
 
+import Link from "next/link";
 
 
 const Navbar = () => {
@@ -10,7 +11,7 @@ const Navbar = () => {
 
   const navigation = [
     { name: "Solutions", href: "#features" },
-    { name: "Pricing", href: "/dev" },
+    { name: "Pricing", href: "/useCase1" },
     { name: "Use Cases", href: "#faqs" },
     { name: "Company", href: "#contact" },
     //{ name: "Dev", href: "/dev" },
@@ -25,7 +26,7 @@ const Navbar = () => {
 
   const handleClick = (e, href) => {
     e.preventDefault();
-    const targetElement = document.querySelector(href);
+    const targetElement = document.querySelector(`#${href}`);;
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" });
     }
