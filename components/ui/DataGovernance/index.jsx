@@ -22,7 +22,7 @@ const SlideIn = ({ children }) => {
   );
 };
 
-const DataIngestion = () => {
+const bright = () => {
   const imageVariants = {
     hover: {
       scale: 1.1,
@@ -62,4 +62,4 @@ const DataIngestion = () => {
   );
 };
 
-export default DataIngestion;
+export default bright;
