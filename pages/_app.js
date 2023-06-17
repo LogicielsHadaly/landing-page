@@ -1,7 +1,8 @@
 import '../styles/globals.css';
 import Head from 'next/head';
-import { motion, AnimatePresence } from "framer-motion";
+import "framer-motion";
 import { useRouter } from "next/router";
+
 export default function App({ Component, pageProps }) {
   // const router = useRouter();
   return (
