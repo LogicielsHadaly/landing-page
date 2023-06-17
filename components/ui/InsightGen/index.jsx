@@ -43,8 +43,8 @@ const InsightGen = () =>{
         </div>
         </SlideIn>
         <div className="flex-none w-full md:max-w-xl">
-            {/* <Image src={figInsight} alt="chart" className=' ' /> */}
-            <ForceGraph />
+            <Image src={figInsight} alt="chart" className=' ' />
+            {/* <ForceGraph /> */}
         </div>
         
     </div>
