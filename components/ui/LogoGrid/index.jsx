@@ -69,6 +69,32 @@
 // export default LogoGrid
 
 import { useRouter } from "next/router";
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
+
+
+const SlideIn = ({ children }) => {
+    const [ref, inView] = useInView({
+      triggerOnce: true,
+      threshold: 0.1,
+    });
+  
+    const variants = {
+      hidden: { opacity: 0, x: -50 },
+      visible: { opacity: 1, x: 0 },
+    };
+  
+    return (
+      <motion.div
+        ref={ref}
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        variants={variants}
+      >
+        {children}
+      </motion.div>
+    );
+  };
 
 export default function Example() {
   const router = useRouter();
@@ -78,10 +104,14 @@ export default function Example() {
 
   return (
     <div className="bg-white py-24 sm:py-32">
+      
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <SlideIn>
         <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
           Trusted by the world’s most innovative teams
         </h2>
+        </SlideIn>
+        <SlideIn>
         <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
           {logoFilenames.map((filename, index) => (
             <img
@@ -96,6 +126,7 @@ export default function Example() {
             />
           ))}
         </div>
+        </SlideIn>
       </div>
       <style jsx>{`
         .logo-image {

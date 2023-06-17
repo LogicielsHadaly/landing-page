@@ -1,7 +1,9 @@
 import '../styles/globals.css';
 import Head from 'next/head';
-
+import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 export default function App({ Component, pageProps }) {
+  // const router = useRouter();
   return (
     <>
       <Head>
@@ -11,7 +13,7 @@ export default function App({ Component, pageProps }) {
           content="Boost user engagement by providing detailed analysis & AI modules to your finance customers."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/hadalyIcon.ico" />
         <link
           href="/fonts/Fontspring-DEMO-argentcf-regular.otf"
           rel="preload"
@@ -48,3 +50,4 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+

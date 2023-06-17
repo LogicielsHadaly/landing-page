@@ -69,7 +69,7 @@ const Navbar = () => {
                         </ul>
                         <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
                             <NavLink
-                                href="https://test.hadaly.ca"
+                                href="https://calendly.com/hadaly"
                                 className="flex items-center justify-center gap-x-1 text-sm text-white font-medium bg-gray-800 hover:bg-gray-600 active:bg-gray-900 md:inline-flex"
                             >
                                 Book a demo

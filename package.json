@@ -14,10 +14,12 @@
     "embla-carousel-react": "^8.0.0-rc07",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.1",
+    "framer-motion": "^10.12.16",
     "lightweight-charts": "^4.0.1",
     "next": "13.1.1",
     "react": "^18.2.0",
     "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.4.4",
     "react-transition-group": "^4.4.5",
     "styled-components": "^5.3.11"
   },

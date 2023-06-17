@@ -30,7 +30,14 @@ import testimonials from "./testimonials.json";
 export default function Home() {
   return (
   <SectionWrapper id="carroussel" className="overflow-hidden">
+    <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
+         <h2 className="text-sky-950 text-3xl sm:text-4xl">
+            Our Real Applications
+            </h2>
+            </div>
+    <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
       {/* 2. make sure our carousel container takes up the full screen width using w-screen */}
+
       <div className="w-screen">
         <Slider options={{ align: "center" }}>
           {testimonials.map((testimonial, i) => (
@@ -42,7 +49,7 @@ export default function Home() {
           ))}
         </Slider>
       </div>
-
+      </div>
     </SectionWrapper>
   ) 
 }
