@@ -15,22 +15,17 @@ import InsightGen from "../components/ui/InsightGen";
 import DataGov from "../components/ui/DataGovernance"
 import Graphmap from "../components/ui/Graphmap";
 import Carroussel from "../components/ui/Carroussel";
-import './pricing'
+import Link from "next/link";
 
-export default function Home() {
+
+export default function index() {
   return (
     <>
       <Head>
         <meta name='robots' content='index' />
+        <title>Pricing - Split</title>
       </Head>
       <Navbar />
-      <Hero />
-      {/* <CenteredCTAText />
-      <CTA /> */}
-      {/* <Features /> */}
-      {/* <Stats /> */}
-      {/* <FAQs /> */}
-      {/* <FooterCTA /> */}
       <Footer />
     </>
   );
