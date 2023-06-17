@@ -31,7 +31,7 @@ const Newsletter = () => {
   return (
     <div className="mt-6 md:mt-0">
       <h2 className="text-gray-800 text-xl font-semibold sm:text-2xl">
-        Sign Up Newsletter.
+        Newsletter
       </h2>
       <form
         onSubmit={handleSubmit}
@@ -58,12 +58,12 @@ const Newsletter = () => {
             name="email"
             required
             placeholder="Enter your email"
-            className="w-full pl-12 pr-3 focus:border-blue-600"
+            className="w-full pl-12 pr-3 focus:border-blue-600 text-xl"
           />
         </div>
         <Button
           type="submit"
-          className="block w-auto text-white bg-blue-600 hover:bg-blue-500 ring-offset-2 ring-blue-600 focus:ring shadow rounded-lg"
+          className="block w-auto text-white text-xl bg-blue-950 hover:bg-blue-500 ring-offset-2 ring-blue-600 focus:ring shadow rounded-md"
         >
           Subscribe
         </Button>
