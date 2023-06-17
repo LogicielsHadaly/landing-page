@@ -70,8 +70,6 @@
 
 
 import TextAnimation from "../Hero/textanimation";
-import GradientWrapper from "../../GradientWrapper";
-import NavLink from "../NavLink";
 import React, { Component } from 'react'
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
