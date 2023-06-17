@@ -16,7 +16,7 @@ const Footer = () => (
                     <Link href="/" className="inline-block">
                         <Brand />
                     </Link>
-                    <h2 className="text-gray-800 text-lg font-semibold sm:text-2xl">Smart Modules tailored for you</h2>
+                    <h2 className="text-gray-800 text-lg font-semibold sm:text-2xl">Power of Explanation</h2>
                     <p className="max-w-md">
                     Empowering Wealth Management with AI Innovation.
                     </p>

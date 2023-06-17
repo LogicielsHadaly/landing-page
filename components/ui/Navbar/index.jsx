@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import NavHeader from "../NavHeader";
 import NavLink from "../NavLink";
-
 import Link from "next/link";
+
+
 
 
 const Navbar = () => {
@@ -10,11 +11,9 @@ const Navbar = () => {
   const menuBtnEl = useRef();
 
   const navigation = [
-    { name: "Solutions", href: "#features" },
-    { name: "Pricing", href: "/useCase1" },
-    { name: "Use Cases", href: "#faqs" },
-    { name: "Company", href: "#contact" },
-    //{ name: "Dev", href: "/dev" },
+    { name: "Solutions", href: "/useCase1" },
+    { name: "Use Cases", href: "/useCase1" },
+    { name: "Company", href: "/useCase1" },
   ];
 
   useEffect(() => {
@@ -51,25 +50,27 @@ const Navbar = () => {
                 <div className="custom-screen gap-x-20 items-center md:flex">
                     <NavHeader state={state} onClick={() => setState(!state)} />
                     <div
-                        className={`flex-1 items-center mt-8 text-gray-600 md:font-medium md:mt-0 md:flex ${
+                        className={`flex-1 items-center mt-8 text-gray-900 text-lg font-bold md:font-medium md:mt-0 md:flex ${
                             state ? "block" : "hidden"
                         } `}
                     >
+
                         <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
                             {navigation.map((item, idx) => {
                                 return (
-                                    <li key={idx} className="hover:text-gray-900 text-l font-bold">
-                                      <a
-                                        href={item.href}
-                                        className="block"
-                                        onClick={(e) => handleClick(e, item.href)}
-                                      >
-                                        {item.name}
-                                      </a>
+                                    <li
+                                        key={idx}
+                                        className="hover:text-gray-900"
+                                    >
+                                        <Link
+                                            href={item.href}
+                                            className="block"
+                                            scroll={false}
+                                        >
+                                            {item.name}
+                                        </Link>
                                     </li>
-
-                                    
-                                  );
+                                );
                             })}
                         </ul>
                         <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
@@ -100,3 +101,12 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+

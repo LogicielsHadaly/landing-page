@@ -31,7 +31,7 @@ const Newsletter = () => {
   return (
     <div className="mt-6 md:mt-0">
       <h2 className="text-gray-800 text-xl font-semibold sm:text-2xl">
-        Sign up for our future newsletter.
+        Sign Up Newsletter.
       </h2>
       <form
         onSubmit={handleSubmit}

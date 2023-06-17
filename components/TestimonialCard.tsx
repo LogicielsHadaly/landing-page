@@ -5,6 +5,7 @@ type Props = {
   title: string;
   imgSrc: string;
   content: string;
+  link: string;
   author: string;
 };
 
@@ -25,7 +26,7 @@ const TestimonialCard = (props: Props) => {
         <p className="mt-2 text-gray-600">{props.content}</p>
       </div>
       <div className="flex justify-end mt-4">
-        <Link href="#" className="text-xl font-medium text-indigo-500">
+        <Link href={props.link} className="text-xl font-medium text-indigo-500">
           {props.author}
         </Link>
       </div>
