@@ -1,14 +1,16 @@
-import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
+import React, { useEffect, useRef } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import { PropsWithChildren } from "react";
 
-// 1. define the props
+
+//1. define the props
 type Props = { options?: EmblaOptionsType } & PropsWithChildren;
 
 const Slider = ({ children, options }: Props) => {
-  // 2. initialize EmblaCarousel using the custom hook
+  //2. initialize EmblaCarousel using the custom hook
   const [emblaRef] = useEmblaCarousel({
-    slidesToScroll: 1,
-    align: "start",
+    slidesToScroll: 2,
+    align: 'start',
     ...options,
   });
 

@@ -39,7 +39,7 @@ const DataIngestion = () => {
         <SlideIn>
           <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
             <h2 className="text-sky-950 text-3xl sm:text-4xl">
-              Data Ingestion & Cleaning
+              Data Ingestion . Cleaning
             </h2>
             <p className="text-gray-800">
               At Hadaly, we employ a meticulous process that ensures maximum extraction of valuable information from your data. The first crucial step in this process is data ingestion. Our advanced techniques enable us to classify, cleanse, and transform different types of data using our API. Whether PDF documents, voice recordings, video files, Excel spreadsheets, or any other format, our technology can process them seamlessly.
