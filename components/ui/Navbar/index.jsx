@@ -3,13 +3,14 @@ import NavHeader from "../NavHeader";
 import NavLink from "../NavLink";
 
 
+
 const Navbar = () => {
   const [state, setState] = useState(false);
   const menuBtnEl = useRef();
 
   const navigation = [
     { name: "Solutions", href: "#features" },
-    { name: "Pricing", href: "/useCase1" },
+    { name: "Pricing", href: "/dev" },
     { name: "Use Cases", href: "#faqs" },
     { name: "Company", href: "#contact" },
     //{ name: "Dev", href: "/dev" },
