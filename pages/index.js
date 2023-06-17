@@ -26,7 +26,6 @@ export default function Home() {
       <Hero />
       <DecisionMaking/>
       <DataIngestion />
-      {/* <Graphmap /> */}
       <InsightGen />
       <DataGov />
       <LogoGrid />
