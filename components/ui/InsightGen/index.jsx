@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import SectionWrapper from "../../SectionWrapper"
 import figInsight from "../../../public/fig_insight.svg"
+import ForceGraph from "../Hero/ForceGraph"
 
 const InsightGen = () =>{
     return (<SectionWrapper id="cta" className="overflow-hidden">
@@ -15,7 +16,8 @@ const InsightGen = () =>{
             
         </div>
         <div className="flex-none w-full md:max-w-xl">
-            <Image src={figInsight} alt="chart" className=' ' />
+            {/* <Image src={figInsight} alt="chart" className=' ' /> */}
+            <ForceGraph />
         </div>
     </div>
 </SectionWrapper>)

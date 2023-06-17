@@ -13,6 +13,8 @@ import DecisionMaking from "../components/ui/DecisionMaking";
 import DataIngestion from "../components/ui/DataIngestion";
 import InsightGen from "../components/ui/InsightGen";
 import DataGov from "../components/ui/DataGovernance"
+import Graphmap from "../components/ui/Graphmap";
+import Carroussel from "../components/ui/Carroussel"
 
 export default function Home() {
   return (
@@ -24,15 +26,17 @@ export default function Home() {
       <Hero />
       <DecisionMaking/>
       <DataIngestion />
+      {/* <Graphmap /> */}
       <InsightGen />
       <DataGov />
       <LogoGrid />
-      <CenteredCTAText />
-      <CTA />
-      <Features />
-      <Stats />
+      <Carroussel />
+      {/* <CenteredCTAText />
+      <CTA /> */}
+      {/* <Features /> */}
+      {/* <Stats /> */}
       {/* <FAQs /> */}
-      <FooterCTA />
+      {/* <FooterCTA /> */}
       <Footer />
     </>
   );

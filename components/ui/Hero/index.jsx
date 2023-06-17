@@ -1,6 +1,9 @@
 import GradientWrapper from "../../GradientWrapper";
 import NavLink from "../NavLink";
 
+import React, { Component } from 'react'
+import TextAnimation from "./textanimation";
+
 const Hero = () => (
     <section>
         <GradientWrapper
@@ -10,9 +13,10 @@ const Hero = () => (
             <div className="space-y-5 max-w-4xl mx-auto text-center">
                 <h1 className="text-4xl text-gray-800 font-extrabold mx-auto sm:text-6xl">
                 Streamline your  {" "}
-                    <span className=" bg-clip-text text-transparent bg-gradient-to-r from-[#1E3A8A] to-[#F3B3A7]">
+                    {/* <span className=" bg-clip-text text-transparent bg-gradient-to-r from-[#1E3A8A] to-[#F3B3A7]">
                     Asset 
-                    </span>
+                    </span> */}
+                    <TextAnimation/>
                  {" "}Portfolio Process
                 </h1>
                 <p className="max-w-xl mx-auto">
@@ -21,6 +25,9 @@ const Hero = () => (
                 <p className="max-w-xl mx-auto fade-in-text">
                 Enhance user retention and platform revenue.
                 </p>
+                <div className="mx-auto">
+
+                </div>
                 <div className="flex items-center justify-center gap-x-3 font-medium text-sm">
                     <NavLink
                         href="#contact"
@@ -67,3 +74,4 @@ const Hero = () => (
 );
 
 export default Hero;
+
