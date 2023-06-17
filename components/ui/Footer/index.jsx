@@ -9,7 +9,7 @@ const navigation = [
 ]
 
 const Footer = () => (
-    <footer className="pt-32 sm:pt-44">
+    <footer className="pt-13 sm:pt-10">
         <div className="custom-screen text-gray-600">
             <div className="flex flex-wrap gap-y-10 items-center justify-between">
                 <div className="space-y-4">
