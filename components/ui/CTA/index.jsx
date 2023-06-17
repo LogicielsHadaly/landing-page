@@ -2,6 +2,7 @@ import Image from 'next/image'
 import SectionWrapper from "../../SectionWrapper"
 import NavLink from "../NavLink"
 import cta_image from '../../../public/cta-img.svg'
+import after_hadaly_coverage_image from '../../../public/after_hadaly_coverage.svg'
 
 const CTA = () => {
     return (
@@ -9,10 +10,10 @@ const CTA = () => {
             <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
                 <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
                     <h2 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-                        Simple, powerful ways to increase website users
+                    Attract with new clients and reignite relationships with existing ones
                     </h2>
                     <p className="text-gray-600">
-                        Hadaly is a new, revolutionary & cost-effective way to grow your website's traffic. It's a super-simple, one-time fee that will make your site rank higher on Google and bring in more visitors. We're so confident, we offer a 100% money back guarantee.
+                        Hadaly expand your customer reach by offering innovative services to attract diverse clientele, while enhancing your existing offerings to deepen engagement and foster loyalty among your current customer base.
                     </p>
                     <div className="pt-1">
                         <NavLink
@@ -27,7 +28,7 @@ const CTA = () => {
                     </div>
                 </div>
                 <div className="flex-none w-full md:max-w-xl">
-                    <Image src={cta_image} alt="chart" className='w-full shadow-lg rounded-lg border' />
+                    <Image src={after_hadaly_coverage_image} alt="chart" className=' ' />
                 </div>
             </div>
         </SectionWrapper>

@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }) {
         <title>Hadaly</title>
         <meta
           name='description'
-          content='The ultimate way to get more website traffic and grow your online business.'
+          content='Boost user engagement by providing detailed analysis & AI modules to your finance customers.'
         />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />

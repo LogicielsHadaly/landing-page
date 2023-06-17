@@ -6,10 +6,10 @@ const CenteredCTAText = () => {
             <div className="custom-screen text-center">
                 <div className="max-w-xl mx-auto">
                     <h2 className="text-gray-800 text-3xl font-semibold sm:text-4xl">
-                        We help you get more website traffic to your site.
+                    Empower your clients and your teams to foster growth!
                     </h2>
                     <p className="mt-3 text-gray-600">
-                        Split brings you the freshest, up-to-date website traffic trends. An easy way to find out the most popular and engaging content to help you grow.
+                    Hadaly unlocks the potential for innovative financial services, setting you apart from the competition by focusing on customer experience and engagement.
                     </p>
                 </div>
             </div>

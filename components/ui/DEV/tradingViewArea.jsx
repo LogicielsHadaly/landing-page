@@ -83,7 +83,7 @@ var CHART_TRADE = ({data=[], lineColor = "#1326F7"}) => {
       const chart = createChart(chartContainerRef.current, {
         width: 300,
         height: 160,
-      });
+      },[data]);
   
       const lineSeries = chart.addLineSeries();
 

@@ -23,7 +23,7 @@ export default function Home() {
       <CTA />
       <Features />
       <Stats />
-      <FAQs />
+      {/* <FAQs /> */}
       <FooterCTA />
       <Footer />
     </>
