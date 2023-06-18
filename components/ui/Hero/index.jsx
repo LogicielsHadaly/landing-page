@@ -78,22 +78,22 @@ import Link from 'next/link';
 
 
 const SlideIn = ({ children }) => {
-    const [ref, inView] = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-    });
-  
-    const variants = {
-      hidden: { opacity: 0, x: -50 },
-      visible: { opacity: 1, x: 0 },
-    };
-  
-    return (
-      <motion.div ref={ref} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={variants}>
-        {children}
-      </motion.div>
-    );
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const variants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
   };
+
+  return (
+    <motion.div ref={ref} initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={variants}>
+      {children}
+    </motion.div>
+  );
+};
 
 export default function Example() {
 
@@ -102,92 +102,50 @@ export default function Example() {
       <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
-                           <h1 className="text-4xl text-gray-800 mx-auto sm:text-6xl">
-                     <div style={{display: 'inline-block', width: '100%'}}>
-                         Streamline Your <TextAnimation/>
-                     </div>
-                     <div>Portfolio Process</div>
-                 </h1>
+            <h1 className="text-4xl text-gray-800 mx-auto sm:text-6xl">
+              <div style={{ display: 'inline-block', width: '100%' }}>
+                Streamline Your <TextAnimation />
+              </div>
+              <div>Portfolio Process</div>
+            </h1>
             <p className="mt-4 text-xl text-gray-500">
-            Assess and clarify data portfolios with actionable insights.
+              Assess and clarify data portfolios with actionable insights.
             </p>
           </div>
           <div>
-          <SlideIn>
-            <div className="mt-10">
-              {/* Decorative image grid */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
-              >
-                <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                  <div className="flex items-center space-x-6 lg:space-x-8">
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                      <img
-                          src="/chart.svg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
+            <SlideIn>
+              <div className="mt-10">
+                {/* Decorative image grid */}
+                <div
+                  aria-hidden="true"
+                  className="lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
+                >
+                  <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                    <div className="flex items-center space-x-6 lg:space-x-8">
+                      <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
                       </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="/chart.svg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
+                      <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
                       </div>
-                    </div>
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="/curve.svg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="/epidemie.svg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="/networkHero.svg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                    </div>
-                    <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="/field.svg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
-                      </div>
-                      <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
-                          src="/city.svg"
-                          alt=""
-                          className="h-full w-full object-cover object-center"
-                        />
+                      <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-<Link 
-  href="/useCase1" 
-  className="inline-block rounded-md border border-transparent bg-blue-950 px-8 py-3 text-center font-medium text-white hover:bg-slate-700"
->
-  Our Use Case
-</Link>
-            </div>
+                <Link
+                  href="/useCase1"
+                  className="inline-block rounded-md border border-transparent bg-blue-950 px-8 py-3 text-center font-medium text-white hover:bg-slate-700"
+                >
+                  Our Use Case
+                </Link>
+              </div>
             </SlideIn>
           </div>
         </div>
