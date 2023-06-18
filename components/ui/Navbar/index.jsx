@@ -60,8 +60,8 @@ const Navbar = () => {
     ];
 
     const companyDropdownItems = [
-        { name: "Culture", href: "useCase3" },
-        { name: "Team", href: "/useCase3" },
+        { name: "Culture", href: "/culture" },
+        { name: "Team", href: "/team" },
         // Add more company options here
     ];
 
