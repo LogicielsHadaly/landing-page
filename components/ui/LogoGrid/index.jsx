@@ -103,7 +103,7 @@ export default function Example() {
   const logoFilenames = ["nextai.svg", "fintech.svg", "propolys.svg","mitacs.svg","arbour.svg","attestra.svg","laval.svg","poly.svg"];
 
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="bg-white py-5 sm:py-5">
       
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
       <SlideIn>
