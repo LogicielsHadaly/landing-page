@@ -75,6 +75,7 @@ import { motion, useViewportScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import Link from 'next/link';
+import NavLink from "../NavLink";
 
 
 const SlideIn = ({ children }) => {
@@ -112,44 +113,54 @@ export default function Example() {
               Assess and clarify data portfolios with actionable insights.
             </p>
           </div>
-          <div>
-            <SlideIn>
-              <div className="mt-10">
-                {/* Decorative image grid */}
-                <div
-                  aria-hidden="true"
-                  className="lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
-                >
-                  <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                    <div className="flex items-center space-x-6 lg:space-x-8">
-                      <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                      </div>
-                      <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                      </div>
-                      <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                      </div>
-                    </div>
+  
+          <div className="mt-10">
+            {/* Decorative image grid */}
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
+            >
+              <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                <div className="flex items-center space-x-6 lg:space-x-8">
+                  <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                    <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                  </div>
+                  <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                    <NavLink
+                                href="/useCase1"
+                                className="flex items-center justify-center gap-x-1 text-xl text-white font-medium bg-gray-800 hover:bg-gray-600 active:bg-gray-900 md:inline-flex px-4 py-2 rounded-md"
+                            >
+                                Our Use Cases
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                    className="w-5 h-5"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
+                            </NavLink>
+                    <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                  </div>
+                  <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                    <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                    <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
                   </div>
                 </div>
-
-                <Link
-                  href="/useCase1"
-                  className="inline-block rounded-md border border-transparent bg-blue-950 px-8 py-3 text-center font-medium text-white hover:bg-slate-700"
-                >
-                  Our Use Case
-                </Link>
               </div>
-            </SlideIn>
+            </div>
           </div>
+  
+
         </div>
       </div>
     </div>
-  )
+  );
+  
 }

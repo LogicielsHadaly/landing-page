@@ -43,9 +43,7 @@ const DecisionMaking = () => {
               Empowering Decision Making with Integrated Data Solutions
             </h2>
             <p className="text-gray-600">
-              We understand that creating and managing portfolios can be a daunting task, requiring a significant amount of time and effort. With a wide range of portfolio types to choose from, including Risk, Stocks, Livestock, and Real Estate, our comprehensive platform unlocks the full potential of data-driven decision making.
-              <br /><br />
-              From data ingestion to insightful decision generation and data governance, our platform covers every aspect of the data collection value chain, allowing you to concentrate on what truly matters. Say goodbye to the complexities of portfolio management and embrace the power of informed decision making with Hadaly.
+              We understand that creating and managing portfolios can be a daunting task, requiring a significant amount of time and effort. With a wide range of portfolio types to choose from, including Risk, Stocks, Livestock, and Real Estate, our comprehensive platform unlocks the full potential of data-driven decision making. From data ingestion to insightful decision generation and data governance, our platform covers every aspect of the data collection value chain, allowing you to concentrate on what truly matters.
             </p>
           </div>
         </SlideIn>
