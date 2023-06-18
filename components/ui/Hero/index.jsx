@@ -71,7 +71,7 @@
 
 import TextAnimation from "../Hero/textanimation";
 import React, { Component } from 'react'
-import { motion } from 'framer-motion';
+import { motion, useViewportScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import Link from 'next/link';
