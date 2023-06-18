@@ -31,12 +31,12 @@ const SlideIn = ({ children }) => {
 const InsightGen = () => {
   return (<SectionWrapper id="cta" className="overflow-hidden">
     <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
-      <SlideIn>
+      {/* <SlideIn> */}
         <div className="flex-none w-full md:max-w-xl">
-          <Image src={figInsight} alt="chart" className=' ' />
-          {/* <ForceGraph /> */}
+          {/* <Image src={figInsight} alt="chart" className=' ' /> */}
+          <ForceGraph />
         </div>
-      </SlideIn>
+      {/* </SlideIn> */}
       <SlideIn>
         <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
           <h2 className="text-sky-950 text-3xl  sm:text-4xl">
