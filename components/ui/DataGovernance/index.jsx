@@ -39,13 +39,6 @@ const bright = () => {
     <SectionWrapper id="cta" className="overflow-hidden">
       <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
         <SlideIn>
-          <div className="flex-none w-full md:max-w-xl">
-            <motion.div whileHover="hover" initial="initial" variants={imageVariants}>
-              <Image src={figmonitor} alt="chart" className="image" />
-            </motion.div>
-          </div>
-        </SlideIn>
-        <SlideIn>
           <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
             <h2 className="text-sky-950 text-3xl sm:text-4xl">Data Governance . Perfomance Monitoring</h2>
             <p className="text-gray-600">
@@ -57,6 +50,14 @@ const bright = () => {
             </p>
           </div>
         </SlideIn>
+        <SlideIn>
+          <div className="flex-none w-full md:max-w-xl">
+            <motion.div whileHover="hover" initial="initial" variants={imageVariants}>
+              <Image src={figmonitor} alt="chart" className="image" />
+            </motion.div>
+          </div>
+        </SlideIn>
+
       </div>
     </SectionWrapper>
   );
