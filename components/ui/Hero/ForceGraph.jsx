@@ -1,3 +1,7 @@
+
+
+
+
 // import * as d3 from 'd3';
 // import { useEffect, useRef } from 'react';
 
@@ -138,6 +142,8 @@
 
 // export default ForceGraph;
 
+// //######################################################
+// //######################################################
 
 import * as d3 from 'd3';
 import { useEffect, useRef, useState } from 'react';
@@ -149,7 +155,7 @@ const ForceGraph = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setTick(tick => tick + 1);
-    }, 5000);
+    }, 7000);
     return () => clearInterval(timer);
   }, []);
 
@@ -271,3 +277,6 @@ const ForceGraph = () => {
 };
 
 export default ForceGraph;
+
+
+
