@@ -102,7 +102,7 @@ export default function Example() {
       <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
-            <h1 className="text-4xl text-gray-800 mx-auto sm:text-6xl">
+            <h1 className="text-9xl text-gray-800 mx-auto sm:text-6xl">
               <div style={{ display: 'inline-block', width: '100%' }}>
                 Streamline Your <TextAnimation />
               </div>

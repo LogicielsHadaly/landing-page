@@ -19,7 +19,7 @@ const TestimonialCard = (props: Props) => {
         <div className="flex justify-center md:justify-end -mt-16">
           <Image
             alt={props.author}
-            className="w-20 h-20 object-cover rounded-full border-2 border-indigo-500"
+            className="w-20 h-20 object-cover rounded-full border-2 border-blue-900"
             height={80}
             width={80}
             src={props.imgSrc}
@@ -30,7 +30,7 @@ const TestimonialCard = (props: Props) => {
           <p className="mt-2 text-gray-600">{props.content}</p>
         </div>
         <div className="flex justify-end mt-4">
-          <div href={props.link} className="text-xl font-medium text-indigo-500">
+          <div href={props.link} className="text-xl font-medium text-indigo-950">
             {props.author}
           </div>
 

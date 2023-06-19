@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
 import ReportAutomation from '../../../public/ReportAutomation.svg';
+import ForceGraph from "../Hero/ForceGraph"
 
 const SlideIn = ({ children }) => {
   const [ref, inView] = useInView({
@@ -36,18 +37,20 @@ const reports = () => {
             <h2 className="text-sky-950 text-3xl sm:text-4xl">
               Network Optimization on Portfolio 
             </h2>
-            <p className="text-gray-600">
-            Anomaly detection plays a crucial role in data analysis, opening doors to untapped revenue streams and exciting possibilities. Let us illustrate the power of our technology through a real-life use case.
-Consider the challenge of animal traceability. 
+            <p className="text-gray-600 text-lg">
+            Across industries - finance, payment systems, real estate, agriculture, and production - network optimization plays a pivotal role. Our tool delivers crucial insights into portfolios of complex network assets. It sheds light on performance metrics, identifying the most and least efficient nodes. 
    <br/><br/>
-   Our platform identified a recurring anomaly: breeders were reusing unique animal tracking chips multiple times. This practice raised concerns about accurate tracking and data integrity. However, our solution stepped in to address this issue effectively.   </p>
+      conducting a thorough risk analysis, it pinpoints potential vulnerabilities, offering strategies for mitigation. The tool also highlights network bottlenecks and suggests optimal paths for data flow, thus maximizing network efficiency. 
+      <br/><br/>
+      Beyond current operations, it utilizes historical data to forecast future network performance and capacity needs. This comprehensive approach allows for proactive management, driving efficiency, and optimizing return on investment in network portfolios. </p>
           </div>
         </SlideIn>
-        <SlideIn>
+        {/* <SlideIn> */}
           <div className="flex-none w-full md:max-w-xl">
-            <Image src={ReportAutomation} alt="chart" className="" />
+            {/* <Image src={ReportAutomation} alt="chart" className="" /> */}
+            <ForceGraph />
           </div>
-        </SlideIn>
+        {/* </SlideIn> */}
       </div>
     </SectionWrapper>
   );
