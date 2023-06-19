@@ -5,8 +5,8 @@ const Brand = ({ ...props }) => (
         src="/hadaly.svg"
         alt="Hadaly logo"
         {...props}
-        width={86}
-        height={48}
+        width={130}
+        height={78}
         priority
     />
 )

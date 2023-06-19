@@ -2,7 +2,7 @@ import Image from 'next/image'
 import SectionWrapper from "../../SectionWrapper"
 import NavLink from "../NavLink"
 import cta_image from '../../../public/cta-img.svg'
-import after_hadaly_coverage_image from '../../../public/after_hadaly_coverage.svg'
+// import after_hadaly_coverage_image from '../../../public/after_hadaly_coverage.svg'
 
 const CTA = () => {
     return (
@@ -28,7 +28,7 @@ const CTA = () => {
                     </div>
                 </div>
                 <div className="flex-none w-full md:max-w-xl">
-                    <Image src={after_hadaly_coverage_image} alt="chart" className=' ' />
+                    {/* <Image src={after_hadaly_coverage_image} alt="chart" className=' ' /> */}
                 </div>
             </div>
         </SectionWrapper>
