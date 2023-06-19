@@ -11,6 +11,7 @@ const Navbar = () => {
     const dropdownRef = useRef(null);
     let timer;
 
+
     useEffect(() => {
         document.onclick = (e) => {
             const target = e.target;
@@ -46,7 +47,7 @@ const Navbar = () => {
     }
 
     const navigation = [
-        { name: "Solutions", href: "/solutions" },
+        // { name: "Solutions", href: "#DecisionMaking" },
         { name: "Use Cases", href: "", dropdown: true },
         { name: "Company", href: "", dropdown: true },
     ];

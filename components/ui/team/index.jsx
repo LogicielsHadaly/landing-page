@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
-import ReportAutomation from '../../../public/ReportAutomation.svg';
+import Link from 'next/link';
 
 const SlideIn = ({ children }) => {
   const [ref, inView] = useInView({
@@ -36,16 +36,24 @@ const reports = () => {
             <h2 className="text-sky-950 text-3xl sm:text-4xl">
               Our Team 
             </h2>
-            <p className="text-gray-600">
-            Anomaly detection plays a crucial role in data analysis, opening doors to untapped revenue streams and exciting possibilities. Let us illustrate the power of our technology through a real-life use case.
-Consider the challenge of animal traceability. 
+            <p className="text-gray-600 text-lg">
+            
+Our company is a dynamic blend of financial and technological expertise, dedicated to streamlining the portfolio management process through innovation. We've fostered strategic partnerships with top Canadian universities to ensure our solutions leverage the latest research and development advancements. This commitment to growth, innovation, and our team allows us to consistently refine our offerings.
    <br/><br/>
-   Our platform identified a recurring anomaly: breeders were reusing unique animal tracking chips multiple times. This practice raised concerns about accurate tracking and data integrity. However, our solution stepped in to address this issue effectively.   </p>
+   Are you passionate about Fintech and excited about transforming portfolio management? If so, we're always keen to meet potential team members who can bring fresh perspectives. 
+   <br/><br/>
+    Express your interest and share your profiles at {" "} 
+    
+    <Link href="" className="text-blue-950 font-bold" >
+    info@hadaly.ca
+       </Link>
+        . We look forward to shaping the future of portfolio management with you.
+      </p>
           </div>
         </SlideIn>
         <SlideIn>
           <div className="flex-none w-full md:max-w-xl">
-            <Image src={ReportAutomation} alt="chart" className="" />
+            <Image src="/hadaly_only_logo.svg" width={300} height={200}  alt="chart" className="" />
           </div>
         </SlideIn>
       </div>

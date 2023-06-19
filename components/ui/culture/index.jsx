@@ -30,28 +30,56 @@ const SlideIn = ({ children }) => {
 const reports = () => {
   return (
     <SectionWrapper id="cta" className="overflow-hidden">
-      <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
-        <SlideIn>
-          <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
-            <h2 className="text-sky-950 text-3xl sm:text-4xl">
-              Our Culture
-            </h2>
-            <p className="text-gray-600">
-            Anomaly detection plays a crucial role in data analysis, opening doors to untapped revenue streams and exciting possibilities. Let us illustrate the power of our technology through a real-life use case.
-Consider the challenge of animal traceability. 
-   <br/><br/>
-   Our platform identified a recurring anomaly: breeders were reusing unique animal tracking chips multiple times. This practice raised concerns about accurate tracking and data integrity. However, our solution stepped in to address this issue effectively.   </p>
-          </div>
-        </SlideIn>
-        <SlideIn>
-          <div className="flex-none w-full md:max-w-xl">
-            <Image src={ReportAutomation} alt="chart" className="" />
-          </div>
-        </SlideIn>
+  <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
+    <SlideIn>
+      <div className="flex-none w-full md:max-w-xl">
+        <Image src="/animation.svg" width={800} height={200} alt="chart" className="rounded-lg shadow-xl" />
       </div>
-    </SectionWrapper>
-  );
+    </SlideIn>
+    <SlideIn>
+      <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
+        <h2 className="text-sky-950 text-3xl sm:text-4xl">
+          Our Culture
+        </h2>
+        <h3 className="text-sky-950 text-2xl sm:text-3xl">
+          Innovation
+        </h3>
+        <p className="text-gray-600">
+          Our work thrives on fresh ideas and forward thinking. We foster a culture where each team member is encouraged to think outside the box and challenge the status quo.
+        </p>
+        <h3 className="text-sky-950 text-2xl sm:text-3xl">
+          Collaboration
+        </h3>
+        <p className="text-gray-600">
+          Our team operates in a space of mutual respect and open communication, promoting cross-departmental collaboration for delivering streamlined solutions.
+        </p>
+        <h3 className="text-sky-950 text-2xl sm:text-3xl">
+          Continuous Learning
+        </h3>
+        <p className="text-gray-600">
+          We place a high value on professional development and growth. Our partnerships with top Canadian universities allow our team members to access advanced training and research opportunities.
+        </p>
+        <h3 className="text-sky-950 text-2xl sm:text-3xl">
+          Balance and Well Being
+        </h3>
+        <p className="text-gray-600">
+          We promote work-life balance and well-being through flexible work arrangements and comprehensive wellness programs.
+        </p>
+        <h3 className="text-sky-950 text-2xl sm:text-3xl">
+          Diversity and Inclusion
+        </h3>
+        <p className="text-gray-600">
+          We embrace diversity and inclusion as integral elements of our culture, celebrating the unique experiences and perspectives that our team members bring.
+        </p>
+      </div>
+    </SlideIn>
+  </div>
+</SectionWrapper>
+);
 };
+
 
 export default reports;
  
+
+

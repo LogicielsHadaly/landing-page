@@ -108,7 +108,7 @@ export default function Example() {
               </div>
               <div>Portfolio Process</div>
             </h1>
-            <p className="mt-4 text-xl text-gray-500">
+            <p className="mt-4 text-2xl text-gray-500">
               Assess and clarify data portfolios with actionable insights.
             </p>
           </div>
@@ -125,8 +125,8 @@ export default function Example() {
                   <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                     <div className="flex items-center space-x-6 lg:space-x-8">
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950  bg-opacity-30  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div className="h-44 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div className="h-64 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-30  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
                       </div>
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <motion.div className="h-32 w-44 overflow-hidden rounded-lg bg-blue-950  bg-opacity-30  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
@@ -151,8 +151,8 @@ export default function Example() {
                         <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950  bg-opacity-60  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
                       </div>
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950  bg-opacity-60  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950  bg-opacity-80  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div className="h-64 w-48 overflow-hidden rounded-lg bg-blue-950  bg-opacity-60  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div className="h-64 w-48 overflow-hidden rounded-lg bg-blue-950  bg-opacity-80  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
                       </div>
                     </div>
                   </div>

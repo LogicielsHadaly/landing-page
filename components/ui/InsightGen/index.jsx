@@ -40,7 +40,7 @@ const InsightGen = () => {
       <SlideIn>
         <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
           <h2 className="text-sky-950 text-3xl  sm:text-4xl">
-            Insights Generation . Risk Assessment
+            Insights Generation and Risk Assessment
           </h2>
           <p className="text-gray-600">
             Our advanced algorithms and powerful analytics enable us to extract valuable insights that range from price prediction and cash flow modeling to slice structuring and anomaly behavior detection. We firmly believe that every data point carries a significant meaning that can make a profound difference in your decision-making process.
