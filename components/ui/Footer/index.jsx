@@ -3,9 +3,9 @@ import Newsletter from '../Newsletter'
 import Brand from '../Brand'
 
 const navigation = [
-    { name: "Features", href: "#features" },
+    { name: "", href: "" },
     //{ name: "Pricing", href: "/pricing" },
-    { name: "FAQs", href: "#faqs" },
+    // { name: "FAQs", href: "#faqs" },
 ]
 
 const Footer = () => (
