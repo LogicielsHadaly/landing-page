@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
-import ReportAutomation from '../../../public/ReportAutomation.svg';
+import illustration from '../../../public/Risk_Mitigation.svg';
 
 const SlideIn = ({ children }) => {
   const [ref, inView] = useInView({
@@ -37,15 +37,14 @@ const reports = () => {
               Risk Mitigation on Portfolio 
             </h2>
             <p className="text-gray-600">
-            Anomaly detection plays a crucial role in data analysis, opening doors to untapped revenue streams and exciting possibilities. Let us illustrate the power of our technology through a real-life use case.
-Consider the challenge of animal traceability. 
+            Navigating the complexities of risk in the private securitization industry presents a significant challenge.This use case describe the management of risk within the securitization processes to refine risk identification, enhance processing efficiency, and improve tranche structuring. 
    <br/><br/>
-   Our platform identified a recurring anomaly: breeders were reusing unique animal tracking chips multiple times. This practice raised concerns about accurate tracking and data integrity. However, our solution stepped in to address this issue effectively.   </p>
+   Through a meticulous and data-driven approach, tangible improvements were realized. </p>
           </div>
         </SlideIn>
         <SlideIn>
           <div className="flex-none w-full md:max-w-xl">
-            <Image src={ReportAutomation} alt="chart" className="" />
+            <Image src={illustration} alt="chart" className="" />
           </div>
         </SlideIn>
       </div>
