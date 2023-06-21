@@ -3,6 +3,41 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
 import illustration from '../../../public/Risk_Mitigation.svg';
+import 'react-vertical-timeline-component/style.min.css';
+import CustomVerticalTimeline from '../TimelineCustom';
+
+const timelineData = [
+  {
+    date: "",
+    title: "Data Ingestion",
+    subtitle: "",
+    description: "Integration of structured and unstructured data, such as transactional data, customer e-mails, market reports, etc.  In this sector, it is common to see millions of transactions per year and thousands of unstructured data files. In this situation, natural language processing techniques have improved data collection time by 70%. "
+  },
+  {
+    date: "",
+    title: "Data Cleaning",
+    subtitle: "",
+    description: "Our advanced algorithms rectified inaccuracies and redundancies, improving data quality by over 85%. The cleaned and unified data provided a reliable basis for value estimation of the portfolio. "
+  },
+  {
+    date: "",
+    title: "Insight Generation",
+    subtitle: "",
+    description: "Identification of an over-concentration of risk in certain tranches of the client's securitization structure. For example, one specific tranche, supposedly low-risk, held a high-risk exposure of $10 million to a single volatile entity. Recommendation to redistribute assets across tranches, achieving a more balanced risk profile. "
+  },
+  {
+    date: "",
+    title: "Data Governance",
+    subtitle: "",
+    description: " Compliance verification of the recommandation with internal policy"
+  },
+  {
+    date: "",
+    title: "Outcomes",
+    subtitle: "",
+    description: " Reduction of risk exposure, optimization of tranche structuring, Real time mapping of the securitization process. This case study demonstrates the powerful impact of effective data management and risk mitigation strategies in achieving real-world, tangible benefits"
+  },
+];
 
 const SlideIn = ({ children }) => {
   const [ref, inView] = useInView({
@@ -48,6 +83,11 @@ const reports = () => {
           </div>
         </SlideIn>
       </div>
+
+      <div className="bg-zinc-100 mt-12">
+      <CustomVerticalTimeline timelineData={timelineData}  />
+      </div>
+
     </SectionWrapper>
   );
 };

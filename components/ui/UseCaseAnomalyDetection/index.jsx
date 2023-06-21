@@ -2,7 +2,42 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
-import ReportAutomation from '../../../public/ReportAutomation.svg';
+import illustration from '../../../public/AnomalyDetection.svg';
+import 'react-vertical-timeline-component/style.min.css';
+import CustomVerticalTimeline from '../TimelineCustom';
+
+const timelineData = [
+  {
+    date: "",
+    title: "Data Ingestion",
+    subtitle: "",
+    description: "We collect data on movements, age, size, contamination (date, disease), production (number of births, in paddocks, etc.), and more. Our platform handles both structured and unstructured data, ensuring that no valuable insights are missed.  "
+  },
+  {
+    date: "",
+    title: "Data Cleaning",
+    subtitle: "",
+    description: "Our platform classify all the Excel sheets and transform any unstructured data, such as PDFs, videos, and phone call records, into a structured format, resembling a comprehensive report. We meticulously extract and record all the important numbers in a reliable database.  "
+  },
+  {
+    date: "",
+    title: "Insight Generation",
+    subtitle: "",
+    description: "Generation of insights such as flow mapping, process mining, price prediction, and slicing the portfolio into behavioral segments based on location, price evolution, and life expectancy. "
+  },
+  {
+    date: "",
+    title: "Anomaly Detection",
+    subtitle: "",
+    description: "Detection of abnormal behavior, such as epidemic center, animals sold under-valued, unexpected mortality."
+  },
+  {
+    date: "",
+    title: "Outcomes",
+    subtitle: "",
+    description: "In this case study, our platform was able to perform price prediction and anomaly detection to identify portfolio real value, uncover new opportunities and prevent potential risks, such as disease outbreaks. "
+  },
+];
 
 const SlideIn = ({ children }) => {
   const [ref, inView] = useInView({
@@ -45,10 +80,15 @@ Consider the challenge of animal traceability.
         </SlideIn>
         <SlideIn>
           <div className="flex-none w-full md:max-w-xl">
-            <Image src={ReportAutomation} alt="chart" className="" />
+            <Image src={illustration} alt="chart" className="" />
           </div>
         </SlideIn>
       </div>
+
+      <div className="bg-zinc-100 mt-12">
+      <CustomVerticalTimeline timelineData={timelineData}  />
+      </div>
+
     </SectionWrapper>
   );
 };
