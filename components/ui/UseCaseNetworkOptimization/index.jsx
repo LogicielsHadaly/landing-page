@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
-import ReportAutomation from '../../../public/ReportAutomation.svg';
 import ForceGraph from "../Hero/ForceGraph"
 
 const SlideIn = ({ children }) => {
