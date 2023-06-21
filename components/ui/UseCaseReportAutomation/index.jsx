@@ -3,6 +3,41 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
 import ReportAutomation from '../../../public/ReportAutomation.svg';
+import 'react-vertical-timeline-component/style.min.css';
+import CustomVerticalTimeline from '../TimelineCustom';
+
+const timelineData = [
+  {
+    date: "",
+    title: "Data Ingestion",
+    subtitle: "",
+    description: "Our solution automates the data collection of multiple data sources, including stock exchanges, bond markets, and ETF providers. By establishing direct API connections and data feeds, we ensure the real-time retrieval of crucial market data such as report, news, pricing, and more. "
+  },
+  {
+    date: "",
+    title: "Data Cleaning",
+    subtitle: "",
+    description: "Our automated reporting system creates concise and customized summaries based on the unique requirements of each client. These reports included graphics and key metrics such as portfolio performance, asset allocation, sector analysis, and risk exposure. "
+  },
+  {
+    date: "",
+    title: "Insight Generation",
+    subtitle: "",
+    description: "Our solution provided real-time insights by continuously monitoring market movements, news, and financial indicators. By leveraging machine learning algorithms and sentiment analysis, we identified trends, market sentiment shifts, and potential investment opportunities. "
+  },
+  {
+    date: "",
+    title: "Data Governance",
+    subtitle: "",
+    description: "Our report automation system ensured compliance with regulatory requirements by incorporating necessary disclosures, risk assessments, and compliance checks. "
+  },
+  {
+    date: "",
+    title: "Outcomes",
+    subtitle: "",
+    description: "The implementation of report automation for stock, bonds, and ETFs yielded significant benefits for asset manager. It resulted in substantial time and cost savings by automating data ingestion and insights generation, allowing the client to focus on analysis, strategy formulation, and client servicing.  "
+  },
+];
 
 const SlideIn = ({ children }) => {
   const [ref, inView] = useInView({
@@ -34,13 +69,12 @@ const reports = () => {
         <SlideIn>
           <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
             <h2 className="text-sky-950 text-3xl sm:text-4xl">
-              Report Automation on Portfolio 
+              Report Automation on Portfolio
             </h2>
-            <p className="text-gray-600">
-            Anomaly detection plays a crucial role in data analysis, opening doors to untapped revenue streams and exciting possibilities. Let us illustrate the power of our technology through a real-life use case.
-Consider the challenge of animal traceability. 
-   <br/><br/>
-   Our platform identified a recurring anomaly: breeders were reusing unique animal tracking chips multiple times. This practice raised concerns about accurate tracking and data integrity. However, our solution stepped in to address this issue effectively.   </p>
+            <p className="text-gray-600 text-lg">
+              Report automation revolutionizes the way organizations handle data. By leveraging advanced technologies and data integration, it eliminates manual tasks, reduces errors, and enhances efficiency. It seamlessly retrieves data from multiple sources, automates cleaning and transformation, and generates tailored reports for valuable insights.
+              <br /><br />
+              With report automation, organizations can make informed decisions faster, save time, and stay competitive in the data-driven business landscape.    </p>
           </div>
         </SlideIn>
         <SlideIn>
@@ -49,9 +83,14 @@ Consider the challenge of animal traceability.
           </div>
         </SlideIn>
       </div>
+
+
+      <div className="bg-zinc-100 mt-12">
+      <CustomVerticalTimeline timelineData={timelineData}  />
+      </div>
+      
     </SectionWrapper>
   );
 };
 
 export default reports;
- 
