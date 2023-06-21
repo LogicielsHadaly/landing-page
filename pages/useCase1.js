@@ -4,6 +4,7 @@ import Footer from "../components/ui/Footer";
 import Link from "next/link";
 import Usecase from "../components/ui/UseCaseReportAutomation"
 import Carroussel from "../components/ui/Carroussel";
+import Timeline from "../components/ui/Timeline"
 
 export default function index() {
   return (
@@ -14,6 +15,7 @@ export default function index() {
       </Head>
       <Navbar />
       <Usecase/>
+      <Timeline/>
       <Carroussel />
       <Footer />
     </>
