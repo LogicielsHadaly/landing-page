@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import SectionWrapper from "../../SectionWrapper"
 import NavLink from "../NavLink"
-import cta_image from '../../../public/cta-img.svg'
+// import cta_image from '../../../public/cta-img.svg'
 // import after_hadaly_coverage_image from '../../../public/after_hadaly_coverage.svg'
 
 const CTA = () => {

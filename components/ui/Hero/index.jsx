@@ -76,6 +76,13 @@ import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 import Link from 'next/link';
 import NavLink from "../NavLink";
+import illustration1 from '../../../public/field.png';
+import illustration2 from '../../../public/epidemie.png';
+import illustration3 from '../../../public/curve.png';
+import illustration4 from '../../../public/chart.png';
+import illustration5 from '../../../public/gauss.png';
+import illustration6 from '../../../public/Group.png';
+import illustration7 from '../../../public/Gauss-1.png';
 
 const SlideIn = ({ children }) => {
   const [ref, inView] = useInView({
@@ -125,11 +132,20 @@ export default function Example() {
                   <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                     <div className="flex items-center space-x-6 lg:space-x-8">
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <motion.div className="h-44 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                        <motion.div className="h-64 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-30  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div className="h-44 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }}>
+                        <Image src={illustration1} alt="chart" className="w-full h-full object-cover" />
+                        </motion.div>
+
+                        <motion.div className="h-44 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }}>
+                        <Image src={illustration2} alt="chart" className="w-full h-full object-cover" />
+                        </motion.div>
+
                       </div>
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <motion.div className="h-32 w-44 overflow-hidden rounded-lg bg-blue-950  bg-opacity-30  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                      <motion.div className="h-44 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }}>
+                        <Image src={illustration3} alt="chart" className="w-full h-full object-cover" />
+                        </motion.div>
+
                         <NavLink
                           href="/useCase1"
                           className="flex items-center justify-center gap-x-1 text-xl text-white font-medium bg-gray-800 hover:bg-gray-600 active:bg-gray-900 md:inline-flex px-4 py-2 rounded-md"
@@ -148,17 +164,28 @@ export default function Example() {
                             />
                           </svg>
                         </NavLink>
-                        <motion.div className="h-64 w-44 overflow-hidden rounded-lg bg-blue-950  bg-opacity-60  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        
+                        <motion.div className="h-44 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }}>
+                        <Image src={illustration4} alt="chart" className="w-full h-full object-cover" />
+                        </motion.div>
+
                       </div>
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <motion.div className="h-64 w-48 overflow-hidden rounded-lg bg-blue-950  bg-opacity-60  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                        <motion.div className="h-64 w-48 overflow-hidden rounded-lg bg-blue-950  bg-opacity-80  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        
+                      <motion.div className="h-44 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }}>
+                        <Image src={illustration5} alt="chart" className="w-full h-full object-cover" />
+                        </motion.div>
+                        
+                        <motion.div className="h-44 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }}>
+                        <Image src={illustration6} alt="chart" className="w-full h-full object-cover" />
+                        </motion.div>
+
                       </div>
                     </div>
                   </div>
                 </div>
 
-               
+
               </div>
             </SlideIn>
 
