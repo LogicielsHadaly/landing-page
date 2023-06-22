@@ -74,58 +74,58 @@ import { useInView } from 'react-intersection-observer';
 
 
 const SlideIn = ({ children }) => {
-    const [ref, inView] = useInView({
-      triggerOnce: true,
-      threshold: 0.1,
-    });
-  
-    const variants = {
-      hidden: { opacity: 0, x: -50 },
-      visible: { opacity: 1, x: 0 },
-    };
-  
-    return (
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
-        variants={variants}
-      >
-        {children}
-      </motion.div>
-    );
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const variants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0 },
   };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      variants={variants}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export default function Example() {
   const router = useRouter();
 
   // Define the array of logo filenames
-  const logoFilenames = ["nextai.svg", "fintech.svg", "propolys.svg","mitacs.svg","arbour.svg","laval.svg","poly.svg"];
+  const logoFilenames = ["nextai.svg", "fintech.svg", "propolys.svg", "mitacs.svg", "arbour.svg", "laval.svg", "poly.svg"];
 
   return (
     <div className="bg-white py-5 sm:py-5">
-      
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-      <SlideIn>
-        <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
-          Trusted by the world’s most innovative teams
-        </h2>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-10">
+        <SlideIn>
+          <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
+            Trusted by innovative teams
+          </h2>
         </SlideIn>
         <SlideIn>
-        <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-          {logoFilenames.map((filename, index) => (
-            <img
-              key={index}
-              className={`col-span-2 max-h-12 w-full object-contain lg:col-span-1 logo-image`}
-              src={`/logos/${filename}`}
-              alt={`Logo ${index + 1}`}
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = "https://via.placeholder.com/158x48";
-              }}
-            />
-          ))}
-        </div>
+          <div className="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+            {logoFilenames.map((filename, index) => (
+              <img
+                key={index}
+                className={`col-span-2 max-h-12 w-full object-contain lg:col-span-1 logo-image`}
+                src={`/logos/${filename}`}
+                alt={`Logo ${index + 1}`}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = "https://via.placeholder.com/158x48";
+                }}
+              />
+            ))}
+          </div>
         </SlideIn>
       </div>
       <style jsx>{`

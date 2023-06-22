@@ -42,8 +42,8 @@ const InsightGen = () => {
           <h2 className="text-sky-950 text-3xl  sm:text-4xl">
             Insights Generation and Risk Assessment
           </h2>
-          <p className="text-gray-600">
-            Our advanced algorithms and powerful analytics enable us to extract valuable insights that range from price prediction and cash flow modeling to slice structuring and anomaly behavior detection. We firmly believe that every data point carries a significant meaning that can make a profound difference in your decision-making process.
+          <p className="text-gray-600 text-lg">
+          Our algorithms enable your team to extract valuable insights that range from price prediction to cash flow modeling and anomaly behavior detection. We firmly believe that every data point carries a significant meaning that can make a profound difference in your decision-making process. 
           </p>
 
         </div>

@@ -41,19 +41,16 @@ const bright = () => {
         <SlideIn>
           <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
             <h2 className="text-sky-950 text-3xl sm:text-4xl">Data Governance and Perfomance Monitoring</h2>
-            <p className="text-gray-600">
-              We bring real-time event monitoring to your hand, ensuring you stay informed about potential impacts as they
-              unfold. Whether it's an epidemic outbreak, an economic event, or a sudden rise in interest rates, our system
-              keeps a vigilant eye on these developments based on your need. By providing timely alerts, we empower you to
-              proactively assess potential consequences and take necessary measures to mitigate risks. Moreover, these alerts
-              serve as valuable indicators to explore new opportunities and discover innovative solutions.
+            <p className="text-gray-600 text-lg">
+            We provide real-time event monitoring tailored to your needs, alerting you instantly about impactful occurrences such as epidemics, economic shifts, or interest rate hikes. These timely alerts enable proactive risk assessment, mitigation, and exploration of new opportunities for innovative solutions.
             </p>
           </div>
         </SlideIn>
         <SlideIn>
           <div className="flex-none w-full md:max-w-xl">
             <motion.div whileHover="hover" initial="initial" variants={imageVariants}>
-              <Image src={figmonitor} alt="chart" className="image" />
+            <Image src={figmonitor} alt="chart" className="image transform scale-150" />
+
             </motion.div>
           </div>
         </SlideIn>

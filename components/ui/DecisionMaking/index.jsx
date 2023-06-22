@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
 import house_graph from '../../../public/house-graph.svg';
+import NavLink from "../NavLink";
 
 const SlideIn = ({ children }) => {
   const [ref, inView] = useInView({
@@ -42,10 +43,29 @@ const DecisionMaking = () => {
             <h2 className="text-sky-950 text-3xl sm:text-4xl">
               Empowering Decision Making with Integrated Data Solutions
             </h2>
-            <p className="text-gray-600">
-              We understand that creating and managing portfolios can be a daunting task, requiring a significant amount of time and effort. With a wide range of portfolio types to choose from, including Risk, Stocks, Livestock, and Real Estate, our comprehensive platform unlocks the full potential of data-driven decision making. From data ingestion to insightful decision generation and data governance, our platform covers every aspect of the data collection value chain, allowing you to concentrate on what truly matters.
+            <p className="text-gray-600 text-lg">
+              Hadaly enables efficient management of diverse portfolios, including risk, stocks, livestock, and real estate. Our platform simplifies data pipelines, from data ingestion to data governance, facilitating informed decision-making.
             </p>
           </div>
+          <NavLink
+            href="https://calendly.com/hadaly"
+            className="flex items-center justify-center gap-x-1text-xl text-white font-medium bg-gray-800 hover:bg-gray-600 active:bg-gray-900 md:inline-flex px-4 py-2 rounded-md mt-5"
+          >
+            Book an Assessment
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                fillRule="evenodd"
+                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </NavLink>
+
         </SlideIn>
 
       </div>
