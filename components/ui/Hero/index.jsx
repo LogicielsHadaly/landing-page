@@ -82,7 +82,7 @@ import illustration3 from '../../../public/curve.png';
 import illustration4 from '../../../public/chart.png';
 import illustration5 from '../../../public/gauss.png';
 import illustration6 from '../../../public/Group.png';
-import illustration7 from '../../../public/Gauss-1.png';
+
 
 const SlideIn = ({ children }) => {
   const [ref, inView] = useInView({
