@@ -126,7 +126,18 @@ export default function Example() {
                     <div className="flex items-center space-x-6 lg:space-x-8">
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <motion.div className="h-44 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-10  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
-                        <motion.div className="h-64 w-40 overflow-hidden rounded-lg bg-blue-950  bg-opacity-30  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
+                        <motion.div
+                          className="h-64 w-48 overflow-hidden rounded-lg bg-blue-950 bg-opacity-60 cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110"
+                          animate={{ scale: [1, 1.05, 1] }} // Adjust these scale values as needed
+                          transition={{
+                            duration: 2, // Total duration for both expansion and retraction
+                            ease: [0.17, 0.67, 0.83, 0.67], // Cubic Bezier function for non-linear animation
+                            times: [0, 0.5, 1], // Defines at what fraction of the duration each target is hit. 0% of the animation is scale 1. 50% is scale 1.3. 100% is back to scale 1.
+                            repeat: Infinity, // The animation will repeat indefinitely
+                            repeatDelay: 1 // Delay of 1 second before repeating the animation
+                          }}
+                        />
+
                       </div>
                       <div className="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <motion.div className="h-32 w-44 overflow-hidden rounded-lg bg-blue-950  bg-opacity-30  cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }} />
@@ -158,7 +169,7 @@ export default function Example() {
                   </div>
                 </div>
 
-               
+
               </div>
             </SlideIn>
 

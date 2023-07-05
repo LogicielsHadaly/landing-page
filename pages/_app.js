@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }) {
         <title>Hadaly</title>
         <meta
           name="description"
-          content="Boost user engagement by providing detailed analysis & AI modules to your finance customers."
+          content="Assess and clarify Institutional portfolios with actionable insights."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/hadalyIcon.ico" />
