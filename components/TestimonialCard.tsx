@@ -8,13 +8,12 @@ type Props = {
   content: string;
   link: string;
   author: string;
+  comp: string;
 };
 
 const TestimonialCard = (props: Props) => {
   return (
-
-
-      <motion.div className=" py-4 px-8 bg-white shadow-lg rounded-lg my-20 w-[90%] cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }}>
+    <motion.div className=" py-4 px-8 bg-white shadow-lg rounded-lg my-20 w-[90%] cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }}>
       <Link href={props.link} >
         <div className="flex justify-center md:justify-end -mt-16">
           <Image
@@ -29,15 +28,22 @@ const TestimonialCard = (props: Props) => {
           <h2 className="text-gray-800 text-2xl font-semibold mt-4">{props.title}</h2>
           <p className="mt-2 text-gray-600">{props.content}</p>
         </div>
-        <div className="flex justify-end mt-4">
+        <div className="flex justify-end mt-2 items-center">
+          {props.comp && (
+            <Image
+              alt={props.comp}
+              className="mr-4"
+              height={100}
+              width={100}
+              src={props.comp}
+            />
+          )}
           <div href={props.link} className="text-xl font-medium text-indigo-950">
             {props.author}
           </div>
-
         </div>
       </Link>
-      </motion.div>
-
+    </motion.div>
   );
 };
 export default TestimonialCard;

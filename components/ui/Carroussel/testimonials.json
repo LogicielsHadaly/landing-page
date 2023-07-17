@@ -4,27 +4,31 @@
       "title": "Report Automation",
       "content": "“Understanding our network and identifying our bottlenecks was inestimable”",
       "link": "/useCase1",
-      "imgSrc": "/Image-10.svg"
+      "imgSrc": "/Image-10.svg",
+      "comp":""
     },
     {
       "author": "Portfolio Manager",
       "title": "Anomaly Detection",
       "content": "“Our team know now how to assess a risky situation in case of a network anomaly”",
       "link": "/useCase2",
-      "imgSrc": "/Image-20.svg"
+      "imgSrc": "/Image-20.svg",
+      "comp":""
     },
     {
       "author": "VP Asset Securization ",
       "title": "Risk Mitigation",
       "content": "“We've simplified our portfolio creation and management processes using Hadaly”",
       "link": "/useCase3",
-      "imgSrc": "/Image-50.svg"
+      "imgSrc": "/Image-50.svg",
+      "comp":""
     },
     {
-      "author": "IT Director  ",
+      "author": "IT Director",
       "title": "Network Optimization",
-      "content": "“Mission Accomplished Hadaly has empower our team with unique knowledge”",
+      "content": "“Excellent, the method and approach were explained, followed, and executed as planned.”",
       "link": "/useCase4",
-      "imgSrc": "/Image-60.svg"
+      "imgSrc": "/Image-60.svg",
+      "comp":"logos/attestra.svg"
     }
   ]
