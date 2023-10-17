@@ -1,7 +1,7 @@
 const GradientWrapper = ({ children, ...props }) => (
     <div
         {...props}
-        className={`relative py-28 ${props.className || ""}`}>
+        className={`relative  ${props.className || ""}`}>
         <div className={`absolute top-12 m-auto max-w-3xl h-[250px] blur-[130px] ${props.wrapperClassName || ""}`}
             style={{
                 background:

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const words = ['Data', 'Livestock', 'Inventory', 'Network','Stock','Insurance','Securization', 'Mortgage'];
+const words = ['Investment Bankers', 'Data Room Providers','Law Firms'];
 
 export default function TextAnimation() {
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -26,12 +26,14 @@ export default function TextAnimation() {
         return resetTimer;
     }, [currentWordIndex]);
 
-    const currentWordArray = words[currentWordIndex].split('');
-
     return (
         <Wrapper key={currentWordIndex}>
-            {currentWordArray.map((letter, index) => (
-                <span key={index} style={{ animationDelay: `${index / 10}s`, animationDuration: `${8000}ms` }}>{letter}</span>
+            {words[currentWordIndex].split(' ').map((word, wordIndex) => (
+                <WordWrapper key={wordIndex}>
+                    {word.split('').map((letter, index) => (
+                        <span key={index} style={{ animationDelay: `${index / 10}s`, animationDuration: `${8000}ms` }}>{letter}</span>
+                    ))}
+                </WordWrapper>
             ))}
         </Wrapper>
     );
@@ -45,9 +47,15 @@ const animation = keyframes`
 `;
 
 const Wrapper = styled.span`
-    display:inline-block;
+    display: inline-block;
+`;
+
+const WordWrapper = styled.span`
+    display: inline-block;
+    margin-right: 5px; /* Adjust spacing between words */
+    white-space: nowrap; /* Prevent word wrap */
     span {
-        display:inline-block;
+        display: inline-block;
         opacity: 0;
         animation-name: ${animation};
         animation-duration: 8s;

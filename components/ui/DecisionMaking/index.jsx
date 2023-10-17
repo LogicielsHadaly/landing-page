@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
-import house_graph from '../../../public/house-graph.svg';
+import problem from '../../../public/problem.svg';
 import NavLink from "../NavLink";
 
 const SlideIn = ({ children }) => {
@@ -31,20 +31,16 @@ const SlideIn = ({ children }) => {
 const DecisionMaking = () => {
   return (
     <SectionWrapper id="cta" className="overflow-hidden">
-      <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
-        <SlideIn>
-          <div className="flex-none w-full md:max-w-xl">
-            <Image src={house_graph} alt="chart" className="" />
-          </div>
-        </SlideIn>
-
-        <SlideIn>
+      <div className="custom-screen flex flex-col-reverse gap-x-12 justify-center items-center md:flex-row md:items-center">
+        
+      <SlideIn>
           <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
             <h2 className="text-sky-950 text-3xl sm:text-4xl">
-              Empowering Decision Making with Integrated Data Solutions
+              Supercharge Deal Making with AI
             </h2>
             <p className="text-gray-600 text-lg">
-              Hadaly enables efficient management of diverse portfolios, including risk, stocks, livestock, and real estate. Our platform simplifies data pipelines, from data ingestion to data governance, facilitating informed decision-making.
+            Hadaly streamlines the due diligence process for <strong>Buy side & Sell side</strong> firms. Our platform reduces the time spent on due diligence by 60% allowing the deal team to focus on the essentials.
+              {/* Hadaly enables efficient management of diverse portfolios, including risk, stocks, livestock, and real estate. Our platform simplifies data pipelines, from data ingestion to data governance, facilitating informed decision-making. */}
             </p>
           </div>
           <NavLink
@@ -67,6 +63,14 @@ const DecisionMaking = () => {
           </NavLink>
 
         </SlideIn>
+        <SlideIn>
+          <div className="flex-none w-full md:max-w-xl">
+            <div className="h-[100%] flex items-center justify-center">
+              <Image src={problem} alt="chart" className="max-h-[100%] max-w-[100%]" />
+            </div>
+          </div>
+        </SlideIn>
+
 
       </div>
     </SectionWrapper>
@@ -74,3 +78,8 @@ const DecisionMaking = () => {
 };
 
 export default DecisionMaking;
+
+
+
+
+

@@ -29,29 +29,36 @@ const SlideIn = ({ children }) => {
 };
 
 const InsightGen = () => {
-  return (<SectionWrapper id="cta" className="overflow-hidden">
-    <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
-      {/* <SlideIn> */}
-        <div className="flex-none w-full md:max-w-xl">
-          {/* <Image src={figInsight} alt="chart" className=' ' /> */}
-          <ForceGraph />
-        </div>
-      {/* </SlideIn> */}
-      <SlideIn>
-        <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
-          <h2 className="text-sky-950 text-3xl  sm:text-4xl">
-            Insights Generation and Risk Assessment
-          </h2>
-          <p className="text-gray-600 text-lg">
-          Our algorithms enable your team to extract valuable insights that range from price prediction to cash flow modeling and anomaly behavior detection. We firmly believe that every data point carries a significant meaning that can make a profound difference in your decision-making process. 
-          </p>
+  return (
+    <SectionWrapper
+      id="cta"
+      className="overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${figInsight.src})` }}
+    >
+      <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center mt-24 mb-24">
 
-        </div>
-      </SlideIn>
+        {/* You can remove the following block if you don't want the image displayed on top of the background. */}
+        <SlideIn>
+          <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0 bg-gray-400 bg-opacity-30 p-4 rounded-xl shadow-lg">
+            <h2 className="text-3xl sm:text-4xl">
+              <span style={{ color: '#6366F1' }}>E</span>asy Formatting and Editing
+            </h2>
+            <p className="text-slate-900 text-lg">
+            Draft your presentation materials with the help of our dashboard. It is customizable and easy to use. Hadaly helps you craft <strong>Teasers, CIMs and Presentation Memo</strong> through our solution. 
+            </p>
+          </div>
+        </SlideIn>
+        
+        <SlideIn>
+          <div className="flex-none w-full md:max-w-xl">
+            {/* <Image src={dataIngest} alt="chart" className="" /> */}
+          </div>
+        </SlideIn>
 
-
-    </div>
-  </SectionWrapper>)
+        
+      </div>
+    </SectionWrapper>
+  )
 }
 
 export default InsightGen

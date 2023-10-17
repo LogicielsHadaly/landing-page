@@ -36,24 +36,33 @@ const bright = () => {
   };
 
   return (
-    <SectionWrapper id="cta" className="overflow-hidden">
-      <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
+    <SectionWrapper
+      id="cta"
+      className="overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${figmonitor.src})` }}
+    >
+      <div className="custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center mt-24 mb-24">
+
+        {/* You can remove the following block if you don't want the image displayed on top of the background. */}
         <SlideIn>
-          <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0">
-            <h2 className="text-sky-950 text-3xl sm:text-4xl">Data Governance and Perfomance Monitoring</h2>
-            <p className="text-gray-600 text-lg">
-            We provide real-time event monitoring tailored to your needs, alerting you instantly about impactful occurrences such as epidemics, economic shifts, or interest rate hikes. These timely alerts enable proactive risk assessment, mitigation, and exploration of new opportunities for innovative solutions.
+          <div className="flex-none w-full md:max-w-xl">
+            {/* <Image src={dataIngest} alt="chart" className="" /> */}
+          </div>
+        </SlideIn>
+
+        <SlideIn>
+          <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0 bg-gray-400 bg-opacity-30 p-4 rounded-xl shadow-lg">
+            <h2 className="text-3xl sm:text-4xl">
+              <span style={{ color: '#6366F1' }}>W</span>e Take Care of your Organization
+            </h2>
+            <p className="text-slate-900 text-lg">
+              Hadaly helps growth stage Start-up and Investment Banks to structure their own data room by connecting through their <strong>Virtual Data Room Provider</strong> .
             </p>
           </div>
         </SlideIn>
-        <SlideIn>
-          <div className="flex-none w-full md:max-w-xl">
-            <motion.div whileHover="hover" initial="initial" variants={imageVariants}>
-            <Image src={figmonitor} alt="chart" className="image transform scale-150" />
 
-            </motion.div>
-          </div>
-        </SlideIn>
+
+
 
       </div>
     </SectionWrapper>

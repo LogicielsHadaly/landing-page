@@ -11,14 +11,14 @@ const navigation = [
 const Footer = () => (
     <footer className="pt-1 sm:pt-1">
         <div className="custom-screen text-gray-600">
-            <div className="flex flex-wrap gap-y-10 items-center justify-between">
-                <div className="space-y-4">
+            <div className="flex flex-wrap gap-y- items-center justify-between">
+                <div className="">
                     <Link href="/" className="inline-block">
                         <Brand />
                     </Link>
-                    <h2 className="text-gray-800 text-lg font-semibold sm:text-2xl">Power of Explanation</h2>
+                    {/* <h2 className="text-gray-800 text-lg font-semibold sm:text-2xl">Enhance your Due Diligence process with AI</h2> */}
                     <p className="max-w-md">
-                    Empowering Asset Management with AI Innovation.
+                    Enhance your Due Diligence process with AI
                     </p>
                     <div className="pt-2 flex items-center gap-x-6 text-gray-400">
                         <a href="https://twitter.com/hadaly_finance" target="_blank" rel="noopener noreferrer" aria-label="Social media">

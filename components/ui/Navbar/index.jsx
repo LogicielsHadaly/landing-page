@@ -67,7 +67,7 @@ const Navbar = () => {
     ];
 
     return (
-        <header className="relative">
+        <header className="relative ">
             <div className="custom-screen md:hidden">
                 <NavHeader
                     menuBtnEl={menuBtnEl}
@@ -76,7 +76,7 @@ const Navbar = () => {
                 />
             </div>
             <nav
-                className={`bg-white pb-5 md:text-sm md:static md:block ${state
+                className={`bg-white bg-opacity-60 pb-5 md:text-sm md:static md:block ${state
                         ? "absolute z-20 top-2 inset-x-4 shadow-lg rounded-xl border md:shadow-none md:border-none"
                         : "hidden"
                     }`}
