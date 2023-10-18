@@ -15,6 +15,7 @@ import InsightGen from "../components/ui/InsightGen";
 import DataGov from "../components/ui/DataGovernance"
 import Graphmap from "../components/ui/Graphmap";
 import Carroussel from "../components/ui/Carroussel";
+import Testimonial from '../components/ui/Testimonials';
 
 export default function Home() {
   return (
@@ -29,7 +30,8 @@ export default function Home() {
       <InsightGen />
       <DataGov />
       <LogoGrid />
-      <Carroussel />
+      <Testimonial/>
+      {/* <Carroussel /> */}
       {/* <CenteredCTAText />
       <CTA /> */}
       {/* <Features /> */}

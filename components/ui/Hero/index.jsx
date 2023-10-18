@@ -9,7 +9,7 @@ const Hero = () => (
       wrapperClassName="inset-0"
       className="custom-screen text-gray-600"
     >
-      <div className="space-y-12  py-48 max-w-4xl mx-auto text-center h-screen">
+      <div className="space-y-12  py-40 max-w-4xl mx-auto text-center h-screen">
         <h1 className="text-4xl  text-gray-800 mx-auto sm:text-6xl">
           <div style={{ display: 'inline-block', width: '100%' }}>
             Due diligence Copilot for <TextAnimation />
