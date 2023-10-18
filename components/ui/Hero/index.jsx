@@ -17,7 +17,7 @@ const Hero = () => (
           {/* <div>Portfolio Process</div> */}
         </h1>
         <p className="max-w-xl mx-auto justify ">
-          Our data room AI connects with your existing data room provider and transforms the folder structure and filenames to align with your internal standards, including highlighting any missing data. We also provide a generative AI chatbot for buy-side Q&A of the data room.
+          Our data room AI connects with your existing data room provider. It transforms the folder structure and filenames to align with your internal standards, including highlighting any missing data. We also provide a generative AI chatbot for buy-side Q&A of the data room.
         </p>
 
         <div className="flex items-center justify-center gap-x-3 font-medium text-sm">

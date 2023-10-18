@@ -39,12 +39,12 @@ const InsightGen = () => {
 
         {/* You can remove the following block if you don't want the image displayed on top of the background. */}
         <SlideIn>
-          <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0 bg-gray-400 bg-opacity-30 p-4 rounded-xl shadow-lg">
+          <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0 bg-gray-200 bg-opacity-90 p-4 rounded-xl shadow-lg">
             <h2 className="text-3xl sm:text-4xl">
               <span style={{ color: '#6366F1' }}>E</span>asy Formatting and Editing
             </h2>
             <p className="text-slate-900 text-lg">
-            Draft your presentation materials with the help of our dashboard. It is customizable and easy to use. Hadaly helps you craft <strong>Teasers, CIMs and Presentation Memo</strong> through our solution. 
+            Draft your presentation materials with the help of our dashboard. Easy to use and customizable, Hadaly helps you craft <strong>Teasers, CIMs and Presentation Memo</strong>. 
             </p>
           </div>
         </SlideIn>

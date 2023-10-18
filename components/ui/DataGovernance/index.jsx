@@ -51,7 +51,7 @@ const bright = () => {
         </SlideIn>
 
         <SlideIn>
-          <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0 bg-gray-400 bg-opacity-30 p-4 rounded-xl shadow-lg">
+          <div className="flex-none max-w-xl mt-12 space-y-3 md:mt-0 bg-gray-200 bg-opacity-90 p-4 rounded-xl shadow-lg">
             <h2 className="text-3xl sm:text-4xl">
               <span style={{ color: '#6366F1' }}>W</span>e Take Care of your Organization
             </h2>
