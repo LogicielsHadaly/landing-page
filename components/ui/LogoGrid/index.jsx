@@ -100,7 +100,7 @@ export default function Example() {
   const router = useRouter();
 
   // Define the array of logo filenames
-  const logoFilenames = ["nextai.svg", "fintech.svg", "propolys.svg", "mitacs.svg", "arbour.svg", "laval.svg", "poly.svg", "attestra.svg", "cdl.svg"];
+  const logoFilenames = ["nextai.svg", "fintech.svg", "propolys.svg", "mitacs.svg", "arbour.svg", "laval.svg", "poly.svg", "attestra.svg", "CDL.svg"];
 
   return (
     <div className="bg-white py-5 sm:py-5">
