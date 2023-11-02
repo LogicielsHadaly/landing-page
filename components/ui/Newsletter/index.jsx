@@ -4,7 +4,7 @@ import Input from "../Input";
 const Newsletter = () => {
   // Replace this with your Google Apps Script web app URL
   const googleScriptURL =
-    "https://script.google.com/macros/s/AKfycbw464GI-CDWjeTGVoPRg9rVWZIwGHZjwZHdPalj3a1d3xA4cBtxmT-42gN_RdVXqrea/exec";
+    "https://script.google.com/macros/s/AKfycbyfdqeLDf6JqqPMikZsyXz7dVlMHUlUnAkbU-H2C1wxGm-PV7S9KLRZoUTQzqpLCuHO/exec";
 
     const handleSubmit = async (e) => {
       e.preventDefault();
