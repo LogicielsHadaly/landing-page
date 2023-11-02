@@ -4,30 +4,29 @@ import Input from "../Input";
 const Newsletter = () => {
   // Replace this with your Google Apps Script web app URL
   const googleScriptURL =
-    "https://script.google.com/macros/s/AKfycbzywttmicK3GwUBj6Qz-ZPq48qjjR_cFaFzB70odP0Bo8OMy3LlDpGUBidDnIzeCI5M8g/exec";
+    "https://script.google.com/macros/s/AKfycbw464GI-CDWjeTGVoPRg9rVWZIwGHZjwZHdPalj3a1d3xA4cBtxmT-42gN_RdVXqrea/exec";
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-
-    try {
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      const email = e.target.email.value;
+    
+      try {
         await fetch(googleScriptURL, {
           method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: new URLSearchParams({ email }).toString(),
+          mode: "no-cors", // This should be changed if you want to handle the response
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email }),
         });
     
-        // Always display success message
+        // Since mode is no-cors, we won't be able to read the response
         alert("Successfully subscribed! Take the opportunity to follow us on LinkedIn & Twitter in our footer!");
       } catch (error) {
         console.error("Error:", error);
         alert("An error occurred. Please try again.");
       }
-  };
+    };
 
-  // writes the email adresses into this google file: https://docs.google.com/spreadsheets/d/1pumuKgFoMG4E2zK-7FQo8Vy9XLrA9qGUlywrg9mo8Qk/edit#gid=0
-
+  // writes the email adresses into this google file: https://docs.google.com/spreadsheets/d/1a-Ow-Y40gvwFIszCnouF8ZhAr_ITT_pWIv4iABGrEMU/edit#gid=0
   return (
     <div className="mt-6 md:mt-0">
       <h2 className="text-gray-800 text-xl font-semibold sm:text-2xl">
