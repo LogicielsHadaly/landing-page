@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
           content="Assess and clarify Institutional portfolios with actionable insights with Hadaly."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/hadalyIcon.ico" />
+        <link rel="icon" href="/head_icon.png" />
         <link
           href="/fonts/Fontspring-DEMO-argentcf-regular.otf"
           rel="preload"
