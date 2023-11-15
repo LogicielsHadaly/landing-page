@@ -14,8 +14,8 @@ export default function index() {
       </Head>
       <Navbar />
       <Hero
-      Video={"/Main_video_v1.gif"}
-        BgColor="bg-indigo-50"
+      Video={"/Main_video_startup.gif"}
+        BgColor="bg-neutral-100"
         title={[
           { text: 'Build Qualitative Data Room Fast and with Experience ', highlight: false },
         ]}

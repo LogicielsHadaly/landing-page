@@ -26,7 +26,7 @@ const Testimonial = () => {
 
             <SlideIn>
                 <div className='py-12'> 
-                <h2 className="text-sky-950 text-3xl sm:text-4xl mb-10 text-center"><span style={{ color: '#6366F1' }}>O</span>ur Real Applications</h2>
+                <h2 className="text-sky-950 text-3xl sm:text-4xl mb-10 text-center">Our Feedbacks</h2>
                 {/* <p className="text-gray-600 text-lg  text-center ">
                     Review some of our past use cases across diverse assets like livestock, mortgages and stocks. These highlight how our platform offers insightful data and streamlines decision-making. Discover our capabilities and potential benefits for your portfolio management.
                 </p> */}

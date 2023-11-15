@@ -4,29 +4,8 @@ import { useInView } from 'react-intersection-observer';
 import SectionWrapper from '../../SectionWrapper';
 import dataIngest from '../../../public/dataingest.svg';
 import Button from '../Button';
-
-const SlideIn = ({ children }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const variants = {
-    hidden: { opacity: 0, x: 50 },
-    visible: { opacity: 1, x: 0 },
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      variants={variants}
-    >
-      {children}
-    </motion.div>
-  );
-};
+import SlideLeft from '../../../animation/slideleft';
+import SlideRight from '../../../animation/slideright';
 
 const DataIngestion = () => {
   return (
@@ -35,7 +14,7 @@ const DataIngestion = () => {
       className="max-w-screen-xl mx-auto"
     >
       <div className="   custom-screen flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center  mx-auto px-4 md:px-8">
-        <SlideIn>
+        <SlideLeft>
           <div className="flex-none  mt-12 space-y-3 md:mt-0  p-4  ">
             <h2 className="text-3xl sm:text-4xl text-indigo-950">
               Experience Fast Red Flag Reporting
@@ -67,14 +46,14 @@ const DataIngestion = () => {
               </span>
             </Button>
           </div>
-        </SlideIn>
+        </SlideLeft>
 
         {/* You can remove the following block if you don't want the image displayed on top of the background. */}
-        <SlideIn>
+        <SlideRight>
         <div className="px-8 justify-center mx-auto  md:max-w-4xl">
             <img src="/main_video.gif" alt="Your GIF" className=" w-full   h-auto  shadow-xl rounded-b-lg rounded-tl-3xl" />
           </div>
-        </SlideIn>
+        </SlideRight>
       </div>
     </SectionWrapper>
   );

@@ -5,42 +5,14 @@ import TextAnimation from "./textanimation";
 import Button from "../Button";
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-
-
-const SlideIn = ({ children }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const variants = {
-    hidden: { opacity: 0, y: 100 },
-    visible: { opacity: 1, y: 0 },
-  };
-
-  return (
-    <motion.div
-      ref={ref}
-      initial="hidden"
-      animate={inView ? 'visible' : 'hidden'}
-      transition={{
-        type: "spring",
-        stiffness: 260,
-        damping: 20
-      }}
-      variants={variants}
-    >
-      {children}
-    </motion.div>
-  );
-};
+import SlideUp from "../../../animation/slideup";
 
 const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick, button2Text, button2OnClick }) => (
   <section className={BgColor}>
     <div className="flex items-center py-40 h-screen mx-auto  ">
 
       <div className="flex-1  mx-auto text-left  pl-9 max-w-screen-lg ">
-        <SlideIn>
+        <SlideUp>
         <h1 className="text-3xl text-gray-800 sm:text-4xl">
           {title.map((part, index) => (
             <span key={index} className={part.highlight ? 'text-red-500' : ''}>
@@ -87,7 +59,7 @@ const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick,
               </span>
             </Button>
           </div>
-        </SlideIn>
+        </SlideUp>
       </div>
 
       <div className="flex-1 pl-8">
