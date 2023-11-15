@@ -13,7 +13,8 @@ export default function index() {
         <title>Network Optimization</title>
       </Head>
       <Navbar />
-      <Usecase/>
+      
+      <Usecase />
       <Carroussel />
       <Footer />
     </>

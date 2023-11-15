@@ -212,14 +212,14 @@ const Navbar = () => {
 
 
                     <Link
-                        href="/useCase3"
+                        href="/startup"
                         className="block pl-8  text-lg hover:underline"
                     >
                         Startup
                     </Link>
 
                     <Link
-                        href="/useCase3"
+                        href="/DueDiligenceConsultant"
                         className="block pl-8 text-lg hover:underline"
                     >
                         Due Diligence Consultant

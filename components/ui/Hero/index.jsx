@@ -3,34 +3,60 @@ import NavLink from "../NavLink";
 import React, { Component } from 'react'
 import TextAnimation from "./textanimation";
 import Button from "../Button";
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
-const Hero = () => (
-  <section className="bg-indigo-50  ">
 
+const SlideIn = ({ children }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
-    {/* <GradientWrapper
-      wrapperClassName="inset-0"
-      className="custom-screen text-gray-600"
-    > */}
+  const variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+  };
 
-      {/* <div className="flex-1 pl-8">
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? 'visible' : 'hidden'}
+      transition={{
+        type: "spring",
+        stiffness: 260,
+        damping: 20
+      }}
+      variants={variants}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
-<img src="/main_video.gif" alt="Your GIF" className=" w-full h-auto shadow-xl rounded-b-lg rounded-tl-3xl" />
-</div> */}
-      <div className="flex items-center py-40 h-screen mx-auto  ">
-        <div className="flex-1 space-y-6  mx-auto text-left  pl-9">
-          <h1 className="text-3xl text-gray-800 sm:text-4xl">
-            Your Due Diligence Copilot to Rapidly Assess Deal Red Flag
-          </h1>
-          <p className="">
-            Our data room AI connects with your existing data room provider. It transforms the folder structure and filenames to align with your internal standards, including highlighting any missing data. We also provide a generative AI chatbot for buy-side Q&A of the data room.
+const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick, button2Text, button2OnClick }) => (
+  <section className={BgColor}>
+    <div className="flex items-center py-40 h-screen mx-auto  ">
+
+      <div className="flex-1  mx-auto text-left  pl-9 max-w-screen-lg ">
+        <SlideIn>
+        <h1 className="text-3xl text-gray-800 sm:text-4xl">
+          {title.map((part, index) => (
+            <span key={index} className={part.highlight ? 'text-red-500' : ''}>
+              {part.text}
+            </span>
+          ))}
+        </h1>
+          <p className="mt-4">
+            {description}
           </p>
           <div className="flex items-center gap-x-6   font-medium text-sm">
             <Button
-              onClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+              onClick={button1OnClick}
               className=" mt-12 group flex items-center justify-center gap-x-1 text-xl font-medium bg-indigo-950 text-white hover:bg-opacity-90 md:inline-flex px-4 py-4"
             >
-              Get In Touch
+              {button1Text}
               <span className="transition-transform duration-300 transform group-hover:scale-125 text-indigo-400  ">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
@@ -40,10 +66,11 @@ const Hero = () => (
             </Button>
 
             <Button
-              onClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+              onClick={button2OnClick}
               className=" mt-12 group flex items-center justify-center gap-x-1 text-xl font-medium border hover:bg-white hover:bg-opacity-20  md:inline-flex px-4 py-4 border-indigo-950"
             >
-              Subscribe
+              {button2Text}
+
               <span className="transition-transform duration-300 transform group-hover:scale-150">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -60,17 +87,14 @@ const Hero = () => (
               </span>
             </Button>
           </div>
-        </div>
-        <div className="flex-1 pl-8">
-          <img src="/Main_video_v1.gif" alt="Your GIF" className=" w-full   h-screen object-cover " />
-        </div>
-
-        {/* <div className="flex-1 pl-8">
-
-          <img src="/main_video.gif" alt="Your GIF" className=" w-full   h-auto  shadow-xl rounded-b-lg rounded-tl-3xl" />
-        </div> */}
+        </SlideIn>
       </div>
-    {/* </GradientWrapper> */}
+
+      <div className="flex-1 pl-8">
+        <img src={Video} alt="Your GIF" className=" w-full   h-screen object-cover " />
+      </div>
+    </div>
+
   </section>
 );
 

@@ -27,12 +27,24 @@ export default function Home() {
         <img src="/main_video.gif" alt="Your GIF" className=" w-full h-auto shadow-xl rounded-b-lg rounded-tl-3xl" />
       </div> */}
       <Navbar />
-      <Hero />
+      <Hero
+      Video={"/Main_video_v1.gif"}
+        BgColor="bg-indigo-50"
+        title={[
+          { text: 'Your Due Diligence Copilot to Rapidly Assess ', highlight: false },
+          { text: 'Deal Red Flag', highlight: true },
+        ]}
+        description="Our data room AI connects with your existing data room provider. It transforms the folder structure and filenames to align with your internal standards, including highlighting any missing data. We also provide a generative AI chatbot for buy-side Q&A of the data room."
+        button1Text="Get In Touch"
+        button1OnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+        button2Text="Subscribe"
+        button2OnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+      />
 
       <DecisionMaking />
       <DataIngestion />
       <InsightGen />
-      <DataGov />
+      {/* <DataGov /> */}
       <LogoGrid />
       <Testimonial />
       {/* <Carroussel /> */}

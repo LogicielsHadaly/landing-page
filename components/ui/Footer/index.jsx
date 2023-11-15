@@ -9,9 +9,9 @@ const navigation = [
 ]
 
 const Footer = () => (
-    <footer className="pt-1 sm:pt-1">
-        <div className="custom-screen text-gray-600">
-            <div className="flex flex-wrap gap-y- items-center justify-between">
+    <footer className="pt-1 sm:pt-1 ">
+        <div className=" text-gray-600 ">
+            <div className="flex flex-wrap gap-y- items-center justify-between max-w-screen-xl mx-auto">
                 <div className="">
                     <Link href="/" className="inline-block">
                         <Brand />
@@ -43,7 +43,7 @@ const Footer = () => (
                         ))
                     }
                 </ul>
-                <p className="mt-6 sm:mt-0">© 2023 Logiciels Hadaly Inc. All rights reserved.</p>
+                <p className="mt-6 sm:mt-0 px-8">© 2023 Logiciels Hadaly Inc. All rights reserved.</p>
             </div>
         </div>
     </footer>
