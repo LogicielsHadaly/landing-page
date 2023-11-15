@@ -10,7 +10,7 @@ import Stats from "../components/ui/Stats";
 import Navbar from "../components/ui/Navbar";
 import Footer from "../components/ui/Footer";
 import DecisionMaking from "../components/ui/DecisionMaking";
-import DataIngestion from "../components/ui/DataIngestion";
+import ContentSection from "../components/ui/ContentSection";
 import InsightGen from "../components/ui/InsightGen";
 import DataGov from "../components/ui/DataGovernance"
 import Graphmap from "../components/ui/Graphmap";
@@ -28,7 +28,7 @@ export default function Home() {
       </div> */}
       <Navbar />
       <Hero
-      Video={"/Main_video_v1.gif"}
+        Video={"/Main_video_v1.gif"}
         BgColor="bg-indigo-50"
         title={[
           { text: 'Your Due Diligence Copilot to Rapidly Assess ', highlight: false },
@@ -42,8 +42,41 @@ export default function Home() {
       />
 
       <DecisionMaking />
-      <DataIngestion />
-      <InsightGen />
+
+      <ContentSection
+        firstComponent='text'
+        video='/main_video.gif'
+        title='Experience Fast Red Flag Reporting'
+        description="Browse 1000\'s of unstructured documents in your Data Room to find underlying risk in real time."
+        listItems={[
+          'Connect to your Data Room',
+          'Generate your Risk Reports',
+          'Chat with your Data Room to get additional informations'
+        ]}
+        buttonLabel='Tell me more'
+        buttonOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+        target='For Due diligence Consultant'
+        link=''
+        linkOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+         />
+
+      <ContentSection
+        firstComponent="VideoComponent"
+        video="/video_startup.gif"
+        title="Build Qualitative Data Room"
+        description="Because your Data Room mirror your Company organization, We make sure to identify potential risks in your Data Room for your company to stay well Organized and always prepared for future fundraising and aqcuisitions."
+        listItems={[
+          "Upload or start building your Data Room",
+          "Detect Upfront Missing Documents",
+          "Improve your Data Room Quality Scoring"
+        ]}
+        buttonLabel="Tell me more"
+        buttonOnClick= {() => window.open('https://calendly.com/hadaly', '_blank')}
+        target='For Startup & SME'
+        link="Download Your Personal Data Room Check List"
+        linkOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+      />
+      {/* <InsightGen /> */}
       {/* <DataGov /> */}
       <LogoGrid />
       <Testimonial />

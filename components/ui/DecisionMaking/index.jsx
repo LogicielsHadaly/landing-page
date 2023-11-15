@@ -17,7 +17,7 @@ const DecisionMaking = () => {
     <SectionWrapper id="main" className="custom-screen overflow-hidden  bg-indigo-50 bg-opacity-50 mx-auto ">
       <div className='text-center mb-12'>
         <h1 className="text-3xl text-gray-800 sm:text-4xl">
-          Your Due Diligence Copilot to Rapidly Assess Deal Red Flag
+        Supercharge Deal Making Using Ai 
         </h1>
       </div>
 
