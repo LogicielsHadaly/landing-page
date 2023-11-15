@@ -2,12 +2,12 @@ import Link from "next/link";
 import Brand from "../Brand";
 
 const NavHeader = ({ onClick, state, menuBtnEl }) => (
-    <div className="flex items-center justify-between py-5 md:block">
+    <div className="flex items-center justify-between py-2 md:block ">
         <Link href="/">
             <Brand />
         </Link>
         <div className="md:hidden">
-            <button role="button" aria-label="Open the menu" ref={menuBtnEl || null} className="text-gray-500 hover:text-gray-800"
+            <button role="button" aria-label="Open the menu" ref={menuBtnEl || null} className="text-gray-500 hover:text-red-800"
                 onClick={onClick}
             >
                 {

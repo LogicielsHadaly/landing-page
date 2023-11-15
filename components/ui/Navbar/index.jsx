@@ -2,8 +2,29 @@ import { useEffect, useRef, useState } from "react";
 import NavHeader from "../NavHeader";
 import NavLink from "../NavLink";
 import Link from "next/link";
+import Button from "../Button";
 
 const Navbar = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        // Add event listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Clean up
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     const [state, setState] = useState(false);
     const [useCaseDropdownOpen, setUseCaseDropdownOpen] = useState(false);
     const [companyDropdownOpen, setCompanyDropdownOpen] = useState(false);
@@ -11,11 +32,29 @@ const Navbar = () => {
     const dropdownRef = useRef(null);
     let timer;
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        // Attach the event listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Clean up
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
 
     useEffect(() => {
         document.onclick = (e) => {
             const target = e.target;
-            if (!menuBtnEl.current.contains(target)) setState(false);
+            if (menuBtnEl.current && !menuBtnEl.current.contains(target)) {
+                setState(false);
+            }
             if (
                 dropdownRef.current &&
                 !dropdownRef.current.contains(target)
@@ -66,115 +105,110 @@ const Navbar = () => {
         // Add more company options here
     ];
 
+
+
+
+
     return (
-        <header className="relative ">
-            <div className="custom-screen md:hidden">
+        <nav className={`fixed top-0 left-0 w-full z-10 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg py-0 ' : 'bg-transparent py-4'}`}>
+            <div className="custom-screen max-w-screen-xl px-16 md:px-16 gap-x-20 items-center md:flex ">
                 <NavHeader
-                    menuBtnEl={menuBtnEl}
+                    ref={menuBtnEl}
                     state={state}
                     onClick={() => setState(!state)}
                 />
-            </div>
-            <nav
-                className={`bg-white bg-opacity-60 pb-5 md:text-sm md:static md:block ${state
-                        ? "absolute z-20 top-2 inset-x-4 shadow-lg rounded-xl border md:shadow-none md:border-none"
-                        : "hidden"
-                    }`}
-            >
-                <div className="custom-screen gap-x-20 items-center md:flex">
-                    <NavHeader
-                        state={state}
-                        onClick={() => setState(!state)}
-                    />
-                    <div
-                        className={`flex-1 items-center mt-8 text-gray-900 text-lg font-bold md:font-medium md:mt-0 md:flex ${state ? "block" : "hidden"
-                            } `}
-                    >
-                        <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
-                            {navigation.map((item, idx) => {
-                                return (
-                                    <li
-                                        key={idx}
-                                        className="hover:text-gray-900 relative"
-                                        ref={item.dropdown ? dropdownRef : null}
-                                    >
-                                        <Link
-                                            href={item.href}
-                                            className="block"
-                                            scroll={false}
-                                            onClick={(e) => {
-                                                if (item.dropdown) {
-                                                    e.stopPropagation();
-                                                    if (item.name === "Use Cases") {
-                                                        setUseCaseDropdownOpen(!useCaseDropdownOpen);
-                                                    } else if (item.name === "Company") {
-                                                        setCompanyDropdownOpen(!companyDropdownOpen);
-                                                    }
+
+                <div
+                    className={`flex-1 items-center mt-8 text-gray-900 text-md font-bold md:font-medium md:mt-0 md:flex ${state ? "block" : "hidden"
+                        } `}
+                >
+                    <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
+                        {navigation.map((item, idx) => {
+                            return (
+                                <li
+                                    key={idx}
+                                    className="hover:text-gray-900 relative"
+                                    ref={item.dropdown ? dropdownRef : null}
+                                >
+                                    <Link
+                                        href={item.href}
+                                        className="block"
+                                        scroll={false}
+                                        onClick={(e) => {
+                                            if (item.dropdown) {
+                                                e.stopPropagation();
+                                                if (item.name === "Use Cases") {
+                                                    setUseCaseDropdownOpen(!useCaseDropdownOpen);
+                                                } else if (item.name === "Company") {
+                                                    setCompanyDropdownOpen(!companyDropdownOpen);
                                                 }
-                                            }}
-                                        >
-                                            {item.name}
-                                            {item.dropdown && (
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                    className="w-4 h-4 inline-block ml-1 -mt-1 transform rotate-90"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            )}
-                                        </Link>
+                                            }
+                                        }}
+                                    >
+                                        {item.name}
                                         {item.dropdown && (
-                                            <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white z-50">
-                                                <ul>
-                                                    {item.name === "Use Cases" &&
-                                                        useCaseDropdownOpen &&
-                                                        dropdownItems.map((dropdownItem, index) => (
-                                                            <li
-                                                                key={index}
-                                                                className="border-gray-100 border-b hover:bg-gray-100"
-                                                            >
-                                                                <Link
-                                                                    href={dropdownItem.href}
-                                                                    className="block px-4 py-2 text-sm"
-                                                                >
-                                                                    {dropdownItem.name}
-                                                                </Link>
-                                                            </li>
-                                                        ))}
-                                                    {item.name === "Company" &&
-                                                        companyDropdownOpen &&
-                                                        companyDropdownItems.map((dropdownItem, index) => (
-                                                            <li
-                                                                key={index}
-                                                                className="border-gray-100 border-b hover:bg-gray-100"
-                                                            >
-                                                                <Link
-                                                                    href={dropdownItem.href}
-                                                                    className="block px-4 py-2 text-sm"
-                                                                >
-                                                                    {dropdownItem.name}
-                                                                </Link>
-                                                            </li>
-                                                        ))}
-                                                </ul>
-                                            </div>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                                className="w-4 h-4 inline-block ml-1 -mt-1 transform rotate-90"
+                                            >
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
                                         )}
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                        <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
-                            <NavLink
-                                href="https://calendly.com/hadaly"
-                                className="flex items-center justify-center gap-x-1text-xl text-white font-medium bg-gray-800 hover:bg-gray-600 active:bg-gray-900 md:inline-flex px-4 py-2 rounded-md"
-                            >
-                                Book a demo
+                                    </Link>
+                                    {item.dropdown && (
+                                        <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white z-50">
+                                            <ul>
+                                                {item.name === "Use Cases" &&
+                                                    useCaseDropdownOpen &&
+                                                    dropdownItems.map((dropdownItem, index) => (
+                                                        <li
+                                                            key={index}
+                                                            className="border-gray-100 border-b hover:bg-gray-100"
+                                                        >
+                                                            <Link
+                                                                href={dropdownItem.href}
+                                                                className="block px-4 py-2 text-sm"
+                                                            >
+                                                                {dropdownItem.name}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                                {item.name === "Company" &&
+                                                    companyDropdownOpen &&
+                                                    companyDropdownItems.map((dropdownItem, index) => (
+                                                        <li
+                                                            key={index}
+                                                            className="border-gray-100 border-b hover:bg-gray-100"
+                                                        >
+                                                            <Link
+                                                                href={dropdownItem.href}
+                                                                className="block px-4 py-2 text-sm"
+                                                            >
+                                                                {dropdownItem.name}
+                                                            </Link>
+                                                        </li>
+                                                    ))}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </li>
+                            );
+                        })}
+                    </ul>
+
+                    <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
+                        <Button
+                            onClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+                            className="group flex items-center justify-center gap-x-1 text-lg font-medium border border-indigo-950 hover:border-2 md:inline-flex px-4 py-2"
+                        >
+                            Book a demo
+                            <span className="transition-transform duration-300 transform group-hover:scale-150">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20"
@@ -187,12 +221,12 @@ const Navbar = () => {
                                         clipRule="evenodd"
                                     />
                                 </svg>
-                            </NavLink>
-                        </div>
+                            </span>
+                        </Button>
                     </div>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </nav>
     );
 };
 

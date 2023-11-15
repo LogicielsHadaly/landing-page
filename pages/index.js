@@ -23,14 +23,18 @@ export default function Home() {
       <Head>
         <meta name='robots' content='index' />
       </Head>
+      {/* <div className="flex-1 pl-8">
+        <img src="/main_video.gif" alt="Your GIF" className=" w-full h-auto shadow-xl rounded-b-lg rounded-tl-3xl" />
+      </div> */}
       <Navbar />
       <Hero />
-      <DecisionMaking/>
+
+      <DecisionMaking />
       <DataIngestion />
       <InsightGen />
       <DataGov />
       <LogoGrid />
-      <Testimonial/>
+      <Testimonial />
       {/* <Carroussel /> */}
       {/* <CenteredCTAText />
       <CTA /> */}

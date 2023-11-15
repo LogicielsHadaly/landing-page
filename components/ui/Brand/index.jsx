@@ -5,6 +5,7 @@ const Brand = ({ ...props }) => (
         src="/hadaly.svg"
         alt="Hadaly logo"
         {...props}
+        className="py-0"
         width={130}
         height={78}
         priority
