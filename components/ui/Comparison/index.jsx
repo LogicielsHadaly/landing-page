@@ -5,6 +5,7 @@ import Button from '../Button';
 import SlideLeft from '../../../animation/slideleft';
 import SlideRight from '../../../animation/slideright';
 import SlideDown from '../../../animation/slidedown';
+import Brand from '../Brand';
 
 
 
@@ -12,7 +13,7 @@ import React, { useState } from 'react';
 
 
 const Card = ({ description, bgColor, textColor }) => (
-  <div className={` p-4 h-48 pt-8 text-2xl text-left ${bgColor} bg-opacity-5 rounded-b-lg rounded-tr-3xl ${textColor} shadow-sm`}>
+  <div className={` px-8  h-48 pt-8 font-md text-opacity-80 text-2xl text-left ${bgColor} bg-opacity-5 rounded-b-lg rounded-tr-3xl ${textColor} shadow-sm`}>
     <p>{description}</p>
   </div>
 );
@@ -39,19 +40,20 @@ const GridComponent = () => {
   const cardsToShow = selectedButton === 'avoid' ? avoidCards : hadalyCards;
 
   return (
-    <div className="m-4 max-w-screen-xl mx-auto">
-      <div className="flex justify-center space-x-2 mb-4">
+    <SectionWrapper id="cta" className="max-w-screen-3xl mx-auto">
+
+      <div className="flex justify-center space-x-4 mb-4">
         <button
           onClick={() => setSelectedButton('avoid')}
-          className={`font-bold py-2 px-12 text-xl ${selectedButton === 'avoid' ? 'bg-gray-50' : 'bg-transparent'} hover:bg-gray-100 text-gray-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
+          className={`font-md py-2 px-20 text-4xl ${selectedButton === 'avoid' ? 'bg-gray-50' : 'bg-transparent'} hover:bg-gray-100 text-red-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
         >
-          Avoid
+          <h1>Avoid</h1>
         </button>
         <button
           onClick={() => setSelectedButton('hadaly')}
-          className={`font-bold py-2 px-12 text-xl ${selectedButton === 'hadaly' ? 'bg-gray-50' : 'bg-transparent'} hover:bg-gray-100 text-gray-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
+          className={`font-md py-2 px-20 text-4xl ${selectedButton === 'hadaly' ? 'bg-gray-50' : 'bg-transparent'} hover:bg-gray-100 text-gray-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
         >
-          Hadaly
+          <Brand/>
         </button>
       </div>
       <div className="m-12 grid gap-2 grid-cols-4">
@@ -59,13 +61,14 @@ const GridComponent = () => {
           <SlideLeft key={card.id}>
             <Card
               description={card.description}
-              bgColor={selectedButton === 'avoid' ? "bg-red-500" : "bg-green-500"}
-              textColor={selectedButton === 'avoid' ? "text-red-500" : "text-green-500"}
+              bgColor={selectedButton === 'avoid' ? "bg-red-500" : "bg-indigo-500"}
+              textColor={selectedButton === 'avoid' ? "text-red-500" : "text-indigo-500"}
             />
           </SlideLeft>
         ))}
       </div>
-    </div>
+
+    </SectionWrapper>
   );
 };
 

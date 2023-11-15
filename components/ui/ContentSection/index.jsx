@@ -17,7 +17,7 @@ const ContentSection = ({
   target = 'For Due diligence Consultant',
   link = '',
   linkOnClick = () => window.open('https://calendly.com/hadaly', '_blank'),
-  maintitle=''
+  maintitle = ''
 }) => {
 
   const textComponent = (
@@ -77,14 +77,14 @@ const ContentSection = ({
 
   return (
     <SectionWrapper id="cta" className="max-w-screen-xl mx-auto">
-       <SlideDown>
-      {maintitle && (
-      <div className='text-center mb-12'>
-        <h1 className="text-3xl text-gray-800 sm:text-4xl">
-          {maintitle}
-        </h1>
-      </div>
-      )}
+      <SlideDown>
+        {maintitle && (
+          <div className='text-center mb-12'>
+            <h1 className="text-3xl text-gray-800 sm:text-4xl">
+              {maintitle}
+            </h1>
+          </div>
+        )}
       </SlideDown>
       <div className="custom-screen flex flex-col-reverse lg:flex-row justify-between items-center mx-auto px-4 md:px-8">
         <div className="flex-1">
@@ -99,3 +99,5 @@ const ContentSection = ({
 };
 
 export default ContentSection;
+
+

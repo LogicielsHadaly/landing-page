@@ -13,14 +13,14 @@ type Props = {
 
 const TestimonialCard = (props: Props) => {
   return (
-    <motion.div className=" py-4 px-8 bg-white shadow-lg rounded-lg my-20 w-[90%] cursor-pointer transition-all duration-300 ease-in-out hover:brightness-110" whileHover={{ scale: 1.1 }}>
+    <motion.div className=" bg-neutral-50 bg-opacity-50 py-12 px-8 mt-12 w-[90%] cursor-pointer shadow-sm transition-all duration-300 ease-in-out hover:brightness-110 rounded-b-lg  rounded-tl-3xl" whileHover={{ scale: 1.01 }}>
       <Link href={props.link} >
         <div className="flex justify-center md:justify-end -mt-16">
           <Image
             alt={props.author}
-            className="w-20 h-20 object-cover rounded-full border-2 border-blue-900"
-            height={80}
-            width={80}
+            className="w-10 h-10 object-cover rounded-full border-2 border-blue-900"
+            height={30}
+            width={30}
             src={props.imgSrc}
           />
         </div>
