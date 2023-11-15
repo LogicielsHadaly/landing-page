@@ -62,7 +62,7 @@ const Hero = () => (
           </div>
         </div>
         <div className="flex-1 pl-8">
-          <img src="/main_video_v1.gif" alt="Your GIF" className=" w-full   h-screen object-cover " />
+          <img src="/Main_video_v1.gif" alt="Your GIF" className=" w-full   h-screen object-cover " />
         </div>
 
         {/* <div className="flex-1 pl-8">
