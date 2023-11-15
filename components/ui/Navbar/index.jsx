@@ -87,7 +87,7 @@ const Navbar = () => {
 
     const navigation = [
         // { name: "Solutions", href: "#DecisionMaking" },
-        { name: "Use Cases", href: "", dropdown: true },
+        // { name: "Use Cases", href: "", dropdown: true },
         { name: "Company", href: "", dropdown: true },
     ];
 
@@ -125,11 +125,17 @@ const Navbar = () => {
                     <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
                         {navigation.map((item, idx) => {
                             return (
+
+
                                 <li
                                     key={idx}
                                     className="hover:text-gray-900 relative"
                                     ref={item.dropdown ? dropdownRef : null}
                                 >
+
+
+
+
                                     <Link
                                         href={item.href}
                                         className="block"
@@ -161,6 +167,8 @@ const Navbar = () => {
                                             </svg>
                                         )}
                                     </Link>
+
+                                    
                                     {item.dropdown && (
                                         <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white z-50">
                                             <ul>
@@ -201,6 +209,21 @@ const Navbar = () => {
                             );
                         })}
                     </ul>
+
+
+                    <Link
+                        href="/useCase3"
+                        className="block pl-8  text-lg hover:underline"
+                    >
+                        Startup
+                    </Link>
+
+                    <Link
+                        href="/useCase3"
+                        className="block pl-8 text-lg hover:underline"
+                    >
+                        Due Diligence Consultant
+                    </Link>
 
                     <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y-0 md:mt-0">
                         <Button

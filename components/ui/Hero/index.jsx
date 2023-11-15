@@ -5,13 +5,13 @@ import TextAnimation from "./textanimation";
 import Button from "../Button";
 
 const Hero = () => (
-  <section className="bg-neutral-100  ">
+  <section className="bg-indigo-50  ">
 
 
-    <GradientWrapper
+    {/* <GradientWrapper
       wrapperClassName="inset-0"
       className="custom-screen text-gray-600"
-    >
+    > */}
 
       {/* <div className="flex-1 pl-8">
 
@@ -62,7 +62,7 @@ const Hero = () => (
           </div>
         </div>
         <div className="flex-1 pl-8">
-          <img src="/main_video.gif" alt="Your GIF" className=" w-full   h-screen object-cover " />
+          <img src="/main_video_v1.gif" alt="Your GIF" className=" w-full   h-screen object-cover " />
         </div>
 
         {/* <div className="flex-1 pl-8">
@@ -70,7 +70,7 @@ const Hero = () => (
           <img src="/main_video.gif" alt="Your GIF" className=" w-full   h-auto  shadow-xl rounded-b-lg rounded-tl-3xl" />
         </div> */}
       </div>
-    </GradientWrapper>
+    {/* </GradientWrapper> */}
   </section>
 );
 
