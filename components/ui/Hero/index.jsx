@@ -14,7 +14,7 @@ const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick,
 
       <div className="flex mx-auto items-center max-w-xl px-8 ">
         <SlideUp>
-        <h1 className="text-4xl text-gray-800 sm:text-5xl ">
+        <h1 className="text-2xl mt-48 lg:mt-12 text-gray-800 lg:text-5xl ">
           {title.map((part, index) => (
             <span key={index} className={part.highlight ? 'text-red-500' : ''}>
               {part.text}

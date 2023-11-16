@@ -22,18 +22,18 @@ const GridComponent = () => {
   const [selectedButton, setSelectedButton] = useState('avoid');
 
   const avoidCards = [
-    { id: 1, description: 'Lose time searching for right information' },
-    { id: 2, description: 'Lose time searching for messy templates' },
-    { id: 3, description: 'Forget important information in your Data Room' },
-    { id: 4, description: 'Improve your Data Room Quality Scoring' },
+    { id: 1, description: '1. Lose time searching for right information' },
+    { id: 2, description: '2. Lose time searching for messy templates' },
+    { id: 3, description: '3. Forget important information in your Data Room' },
+    { id: 4, description: '4. Improve your Data Room Quality Scoring' },
     // ... other avoid cards
   ];
 
   const hadalyCards = [
-    { id: 5, description: 'Connect your Data Room Providers' },
-    { id: 6, description: 'Upload or start building your Data Room' },
-    { id: 7, description: 'Get Access to 100+ Legal and Financial Templates' },
-    { id: 8, description: 'Improve your Data Room Quality Scoring' },
+    { id: 5, description: '1. Connect your Data Room Providers' },
+    { id: 6, description: '2. Upload or start building your Data Room' },
+    { id: 7, description: '3. Get Access to 100+ Legal and Financial Templates' },
+    { id: 8, description: '4. Improve your Data Room Quality Scoring' },
     // ... other hadaly cards
   ];
 

@@ -18,7 +18,7 @@ const DecisionMaking = () => {
       <div className='text-center mb-12'>
         <h1 className="text-3xl text-gray-800 sm:text-4xl px-4 md:px-8 ">
         Supercharge Deal Making Using Ai 
-        </h1>max
+        </h1>
       </div>
 
       <div className="  justify-center flex flex-col md:flex-row md:items-center max-w-screen-4xl mx-auto px-4 md:px-8">
