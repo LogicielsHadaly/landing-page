@@ -26,9 +26,9 @@ const Navbar = () => {
 
 
 
-            <div className="mx-auto flex max-w-screen-2xl items-center justify-between  ">
+            <div className="mx-auto flex md:max-w-screen-2xl items-center justify-between  ">
                 <NavHeader ref={menuBtnEl} className='' />
-                <div className=" hidden md:flex space-x-12 justify-center pr-32">
+                <div className=" hidden md:flex flex space-x-12 justify-center pr-32">
                     <Link href="/team" className=" hover:underline pt-2">Company</Link>
                     <Link href="/startup" className=" hover:underline pt-2 ">Startup</Link>
                     <Link href="/DueDiligenceConsultant" className=" hover:underline pt-2">Due Diligence Consultant</Link>

@@ -14,7 +14,7 @@ import FadeIn from '../../../animation/fadein';
 const DecisionMaking = () => {
 
   return (
-    <SectionWrapper id="main" className=" justify-between space-y-3 bg-indigo-50 bg-opacity-50 mx-auto ">
+    <SectionWrapper id="main" className=" justify-between space-y-3 bg-indigo-50 bg-opacity-50 overflow-x-hidden ">
       <div className='text-center mb-12'>
         <h1 className="text-3xl text-gray-800 sm:text-4xl">
         Supercharge Deal Making Using Ai 

@@ -6,10 +6,11 @@ import Button from "../Button";
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SlideUp from "../../../animation/slideup";
+import SectionWrapper from "../../SectionWrapper";
 
 const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick, button2Text, button2OnClick }) => (
-  <section className={BgColor}>
-    <div style={{ height: '90vh' }} className="flex items-center   mx-auto  ">
+  <SectionWrapper className={`${BgColor} flex items-center `} style={{ height: '90vh' }}>
+
 
       <div className="flex mx-auto items-center max-w-xl px-8 ">
         <SlideUp>
@@ -65,9 +66,10 @@ const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick,
       <div className=" hidden md:block flex w-1/2">
         <img src={Video}  style={{ height: '90vh' }} alt="Your GIF" className=" w-full    object-cover " />
       </div>
-    </div>
+  
 
-  </section>
+  </SectionWrapper>
+
 );
 
 export default Hero;

@@ -76,7 +76,7 @@ const ContentSection = ({
   );
 
   return (
-    <SectionWrapper id="cta" className="justify-around ">
+    <SectionWrapper id="cta" className="justify-around overflow-x-hidden">
       <SlideDown>
         {maintitle && (
           <div className='text-center mb-12'>

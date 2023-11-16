@@ -23,9 +23,7 @@ export default function Home() {
       <Head>
         <meta name='robots' content='index' />
       </Head>
-      {/* <div className="flex-1 pl-8">
-        <img src="/main_video.gif" alt="Your GIF" className=" w-full h-auto shadow-xl rounded-b-lg rounded-tl-3xl" />
-      </div> */}
+
       <Navbar />
       <Hero
         Video={"/Main_video_v1.gif"}
