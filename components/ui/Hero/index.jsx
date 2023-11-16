@@ -9,11 +9,11 @@ import SlideUp from "../../../animation/slideup";
 
 const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick, button2Text, button2OnClick }) => (
   <section className={BgColor}>
-    <div className="flex items-center py-40 h-screen mx-auto  ">
+    <div style={{ height: '90vh' }} className="flex items-center py-40  mx-auto  ">
 
-      <div className="flex-1  mx-auto text-left  pl-9 max-w-screen-lg ">
+      <div className="flex-1  mx-auto text-left  pl-32 max-w-3xl ">
         <SlideUp>
-        <h1 className="text-3xl text-gray-800 sm:text-4xl">
+        <h1 className="text-4xl text-gray-800 sm:text-5xl ">
           {title.map((part, index) => (
             <span key={index} className={part.highlight ? 'text-red-500' : ''}>
               {part.text}
@@ -63,7 +63,7 @@ const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick,
       </div>
 
       <div className="flex-1 pl-8">
-        <img src={Video} alt="Your GIF" className=" w-full   h-screen object-cover " />
+        <img src={Video}  style={{ height: '90vh' }} alt="Your GIF" className=" w-full    object-cover " />
       </div>
     </div>
 

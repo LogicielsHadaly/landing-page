@@ -31,14 +31,14 @@ export default function index() {
 
 <ContentSection
         firstComponent="VideoContent"
-        video="/main_video.gif"
+        video="/video_startup.gif"
         title="Enhance your Deal Screening"
-        description="Act Fast, because your are certainly not the only firm on this deal.  Hadaly improve your efficiency in detecting early Red Flag, ask for missing documentation and earn a competitive advantage on other firms."
+        description="We know how hard it is to Build A Qualitative Data Room !. Because your Data Room mirror your Company organization, Investors will scan every details of your Data Room before funding your Sartup. We make sure that you documents stay well organized and always prepared for future fundraising and aqcuisitions."
         listItems={[]}
-        buttonLabel="Join Now"
+        buttonLabel="Improve your Data Room Now"
         buttonOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
         target=''
-        link=""
+        link="Download Your Personal Data Room Checklist here"
         maintitle='Because building your Startup is hard enough'
       />
     

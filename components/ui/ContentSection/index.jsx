@@ -23,7 +23,7 @@ const ContentSection = ({
   const textComponent = (
 
     <SlideLeft>
-      <div className="flex-none mt-12 space-y-3 md:mt-0 p-4">
+      <div className="flex-none justify-between space-y-3 md:mt-0 p-4">
         <h2 className="text-3xl sm:text-4xl text-indigo-950">
           {title}
         </h2>
@@ -69,14 +69,14 @@ const ContentSection = ({
 
   const videoComponent = (
     <SlideRight>
-      <div className="px-8 justify-center mx-auto md:max-w-4xl">
+      <div className={`px-8 md:max-w-xl ${firstComponent === 'video' ? 'justify-start items-start' : 'justify-end items-end'}`}>
         <img src={video} alt="Your GIF" className="w-full h-auto shadow-xl rounded-b-lg rounded-tl-3xl" />
       </div>
     </SlideRight>
   );
 
   return (
-    <SectionWrapper id="cta" className="max-w-screen-xl mx-auto">
+    <SectionWrapper id="cta" className="max-w-screen-2xl   mx-auto">
       <SlideDown>
         {maintitle && (
           <div className='text-center mb-12'>
@@ -86,7 +86,7 @@ const ContentSection = ({
           </div>
         )}
       </SlideDown>
-      <div className="custom-screen flex flex-col-reverse lg:flex-row justify-between items-center mx-auto px-4 md:px-8">
+      <div className="space-x-24 custom-screen flex flex-col-reverse lg:flex-row justify-between items-center mx-auto px-4 md:px-8">
         <div className="flex-1">
           {firstComponent === 'text' ? textComponent : videoComponent}
         </div>
