@@ -110,8 +110,8 @@ const Navbar = () => {
 
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-10 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg py-0 ' : 'bg-transparent py-4'}`}>
-            <div className="custom-screen max-w-screen-xl px-16 md:px-16 gap-x-20 items-center md:flex ">
+        <nav className={`fixed top-0 left-0 w-full z-10 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg py-2' : 'bg-transparent py-4'} md:px-16`}>
+            <div className="container mx-auto px-4 md:flex md:justify-between md:items-center">
                 <NavHeader
                     ref={menuBtnEl}
                     state={state}
@@ -168,7 +168,7 @@ const Navbar = () => {
                                         )}
                                     </Link>
 
-                                    
+
                                     {item.dropdown && (
                                         <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white z-50">
                                             <ul>
