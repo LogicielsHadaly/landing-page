@@ -29,9 +29,9 @@ const Navbar = () => {
             <div className="mx-auto flex max-w-screen-2xl items-center justify-between  ">
                 <NavHeader ref={menuBtnEl} className='' />
                 <div className=" hidden md:flex space-x-12 justify-center pr-32">
-                    <a href="/team" className=" hover:underline pt-2">Company</a>
-                    <a href="/startup" className=" hover:underline pt-2 ">Startup</a>
-                    <a href="/DueDiligenceConsultant" className=" hover:underline pt-2">Due Diligence Consultant</a>
+                    <Link href="/team" className=" hover:underline pt-2">Company</Link>
+                    <Link href="/startup" className=" hover:underline pt-2 ">Startup</Link>
+                    <Link href="/DueDiligenceConsultant" className=" hover:underline pt-2">Due Diligence Consultant</Link>
 
 
                 </div>
@@ -75,9 +75,9 @@ const Navbar = () => {
             {/* Mobile Menu */}
             {isMenuOpen && (
                 <div className="md:hidden">
-                    <a href="/team" className="block px-4 py-2 hover:bg-neutral-50 hover:border-t hover:border-b">Company</a>
-                    <a href="/startup" className="block px-4 py-2 hover:bg-neutral-50 hover:border-t hover:border-b">For Startup</a>
-                    <a href="/DueDiligenceConsultant" className="block px-4 py-2 hover:bg-neutral-50 hover:border-t hover:border-b">For Due Diligence Consultant</a>
+                    <Link href="/team" className="block px-4 py-2 hover:bg-neutral-50 hover:border-t hover:border-b">Company</Link>
+                    <Link href="/startup" className="block px-4 py-2 hover:bg-neutral-50 hover:border-t hover:border-b">For Startup</Link>
+                    <Link href="/DueDiligenceConsultant" className="block px-4 py-2 hover:bg-neutral-50 hover:border-t hover:border-b">For Due Diligence Consultant</Link>
 
 
                     <Button
