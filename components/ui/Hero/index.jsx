@@ -9,9 +9,9 @@ import SlideUp from "../../../animation/slideup";
 
 const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick, button2Text, button2OnClick }) => (
   <section className={BgColor}>
-    <div style={{ height: '90vh' }} className="flex items-center py-40  mx-auto  ">
+    <div style={{ height: '90vh' }} className="flex items-center   mx-auto  ">
 
-      <div className="flex-1  mx-auto text-left  pl-32 max-w-3xl ">
+      <div className="flex mx-auto items-center max-w-xl px-8 ">
         <SlideUp>
         <h1 className="text-4xl text-gray-800 sm:text-5xl ">
           {title.map((part, index) => (
@@ -62,7 +62,7 @@ const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick,
         </SlideUp>
       </div>
 
-      <div className="flex-1 pl-8">
+      <div className=" hidden md:block flex w-1/2">
         <img src={Video}  style={{ height: '90vh' }} alt="Your GIF" className=" w-full    object-cover " />
       </div>
     </div>
