@@ -28,7 +28,7 @@ const Navbar = () => {
 
             <div className="mx-auto flex md:max-w-screen-2xl items-center justify-between  ">
                 <NavHeader ref={menuBtnEl} className='' />
-                <div className=" hidden md:flex flex space-x-12 justify-center pr-32">
+                <div className=" hidden md:flex flex space-x-12 justify-center pr-32 lg:text-lg text-xs">
                     <Link href="/team" className=" hover:underline pt-2">Company</Link>
                     <Link href="/startup" className=" hover:underline pt-2 ">Startup</Link>
                     <Link href="/DueDiligenceConsultant" className=" hover:underline pt-2">Due Diligence Consultant</Link>
@@ -75,7 +75,7 @@ const Navbar = () => {
             {/* Mobile Menu */}
             {isMenuOpen && (
                 <div className="md:hidden ">
-                    <Link href="/team" className=" text-md lg:text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b ">Company</Link>
+                    <Link href="/team" className=" text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b ">Company</Link>
                     <Link href="/startup" className=" text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b">For Startup</Link>
                     <Link href="/DueDiligenceConsultant" className=" text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b">For Due Diligence Consultant</Link>
 
