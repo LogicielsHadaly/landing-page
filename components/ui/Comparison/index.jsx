@@ -45,16 +45,19 @@ const GridComponent = () => {
       <div className="flex justify-center space-x-4 mb-4">
         <button
           onClick={() => setSelectedButton('avoid')}
-          className={`font-md py-2 px-20 text-4xl ${selectedButton === 'avoid' ? 'bg-gray-50' : 'bg-transparent'} hover:bg-gray-100 text-red-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
+          className={`font-md py-1  px-4  text-4xl ${selectedButton === 'avoid' ? 'bg-red-100' : 'bg-transparent border'} hover:bg-gray-100 text-red-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
         >
           <h1>Avoid</h1>
         </button>
         <button
           onClick={() => setSelectedButton('hadaly')}
-          className={`font-md py-2 px-20 text-4xl ${selectedButton === 'hadaly' ? 'bg-gray-50' : 'bg-transparent'} hover:bg-gray-100 text-gray-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
+          className={`font-md py-1 px-4 text-4xl ${selectedButton === 'hadaly' ? ' bg-indigo-100' : 'bg-transparent border'} hover:bg-gray-100 text-gray-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
         >
           <Brand/>
         </button>
+      </div>
+      <div className={` ${selectedButton === 'avoid' ? 'border-red-200' : 'border-indigo-200'}  duration-150 border`}>
+
       </div>
       <div className="m-12 grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {cardsToShow.map(card => (

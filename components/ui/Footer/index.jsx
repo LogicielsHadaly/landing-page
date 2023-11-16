@@ -9,7 +9,7 @@ const navigation = [
 ]
 
 const Footer = () => (
-    <footer className="pt-1 sm:pt-1  ">
+    <footer className="pt-1 sm:pt-1 mt-32 ">
         <div className=" max-w-screen-2xl mx-auto flex flex-col md:flex-row  justify-around ">
             <div className="   ">
                 <Link href="/" className="mx-auto flex  justify-center ">

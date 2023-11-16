@@ -13,7 +13,7 @@ export default function Home() {
       <div className="max-w-screen-lg mx-auto flex flex-col-reverse gap-x-12 justify-between md:flex-row md:items-center">
         <SlideLeft>
           <h2 className="text-sky-950 text-3xl sm:text-4xl mb-10 text-center">What Our Clients Say</h2>
-          <p className=" text-gray-500 text-xl text-center">
+          <p className=" text-gray-500 text-xl text-center px-4">
             Hear directly from our clients about their experiences. Our testimonials showcase the impact of our solutions on businesses across various industries.
           </p>
         </SlideLeft>

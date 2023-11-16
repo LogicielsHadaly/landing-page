@@ -74,15 +74,15 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="md:hidden">
-                    <Link href="/team" className="block px-4 py-2 hover:bg-neutral-50 hover:border-t hover:border-b">Company</Link>
-                    <Link href="/startup" className="block px-4 py-2 hover:bg-neutral-50 hover:border-t hover:border-b">For Startup</Link>
-                    <Link href="/DueDiligenceConsultant" className="block px-4 py-2 hover:bg-neutral-50 hover:border-t hover:border-b">For Due Diligence Consultant</Link>
+                <div className="md:hidden ">
+                    <Link href="/team" className=" text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b ">Company</Link>
+                    <Link href="/startup" className=" text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b">For Startup</Link>
+                    <Link href="/DueDiligenceConsultant" className=" text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b">For Due Diligence Consultant</Link>
 
 
                     <Button
                         onClick={() => window.open('https://calendly.com/hadaly', '_blank')}
-                        className="  w-2/3 mx-auto mb-4 group flex items-center justify-center gap-x-1 text-lg font-medium border border-indigo-950  md:inline-flex "
+                        className="  w-2/3 mt-8 py-8 mb-16 mx-auto mb-4 group flex items-center justify-center gap-x-1 text-lg font-medium border border-indigo-950  md:inline-flex "
                     >
                         Book a demo
                         <span className="transition-transform duration-300 transform group-hover:scale-150">
