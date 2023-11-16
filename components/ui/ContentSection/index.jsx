@@ -22,8 +22,8 @@ const ContentSection = ({
 
   const textComponent = (
 
-    <SlideLeft>
-      <div className="flex-none justify-between space-y-3 md:mt-0 p-4">
+    <SlideLeft className=''>
+     
         <h2 className="text-3xl sm:text-4xl text-indigo-950">
           {title}
         </h2>
@@ -31,7 +31,7 @@ const ContentSection = ({
           {description}
         </p>
         {listItems && (
-          <ul className="pl-0 py-4 text-lg font-bold">
+          <ul className="py-4 text-lg font-bold">
             {listItems.map((item, index) => (
               <li key={index} className="customli">{item}</li>
             ))}
@@ -44,7 +44,7 @@ const ContentSection = ({
         {buttonLabel && (
           <Button
             onClick={buttonOnClick}
-            className="mt-12 group flex items-center justify-center gap-x-1 text-xl font-medium bg-indigo-950 text-white hover:bg-opacity-90 md:inline-flex px-4 py-4"
+            className="mt-12 group flex items-center  gap-x-1 text-xl font-medium bg-indigo-950 text-white hover:bg-opacity-90 md:inline-flex px-4 py-4"
           >
             {buttonLabel}
             <span className="transition-transform duration-300 transform group-hover:scale-125 text-indigo-400">
@@ -63,20 +63,20 @@ const ContentSection = ({
           </Button>
 
         )}
-      </div>
+  
     </SlideLeft>
   );
 
   const videoComponent = (
     <SlideRight>
-      <div className={`px-8 md:max-w-xl ${firstComponent === 'video' ? 'justify-start items-start' : 'justify-end items-end'}`}>
+      <div className=' flex justify-around '>
         <img src={video} alt="Your GIF" className="w-full h-auto shadow-xl rounded-b-lg rounded-tl-3xl" />
       </div>
     </SlideRight>
   );
 
   return (
-    <SectionWrapper id="cta" className="max-w-screen-2xl   mx-auto">
+    <SectionWrapper id="cta" className="justify-around ">
       <SlideDown>
         {maintitle && (
           <div className='text-center mb-12'>
@@ -86,11 +86,11 @@ const ContentSection = ({
           </div>
         )}
       </SlideDown>
-      <div className="space-x-24 custom-screen flex flex-col-reverse lg:flex-row justify-between items-center mx-auto px-4 md:px-8">
-        <div className="flex-1">
+      <div className=" space-y-12 flex lg:flex-row  flex-col items-center mx-auto justify-around">
+        <div className="flex  lg:w-1/2 w-full max-w-xl px-8 ">
           {firstComponent === 'text' ? textComponent : videoComponent}
         </div>
-        <div className="flex-1">
+        <div className="flex lg:w-1/2 w-full max-w-xl  px-8">
           {firstComponent === 'text' ? videoComponent : textComponent}
         </div>
       </div>
