@@ -22,7 +22,7 @@ const Navbar = () => {
         };
     }, []);
     return (
-        <nav className={`   fixed top-0 left-0 w-full z-10 transition-all duration-300 ${isScrolled || isMenuOpen ? 'bg-white text-gray-800 shadow-lg py-1' : 'bg-transparent  py-4'}`}>
+        <nav className={`   fixed top-0 left-0 w-screen z-10 transition-all duration-300 ${isScrolled || isMenuOpen ? 'bg-white text-gray-800 shadow-lg py-1' : 'bg-transparent  py-4'}`}>
 
 
 
@@ -40,7 +40,7 @@ const Navbar = () => {
 
                 </div>
 
-                <div className=" hidden md:flex space-x-12  ">
+                <div className=" hidden md:flex space-x-12  px-4">
                     <Button
                         onClick={() => window.open('https://calendly.com/hadaly', '_blank')}
                         className="group flex items-center justify-center gap-x-1 text-lg font-medium border border-indigo-950  md:inline-flex px-4 py-2"
