@@ -72,14 +72,14 @@ const ContentSection = ({
 
   const videoComponent = (
     <SlideRight>
-      <div className=' flex justify-around md:px-2 px-16'>
+      <div className=' flex justify-evenly md:px-2 px-16'>
         <img src={video} alt="Your GIF" className="w-full h-auto shadow-xl rounded-b-lg rounded-tl-3xl" />
       </div>
     </SlideRight>
   );
 
   return (
-    <SectionWrapper id="cta" className="justify-around overflow-x-hidden">
+    <SectionWrapper id="cta" className="justify-evenly overflow-x-hidden">
       <SlideDown>
         {maintitle && (
           <div className='text-center mb-12 '>
@@ -89,7 +89,7 @@ const ContentSection = ({
           </div>
         )}
       </SlideDown>
-      <div className=" space-y-12 flex lg:flex-row  flex-col items-center mx-auto justify-around">
+      <div className=" space-y-12 flex lg:flex-row  flex-col items-center mx-auto justify-evenly">
         <div className="flex  lg:w-1/2 w-full max-w-xl px-8 ">
           {firstComponent === 'text' ? textComponent : videoComponent}
         </div>
