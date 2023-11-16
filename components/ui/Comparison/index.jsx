@@ -40,7 +40,7 @@ const GridComponent = () => {
   const cardsToShow = selectedButton === 'avoid' ? avoidCards : hadalyCards;
 
   return (
-    <SectionWrapper id="cta" className="max-w-screen-3xl mx-auto">
+    <SectionWrapper id="cta" className="max-w-screen-2xl mx-auto">
 
       <div className="flex justify-center space-x-4 mb-4">
         <button
@@ -56,7 +56,7 @@ const GridComponent = () => {
           <Brand/>
         </button>
       </div>
-      <div className="m-12 grid gap-2 grid-cols-4">
+      <div className="m-12 grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {cardsToShow.map(card => (
           <SlideLeft key={card.id}>
             <Card

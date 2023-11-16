@@ -40,3 +40,13 @@
     background-size: 1.25rem; /* Adjusts the size of the icon */
     line-height: 1.5rem; /* Adjust line height as needed */
 }
+
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  
+.scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
