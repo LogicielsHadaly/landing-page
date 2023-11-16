@@ -89,11 +89,11 @@ const ContentSection = ({
           </div>
         )}
       </SlideDown>
-      <div className=" space-y-12 flex lg:flex-row  flex-col items-center mx-auto justify-evenly">
-        <div className="flex  lg:w-1/2 w-full max-w-xl px-8 ">
+      <div className=" space-y-12 flex lg:flex-row  flex-col items-center mx-auto justify-evenly w-screen">
+        <div className="flex  lg:w-1/2 max-w-xl px-8 ">
           {firstComponent === 'text' ? textComponent : videoComponent}
         </div>
-        <div className="flex lg:w-1/2 w-full max-w-xl  px-8">
+        <div className="flex lg:w-1/2  max-w-xl  px-8">
           {firstComponent === 'text' ? videoComponent : textComponent}
         </div>
       </div>
