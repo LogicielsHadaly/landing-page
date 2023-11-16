@@ -16,8 +16,8 @@ export default function index() {
       </Head>
       <Navbar />
       <Hero
-      Video={"/Main_video_startup.gif"}
-        BgColor="bg-neutral-100"
+      Video={"/video/hero_video_startup.gif"}
+        BgColor="bg-neutral-200"
         title={[
           { text: 'Build Qualitative Data Room Fast and with Experience ', highlight: false },
         ]}
@@ -31,7 +31,7 @@ export default function index() {
 
 <ContentSection
         firstComponent="VideoContent"
-        video="/video_startup.gif"
+        video="/video/video_startup.gif"
         title="Enhance your Deal Screening"
         description="We know how hard it is to Build A Qualitative Data Room !. Because your Data Room mirror your Company organization, Investors will scan every details of your Data Room before funding your Sartup. We make sure that you documents stay well organized and always prepared for future fundraising and aqcuisitions."
         listItems={[]}

@@ -26,7 +26,7 @@ export default function Home() {
 
       <Navbar />
       <Hero
-        Video={"/Main_video_v1.gif"}
+        Video={"/video/hero_video.gif"}
         BgColor="bg-indigo-50"
         title={[
           { text: 'Your Due Diligence Copilot to Rapidly Assess ', highlight: false },
@@ -43,7 +43,7 @@ export default function Home() {
 
       <ContentSection
         firstComponent='text'
-        video='/video_startup.gif'
+        video='/video/video_startup.gif'
         title='Experience Fast Red Flag Reporting'
         description="Browse 1000's of unstructured documents in your Data Room to find underlying risk in real time."
         listItems={[
@@ -60,7 +60,7 @@ export default function Home() {
 
       <ContentSection
         firstComponent="VideoComponent"
-        video="/video_startup.gif"
+        video="/video/video_startup.gif"
         title="Build Qualitative Data Room"
         description="Because your Data Room mirror your Company organization, We make sure to identify potential risks in your Data Room for your company to stay well Organized and always prepared for future fundraising and aqcuisitions."
         listItems={[

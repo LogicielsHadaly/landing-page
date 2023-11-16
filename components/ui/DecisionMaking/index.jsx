@@ -30,7 +30,7 @@ const DecisionMaking = () => {
               title="Startup and SMEs"
               onClick={() => window.open('https://calendly.com/hadaly', '_blank')}
               info="Unlock the potential of a good DataRoom"
-              Video={"/video_startup.gif"}
+              Video={"/video/video_startup.gif"}
             >
             </CardVideo>
 
@@ -42,7 +42,7 @@ const DecisionMaking = () => {
         {/* Middle GIF Section */}
         <FadeIn>
           <div className="px-4 justify-center mx-auto   mt-8 md:mt-32">
-            <img src={"/main_video.gif"} alt="Your GIF" className=" w-full   h-auto  shadow-xl rounded-b-lg rounded-tl-3xl md:mt-4 mt-48" />
+            <img src={"/video/main_video.gif"} alt="Your GIF" className=" w-full   h-auto  shadow-xl rounded-b-lg rounded-tl-3xl md:mt-4 mt-48" />
             <h2 className="text-center md:text-2xl text-3xl font-bold mb-2 mt-8">Hadaly’s Engine</h2>
             <p className='max-w-md text-lg text-gray-500 md:mt-4 md:mb-8 md:mb-8 md:mt-4  mt-4 mb-48 mx-auto text-center'>We help reduce the underlying risks in the data room for the due diligence process.</p>
           </div>
@@ -55,7 +55,7 @@ const DecisionMaking = () => {
               title="Advisors"
               onClick={() => window.open('https://calendly.com/hadaly', '_blank')}
               info="Generate Fast Red Flag Report"
-              Video={"/video_startup.gif"}
+              Video={"/video/video_startup.gif"}
             >
             </CardVideo>
           </div>

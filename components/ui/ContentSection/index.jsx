@@ -8,7 +8,7 @@ import SlideDown from '../../../animation/slidedown';
 
 const ContentSection = ({
   firstComponent = 'text',
-  video = '/main_video.gif',
+  video = '/video/video_startup.gif',
   title = 'Experience Fast Red Flag Reporting',
   description = 'Browse 1000\'s of unstructured documents in your Data Room to find underlying risk in real time.',
   listItems = [],
