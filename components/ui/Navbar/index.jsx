@@ -4,11 +4,13 @@ import NavLink from "../NavLink";
 import Link from "next/link";
 import Button from "../Button";
 import Brand from "../Brand";
+import { useRouter } from 'next/router'; // Import useRouter
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const menuBtnEl = useRef();
+    const router = useRouter(); // Initialize useRouter
 
     useEffect(() => {
         const handleScroll = () => {
@@ -21,6 +23,9 @@ const Navbar = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+
+    // Helper function to determine if the link is active
+    const isActive = (pathname) => router.pathname === pathname;
     return (
         <nav className={`   fixed top-0 left-0 w-screen z-10 transition-all duration-300 ${isScrolled || isMenuOpen ? 'bg-white text-gray-800 shadow-lg py-1' : 'bg-transparent  py-4'}`}>
 
@@ -29,14 +34,26 @@ const Navbar = () => {
             <div className="mx-auto flex md:max-w-screen-2xl items-center justify-between  ">
                 <NavHeader ref={menuBtnEl} className='' />
                 <div className=" hidden md:flex flex space-x-12 justify-center pr-32 lg:text-lg text-xs">
-                    <Link href="/team" className=" hover:underline pt-2">Company</Link>
-                    <Link href="/startup" className=" hover:underline pt-2 ">Startup</Link>
-                    <Link href="/DueDiligenceConsultant" className=" hover:underline pt-2">Due Diligence Consultant</Link>
+                    <Link href="/team">
+                        <p className={`hover:underline px-2 pt-2 ${isActive('/team') ? 'border-b-2 border-indigo-500' : ''}`} >
+                        Company
+                        </p>
+                    </Link>
 
+                    <Link href="/startup">
+                        <p className={`hover:underline px-2 pt-2 ${isActive('/startup') ? 'border-b-2 border-indigo-500' : ''}`} >
+                        Startup
+                        </p>
+                    </Link>
 
+                    <Link href="/DueDiligenceConsultant">
+                        <p className={`hover:underline px-2 pt-2 ${isActive('/DueDiligenceConsultant') ? 'border-b-2 border-indigo-500' : ''}`} >
+                        Due Diligence Consultant
+                        </p>
+                    </Link>
                 </div>
                 <div className=" ">
-                  
+
 
                 </div>
 
