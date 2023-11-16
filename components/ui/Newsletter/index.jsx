@@ -6,37 +6,37 @@ const Newsletter = () => {
   const googleScriptURL =
     "https://script.google.com/macros/s/AKfycbyfdqeLDf6JqqPMikZsyXz7dVlMHUlUnAkbU-H2C1wxGm-PV7S9KLRZoUTQzqpLCuHO/exec";
 
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const email = e.target.email.value;
-    
-      try {
-        await fetch(googleScriptURL, {
-          method: "POST",
-          mode: "no-cors", // This should be changed if you want to handle the response
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: email }),
-        });
-    
-        // Since mode is no-cors, we won't be able to read the response
-        alert("Successfully subscribed! Take the opportunity to follow us on LinkedIn & Twitter in our footer!");
-      } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred. Please try again.");
-      }
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+
+    try {
+      await fetch(googleScriptURL, {
+        method: "POST",
+        mode: "no-cors", // This should be changed if you want to handle the response
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email }),
+      });
+
+      // Since mode is no-cors, we won't be able to read the response
+      alert("Successfully subscribed! Take the opportunity to follow us on LinkedIn & Twitter in our footer!");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
 
   // writes the email adresses into this google file: https://docs.google.com/spreadsheets/d/1a-Ow-Y40gvwFIszCnouF8ZhAr_ITT_pWIv4iABGrEMU/edit#gid=0
   return (
-    <div className="mt-6 md:mt-0">
-      <h2 className="text-gray-800 text-xl font-semibold sm:text-2xl">
+    <div className="mt-6 md:mt-0 px-4">
+      <h2 className="text-gray-800 text-3xl font-semibold sm:text-3xl mx-auto flex  justify-center ">
         Newsletter
       </h2>
       <form
         onSubmit={handleSubmit}
         className="mt-6 flex items-center gap-x-3"
       >
-        <div className="relative">
+        <div className="relative mx-auto flex  justify-center">
           <svg
             className="w-6 h-6 text-gray-400 absolute left-3 inset-y-0 my-auto"
             xmlns="http://www.w3.org/2000/svg"
@@ -57,14 +57,20 @@ const Newsletter = () => {
             name="email"
             required
             placeholder="Enter your email"
-            className="w-full pl-12 pr-3 focus:border-blue-600 text-xl"
+            className="w-full pl-12 pr-3 focus:border-blue-600 text-xl rounded-b-lg  rounded-tl-3xl"
           />
         </div>
         <Button
           type="submit"
-          className="block w-auto text-white text-xl bg-blue-950 hover:bg-blue-500 ring-offset-2 ring-blue-600 focus:ring shadow rounded-md"
+          className=" w-auto  group flex items-center justify-center gap-x-1 text-xl font-medium bg-indigo-950 text-white hover:bg-opacity-90 md:inline-flex px-4 py-2"
         >
           Subscribe
+          <span className="transition-transform duration-300 transform group-hover:scale-125 text-indigo-400  ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+            </svg>
+
+          </span>
         </Button>
       </form>
     </div>

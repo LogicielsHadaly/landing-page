@@ -24,7 +24,7 @@ const Hero = ({ Video, BgColor, title, description, button1Text, button1OnClick,
           <p className="mt-4">
             {description}
           </p>
-          <div className="flex items-center gap-x-6   font-medium text-sm">
+          <div className="flex items-center gap-x-6   font-medium text-sm md:justify-start justify-center">
             <Button
               onClick={button1OnClick}
               className=" mt-12 group flex items-center justify-center gap-x-1 text-xl font-medium bg-indigo-950 text-white hover:bg-opacity-90 md:inline-flex px-4 py-4"

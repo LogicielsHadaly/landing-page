@@ -40,7 +40,7 @@ const Navbar = () => {
 
                 </div>
 
-                <div className=" hidden md:flex space-x-12  px-4">
+                <div className=" hidden md:flex space-x-12  px-8">
                     <Button
                         onClick={() => window.open('https://calendly.com/hadaly', '_blank')}
                         className="group flex items-center justify-center gap-x-1 text-lg font-medium border border-indigo-950  md:inline-flex px-4 py-2"
@@ -64,7 +64,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Menu Button */}
-                <Button className="md:hidden " onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <Button className="md:hidden px-8 " onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>

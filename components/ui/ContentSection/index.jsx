@@ -23,24 +23,24 @@ const ContentSection = ({
   const textComponent = (
 
     <SlideLeft className=''>
-     
-        <h2 className="text-3xl sm:text-4xl text-indigo-950">
-          {title}
-        </h2>
-        <p className="text-slate-900 text-lg">
-          {description}
-        </p>
-        {listItems && (
-          <ul className="py-4 text-lg font-bold">
-            {listItems.map((item, index) => (
-              <li key={index} className="customli">{item}</li>
-            ))}
-          </ul>
-        )}
-        <p className="text-indigo-400 text-md font-bold">
-          {target}
-        </p>
 
+      <h2 className="text-3xl sm:text-4xl text-indigo-950 md:text-left text-center">
+        {title}
+      </h2>
+      <p className="text-slate-900 text-lg mt-4 md:text-left text-center">
+        {description}
+      </p>
+      {listItems && (
+        <ul className="py-4 text-lg font-bold mt-8">
+          {listItems.map((item, index) => (
+            <li key={index} className="customli">{item}</li>
+          ))}
+        </ul>
+      )}
+      <p className="text-indigo-400 text-md font-bold">
+        {target}
+      </p>
+      <div className='justify-center flex md:justify-start'>
         {buttonLabel && (
           <Button
             onClick={buttonOnClick}
@@ -54,22 +54,25 @@ const ContentSection = ({
             </span>
           </Button>
         )}
-        {link && (
+
+      </div>
+
+      {link && (
           <Button
             onClick={linkOnClick}
-            className="text-indigo-900 text-xl font-bold underline"
+            className="text-indigo-900 text-xl font-bold underline mt-4"
           >
             {link}
           </Button>
 
         )}
-  
+
     </SlideLeft>
   );
 
   const videoComponent = (
     <SlideRight>
-      <div className=' flex justify-around '>
+      <div className=' flex justify-around md:px-2 px-16'>
         <img src={video} alt="Your GIF" className="w-full h-auto shadow-xl rounded-b-lg rounded-tl-3xl" />
       </div>
     </SlideRight>
@@ -79,8 +82,8 @@ const ContentSection = ({
     <SectionWrapper id="cta" className="justify-around overflow-x-hidden">
       <SlideDown>
         {maintitle && (
-          <div className='text-center mb-12'>
-            <h1 className="text-3xl text-gray-800 sm:text-4xl">
+          <div className='text-center mb-12 '>
+            <h1 className="text-3xl text-gray-800 sm:text-4xl ">
               {maintitle}
             </h1>
           </div>
