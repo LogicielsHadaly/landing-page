@@ -75,7 +75,7 @@ const Navbar = () => {
             {/* Mobile Menu */}
             {isMenuOpen && (
                 <div className="md:hidden ">
-                    <Link href="/team" className=" text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b ">Company</Link>
+                    <Link href="/team" className=" text-md lg:text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b ">Company</Link>
                     <Link href="/startup" className=" text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b">For Startup</Link>
                     <Link href="/DueDiligenceConsultant" className=" text-xl block px-4 py-8 hover:bg-neutral-50 hover:border-t hover:border-b">For Due Diligence Consultant</Link>
 
