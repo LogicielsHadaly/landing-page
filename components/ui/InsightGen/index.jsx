@@ -48,7 +48,7 @@ const DataIngestion = () => {
             Build Qualitative Data Room
             </h2>
             <p className="text-slate-900 text-lg">
-            Because your Data Room mirror your Company organization, We make sure to identify potential risks in your Data Room for your company to stay well Organized and always prepared for future fundraising and aqcuisitions.
+            Because your Data Room mirrors your company organization, We make sure to identify potential risks in your Data Room for your company to stay well Organized and always prepared for future fundraising and aqcuisitions.
             </p>
 
             <ul class=" pl-0 py-4 text-lg font-bold">
