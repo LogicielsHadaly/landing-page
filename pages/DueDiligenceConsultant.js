@@ -29,7 +29,7 @@ export default function index() {
 
       <ContentSection
         firstComponent="VideoContent"
-        video="/video/video_startup.gif"
+        video="/video/video_connect_your_dataroom.gif"
         title="Connect to your Data Room"
         description="Start getting instant insight by connecting Data Room using our wide network of connectors including Google Drive, and Firmex. Our Engine is also available on a premise solution our using your local environment."
         listItems={[]}
@@ -42,7 +42,7 @@ export default function index() {
 
       <ContentSection
         firstComponent="text"
-        video="/video/video_startup.gif"
+        video="/video/video_generate_risk_reports.gif"
         title="Generate your Risk Reports"
         description="Hadaly helps you understand your data room faster by letting you chat with any document and get answers within seconds."
         listItems={[]}
@@ -55,7 +55,7 @@ export default function index() {
 
       <ContentSection
         firstComponent="VideoContent"
-        video="/video/video_startup.gif"
+        video="/video/video_enhance_deal_screening.gif"
         title="Enhance your Deal Screening"
         description="Act Fast, because your are certainly not the only firm on this deal.  Hadaly improve your efficiency in detecting early Red Flag, ask for missing documentation and earn a competitive advantage on other firms."
         listItems={[]}

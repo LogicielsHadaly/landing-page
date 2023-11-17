@@ -55,7 +55,7 @@ const DecisionMaking = () => {
               title="Advisors"
               onClick={() => window.open('https://calendly.com/hadaly', '_blank')}
               info="Generate Fast Red Flag Report"
-              Video={"/video/video_startup.gif"}
+              Video={"/video/video_advisors.gif"}
             >
             </CardVideo>
           </div>
