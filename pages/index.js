@@ -53,7 +53,9 @@ export default function Home() {
         ]}
         buttonLabel='Tell me more'
         buttonOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+        internalLink = '\DueDiligenceConsultant'
         target='For Due diligence Consultant'
+
         link=''
         linkOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
          />
@@ -69,10 +71,11 @@ export default function Home() {
           "Improve your Data Room Quality Scoring"
         ]}
         buttonLabel="Tell me more"
+        internalLink = '\startup'
         buttonOnClick= {() => window.open('https://calendly.com/hadaly', '_blank')}
         target='For Startup & SME'
         link="Download Your Personal Data Room Check List"
-        linkOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+        linkOnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
       />
       {/* <InsightGen /> */}
       {/* <DataGov /> */}

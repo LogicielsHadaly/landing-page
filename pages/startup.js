@@ -25,7 +25,7 @@ export default function index() {
         button1Text="Start Building"
         button1OnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
         button2Text="Get Verification Checklist"
-        button2OnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+        button2OnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
       />
 
 
@@ -36,7 +36,7 @@ export default function index() {
         description="We know how hard it is to Build A Qualitative Data Room !. Because your Data Room mirror your Company organization, Investors will scan every details of your Data Room before funding your Sartup. We make sure that you documents stay well organized and always prepared for future fundraising and aqcuisitions."
         listItems={[]}
         buttonLabel="Improve your Data Room Now"
-        buttonOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+        buttonOnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
         target=''
         link="Download Your Personal Data Room Checklist here"
         maintitle='Because building your Startup is hard enough'

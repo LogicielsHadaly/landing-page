@@ -47,13 +47,13 @@ const GridComponent = () => {
           onClick={() => setSelectedButton('avoid')}
           className={`font-md py-1  px-4  text-4xl ${selectedButton === 'avoid' ? 'bg-red-100' : 'bg-transparent border'} hover:bg-gray-100 text-red-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
         >
-          <h1>Avoid</h1>
+          <h1>Old Way</h1>
         </button>
         <button
           onClick={() => setSelectedButton('hadaly')}
-          className={`font-md py-1 px-4 text-4xl ${selectedButton === 'hadaly' ? ' bg-indigo-100' : 'bg-transparent border'} hover:bg-gray-100 text-gray-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
+          className={` font-md pb-1 px-4 text-sm ${selectedButton === 'hadaly' ? ' bg-indigo-100' : 'bg-transparent border'} hover:bg-gray-100 text-gray-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
         >
-          <Brand/>
+         <Brand/>
         </button>
       </div>
       <div className={` ${selectedButton === 'avoid' ? 'border-red-200' : 'border-indigo-200'}  duration-150 border`}>

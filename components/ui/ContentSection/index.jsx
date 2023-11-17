@@ -5,20 +5,55 @@ import Button from '../Button';
 import SlideLeft from '../../../animation/slideleft';
 import SlideRight from '../../../animation/slideright';
 import SlideDown from '../../../animation/slidedown';
+import Link from 'next/link';
+
 
 const ContentSection = ({
   firstComponent = 'text',
   video = '/video/video_startup.gif',
-  title = 'Experience Fast Red Flag Reporting',
-  description = 'Browse 1000\'s of unstructured documents in your Data Room to find underlying risk in real time.',
+  title = 'TITLE',
+  description = 'DESCRIPTION',
   listItems = [],
-  buttonLabel = 'Tell me more',
+  buttonLabel = 'LABEL',
   buttonOnClick = () => window.open('https://calendly.com/hadaly', '_blank'),
+  internalLink = '',
   target = 'For Due diligence Consultant',
   link = '',
   linkOnClick = () => window.open('https://calendly.com/hadaly', '_blank'),
   maintitle = ''
 }) => {
+
+
+  const renderButton = () => {
+    if (internalLink) {
+      return (
+        <Link href={internalLink} className='mt-12 group flex items-center  gap-x-1 text-xl font-medium bg-indigo-950 text-white hover:bg-opacity-90 md:inline-flex px-4 py-4 duration-300 rounded-b-lg  rounded-tr-3xl'>
+          <p className='' >
+            {buttonLabel}
+          </p>
+          <span className="transition-transform duration-300 transform group-hover:scale-125 text-indigo-400">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+            </svg>
+          </span>
+        </Link>
+      );
+    } else {
+      return (
+        <Button
+        onClick={buttonOnClick}
+        className="mt-12 group flex items-center  gap-x-1 text-xl font-medium bg-indigo-950 text-white hover:bg-opacity-90 md:inline-flex px-4 py-4"
+      >
+        {buttonLabel}
+        <span className="transition-transform duration-300 transform group-hover:scale-125 text-indigo-400">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+          </svg>
+        </span>
+      </Button>
+      );
+    }
+  };
 
   const textComponent = (
 
@@ -41,31 +76,18 @@ const ContentSection = ({
         {target}
       </p>
       <div className='justify-center flex md:justify-start'>
-        {buttonLabel && (
-          <Button
-            onClick={buttonOnClick}
-            className="mt-12 group flex items-center  gap-x-1 text-xl font-medium bg-indigo-950 text-white hover:bg-opacity-90 md:inline-flex px-4 py-4"
-          >
-            {buttonLabel}
-            <span className="transition-transform duration-300 transform group-hover:scale-125 text-indigo-400">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-              </svg>
-            </span>
-          </Button>
-        )}
-
+        {buttonLabel && renderButton()}
       </div>
 
       {link && (
-          <Button
-            onClick={linkOnClick}
-            className="text-indigo-900 text-xl font-bold underline mt-4"
-          >
-            {link}
-          </Button>
+        <Button
+          onClick={linkOnClick}
+          className="text-indigo-900 text-xl font-bold underline mt-4"
+        >
+          {link}
+        </Button>
 
-        )}
+      )}
 
     </SlideLeft>
   );
