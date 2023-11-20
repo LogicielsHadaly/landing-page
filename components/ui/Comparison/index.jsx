@@ -22,10 +22,10 @@ const GridComponent = () => {
   const [selectedButton, setSelectedButton] = useState('avoid');
 
   const avoidCards = [
-    { id: 1, description: '1. Lose time searching for right information' },
-    { id: 2, description: '2. Lose time searching for messy templates' },
-    { id: 3, description: '3. Forget important information in your Data Room' },
-    { id: 4, description: '4. Improve your Data Room Quality Scoring' },
+    { id: 1, description: '1. Losing time searching for the right information.' },
+    { id: 2, description: '2. Wasting time navigating through disorganized templates.' },
+    { id: 3, description: '3. Overlooking important information in your Data Room.' },
+    { id: 4, description: '4. Enhancing the quality of your Data Room.' },
     // ... other avoid cards
   ];
 

@@ -30,7 +30,7 @@ export default function Home() {
         BgColor="bg-indigo-50"
         title={[
           { text: 'Your Due Diligence Copilot to Rapidly Assess ', highlight: false },
-          { text: 'Deal Red Flag', highlight: true },
+          { text: 'Deal Red Flags', highlight: true },
         ]}
         description="Our data room AI connects with your existing data room provider. It transforms the folder structure and filenames to align with your internal standards, including highlighting any missing data. We also provide a generative AI chatbot for buy-side Q&A of the data room."
         button1Text="Get In Touch"
@@ -45,16 +45,16 @@ export default function Home() {
         firstComponent='text'
         video='/video/video_experience_fast_red_flag.gif'
         title='Experience Fast Red Flag Reporting'
-        description="Browse 1000's of unstructured documents in your Data Room to find underlying risk in real time."
+        description="Browse 1000's of unstructured documents in your Data Room to find underlying risks in real time."
         listItems={[
           'Connect to your Data Room',
           'Generate your Risk Reports',
-          'Chat with your Data Room to get additional informations'
+          'Chat with your Data Room to get additional information'
         ]}
         buttonLabel='Tell me more'
         buttonOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
         internalLink = '\DueDiligenceConsultant'
-        target='For Due diligence Consultant'
+        target='For Due Diligence Consultants'
 
         link=''
         linkOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
@@ -64,17 +64,17 @@ export default function Home() {
         firstComponent="VideoComponent"
         video="/video/video_build_qualitative_dataroom.gif"
         title="Build Qualitative Data Room"
-        description="Because your Data Room mirror your Company organization, We make sure to identify potential risks in your Data Room for your company to stay well Organized and always prepared for future fundraising and aqcuisitions."
+        description="Since your Data Room mirrors your company's organization, we ensure the identification of potential risks in your Data Room, helping your company stay well-organized and always prepared for future fundraising and acquisitions."
         listItems={[
           "Upload or start building your Data Room",
-          "Detect Upfront Missing Documents",
-          "Improve your Data Room Quality Scoring"
+          "Detect missing documents upfront",
+          "Improve your Data Room's Quality Scoring"
         ]}
         buttonLabel="Tell me more"
         internalLink = '\startup'
         buttonOnClick= {() => window.open('https://calendly.com/hadaly', '_blank')}
-        target='For Startup & SME'
-        link="Download Your Personal Data Room Check List"
+        target='For Startups & SMEs'
+        link="Download Your Personal Data Room Checklist"
         linkOnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
       />
       {/* <InsightGen /> */}

@@ -19,9 +19,9 @@ export default function index() {
       Video={"/video/hero_video_startup.gif"}
         BgColor="bg-neutral-200"
         title={[
-          { text: 'Build Qualitative Data Room Fast and with Experience ', highlight: false },
+          { text: 'Build a Qualitative Data Room Quickly and with Expertise', highlight: false },
         ]}
-        description="Your Data Room mirrors your Company organization, We help identify potential risks for your company to stay well organized and always prepared for future fundraising and acquisitions."
+        description="Since your Data Room reflects your company's organization, we help identify potential risks, enabling your company to remain well-organized and always prepared for future fundraising and acquisitions."
         button1Text="Start Building"
         button1OnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
         button2Text="Get Verification Checklist"
@@ -32,14 +32,14 @@ export default function index() {
 <ContentSection
         firstComponent="VideoContent"
         video="/video/video_build_qualitative_dataroom.gif"
-        title="Build Qualitative DataRoom"
-        description="We know how hard it is to Build A Qualitative Data Room !. Because your Data Room mirror your Company organization, Investors will scan every details of your Data Room before funding your Sartup. We make sure that you documents stay well organized and always prepared for future fundraising and aqcuisitions."
+        title="Build a Qualitative Data Room"
+        description="We understand the challenge of building a qualitative Data Room. Since your Data Room reflects your company's organization, investors will scrutinize every detail before funding your startup. We ensure that your documents are well-organized and always ready for future fundraising and acquisitions."
         listItems={[]}
-        buttonLabel="Improve your Data Room Now"
+        buttonLabel="Improve Your Data Room Now"
         buttonOnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
         target=''
-        link="Download Your Personal Data Room Checklist here"
-        maintitle='Because building your Startup is hard enough'
+        link="Download Your Personal Data Room Checklist Here"
+        maintitle='Because Building Company is Hard Enough'
       />
     
     <GridComponent/>
