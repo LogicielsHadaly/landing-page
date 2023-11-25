@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
         <title>Hadaly</title>
         <meta
           name="description"
-          content="Assess and clarify Institutional portfolios with actionable insights with Hadaly."
+          content="Your Due Diligence Copilot to Rapidly Assess Deal Red Flags and Build Qualitative Data Room"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/head_icon.png" />
