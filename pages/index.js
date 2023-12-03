@@ -16,8 +16,33 @@ import DataGov from "../components/ui/DataGovernance"
 import Graphmap from "../components/ui/Graphmap";
 import Carroussel from "../components/ui/Carroussel";
 import Testimonial from '../components/ui/Testimonials';
-
+import { useEffect } from 'react';
 export default function Home() {
+
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://cdn.voiceflow.com/widget/bundle.mjs';
+    script.onload = () => {
+      window.voiceflow.chat.load({
+        verify: { projectID: '656bd1bd5061e600072a1d40' },
+        url: 'https://general-runtime.voiceflow.com',
+        versionID: 'production'
+      });
+    };
+
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(script, firstScriptTag);
+
+    return () => {
+      // Cleanup: remove the script if it's still in the DOM
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -41,6 +66,8 @@ export default function Home() {
 
       <DecisionMaking />
 
+
+
       <ContentSection
         firstComponent='text'
         video='/video/video_experience_fast_red_flag.gif'
@@ -53,12 +80,12 @@ export default function Home() {
         ]}
         buttonLabel='Tell me more'
         buttonOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
-        internalLink = '\DueDiligenceConsultant'
+        internalLink='\DueDiligenceConsultant'
         target='For Due Diligence Consultants'
 
         link=''
         linkOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
-         />
+      />
 
       <ContentSection
         firstComponent="VideoComponent"
@@ -71,8 +98,8 @@ export default function Home() {
           "Improve your Data Room's Quality Scoring"
         ]}
         buttonLabel="Tell me more"
-        internalLink = '\startup'
-        buttonOnClick= {() => window.open('https://calendly.com/hadaly', '_blank')}
+        internalLink='\startup'
+        buttonOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
         target='For Startups & SMEs'
         link="Download Your Personal Data Room Checklist"
         linkOnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
