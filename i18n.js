@@ -13,7 +13,7 @@ const resources = {
 
       
       "heroTitle1": "Your Due Diligence Copilot to Rapidly Assess",
-      "heroTitle2": " Deal Redlags",
+      "heroTitle2": " Deal Red Flags",
       "heroDescription": "Our data room AI connects with your existing data room provider. It transforms the folder structure and filenames to align with your internal standards, including highlighting any missing data. We also provide a generative AI chatbot for buy-side Q&A of the data room.",
       "heroButton1": "Get In Touch",
       "heroButton2": "Subscribe",
@@ -137,6 +137,43 @@ const resources = {
       "politicsContent11":"Nous pouvons mettre à jour cette politique de confidentialité à notre discrétion de temps à autre en publiant une nouvelle version sur notre site Web. La version actuelle de cette politique de confidentialité a été modifiée le 1 Janvier 2024.",
 
 
+      "contactTitle":"Contact Us",
+      "contactDescription":"Feel free to share with us any questions, we will make sure to get back to you as soon as possible",
+      "contactName":"Name",
+      "contactEmail":"Email",
+      "contactMessage":"Message",
+      "contactButton":"Send",
+
+
+      "startupHeroTitle":"Build a Qualitative Data Room Quickly and with Expertise",
+      "startupHeroDescription":"Since your Data Room reflects your company's organization, we help identify potential risks, enabling your company to remain well-organized and always prepared for future fundraising and acquisitions.",
+      "startupHeroButton1":"Start Building",
+      "startupHeroButton2":"Get Verification Checklist",
+
+      "startupsection1Title": "Build a Qualitative Data Room",
+      "startupsection1MainTitle": "Because Building Company is Hard Enough",
+      "startupsection1Subtitle": "We understand the challenge of building a qualitative Data Room. Since your Data Room reflects your company's organization, investors will scrutinize every detail before funding your startup. We ensure that your documents are well-organized and always ready for future fundraising and acquisitions.",
+      "startupbutton1Section1": "Improve Your Data Room Now",
+      "startuptarget1Section1": "Download Your Personal Data Room Checklist Here",
+
+      "ddConsultantHeroTitle":"The Burden of going through a Data Room end Now.",
+      "ddConsultantHeroDescription":"Browse 1000's of unstructured documents in your Data Room to identify underlying risks in real time, thereby accelerating the repetitive processes involved in your due diligence.",
+      "ddConsultantHeroButton1":"Book a Demo",
+      "ddConsultantHeroButton2":"Login",
+    
+      "ddConsultantsection1Title": "Connect to your Data Room",
+      "ddConsultantsection1Subtitle": "Connect to your Data Room and start gaining instant insights. Utilize our extensive network of connectors, including Google Drive and Firmex, to establish the connection. Our engine is also available as an on-premise solution or can be integrated into your local environment.",
+      "ddConsultantMainTitleSection1": "Your value lies in the ability to quickly identify key issues.",
+      
+
+
+      "ddConsultantsection2Title": "Generate Your Risk Reports",
+      "ddConsultantsection2Subtitle": "Hadaly enhances your understanding of your data room swiftly by enabling you to interact with any document through chat and receive answers within seconds.",
+
+
+      "ddConsultantsection3Title": "Enhance Your Deal Screening",
+      "ddConsultantsection3Subtitle": "Act quickly, as you're likely not the only firm interested in this deal. Hadaly boosts your efficiency by detecting early Red Flags, requesting missing documentation, and securing a competitive advantage over other firms.",
+      "ddConsultantbutton1Section3": "Join Now",
 
     
     }

@@ -6,8 +6,11 @@ import Carroussel from "../components/ui/Carroussel";
 import Hero from "../components/ui/Hero";
 import ContentSection from "../components/ui/ContentSection";
 import GridComponent from "../components/ui/Comparison";
+import "../i18n";
+import { useTranslation } from 'react-i18next';
 
 export default function index() {
+  const { t, i18n } = useTranslation('');
   return (
     <>
       <Head>
@@ -19,12 +22,12 @@ export default function index() {
       Video={"/video/hero_video_startup.gif"}
         BgColor="bg-neutral-200"
         title={[
-          { text: 'Build a Qualitative Data Room Quickly and with Expertise', highlight: false },
+          { text: t('startupHeroTitle'), highlight: false },
         ]}
-        description="Since your Data Room reflects your company's organization, we help identify potential risks, enabling your company to remain well-organized and always prepared for future fundraising and acquisitions."
-        button1Text="Start Building"
+        description={t('startupHeroDescription')}
+        button1Text={t('startupHeroButton1')}
         button1OnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
-        button2Text="Get Verification Checklist"
+        button2Text={t('startupHeroButton2')}
         button2OnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
       />
 
@@ -32,14 +35,14 @@ export default function index() {
 <ContentSection
         firstComponent="VideoContent"
         video="/video/video_build_qualitative_dataroom.gif"
-        title="Build a Qualitative Data Room"
-        description="We understand the challenge of building a qualitative Data Room. Since your Data Room reflects your company's organization, investors will scrutinize every detail before funding your startup. We ensure that your documents are well-organized and always ready for future fundraising and acquisitions."
+        title={t('startupsection1Title')}
+        description={t('startupsection1Subtitle')}
         listItems={[]}
-        buttonLabel="Improve Your Data Room Now"
+        buttonLabel={t('startupbutton1Section1')}
         buttonOnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
         target=''
-        link="Download Your Personal Data Room Checklist Here"
-        maintitle='Because Building Company is Hard Enough'
+        link={t('startuptarget1Section1')}
+        maintitle={t('startupsection1MainTitle')}
       />
     
     <GridComponent/>
