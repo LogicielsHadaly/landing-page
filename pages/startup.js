@@ -43,7 +43,7 @@ export default function index() {
       />
     
     <GridComponent/>
-      <Carroussel />
+      {/* <Carroussel /> */}
       <Footer />
     </>
   );

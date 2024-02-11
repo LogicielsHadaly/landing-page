@@ -65,7 +65,7 @@ export default function index() {
         link=""
       />
 
-      <Carroussel />
+      {/* <Carroussel /> */}
       <Footer />
     </>
   );

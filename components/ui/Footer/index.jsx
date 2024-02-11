@@ -4,19 +4,21 @@ import Brand from '../Brand'
 import "../../../i18n";
 import { useTranslation } from 'react-i18next';
 
+
 const navigation = [
-    { name: "", href: "" },
-    //{ name: "Pricing", href: "/pricing" },
-    // { name: "FAQs", href: "#faqs" },
-]
+    { name: "Confidentiality", href: "/confidentiality" },
+    { name: "Legal Mention", href: "/legalMention" },
+    { name: "About Us", href: "/team" },
+    { name: "Contact", href: "/contact" },
+];
 
 const Footer = () => {
     const { t, i18n } = useTranslation('');
-    
+
     return (
         <footer className="pt-1 sm:pt-1 mt-32 ">
             <div className=" max-w-screen-2xl mx-auto flex flex-col md:flex-row  justify-around ">
-                <div className="   ">
+                <div className="">
                     <Link href="/" className="mx-auto flex  justify-center ">
                         <Brand />
                     </Link>
@@ -27,11 +29,30 @@ const Footer = () => {
                         </Link>
                     </div>
                 </div>
+
+
+
                 <Newsletter />
             </div>
             <div className="mt-10 py-10 border-t flex-row-reverse items-center justify-between sm:flex">
                 <p className="mt-6 sm:mt-0 px-8">{t('marque')}</p>
+
+                <div className="px-10 justify-between">
+                    <nav>
+                        <ul className="flex flex-wrap justify-center gap-4 mt-5">
+                            {navigation.map((item) => (
+                                <li key={item.name}>
+                                    <Link href={item.href} className="text-gray-600 hover:text-gray-800">
+                                        {t(item.name)}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+                </div>
             </div>
+
+ 
         </footer>
     );
 }
