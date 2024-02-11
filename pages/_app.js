@@ -3,8 +3,11 @@ import Head from 'next/head';
 import "framer-motion";
 import { useRouter } from "next/router";
 
+
+
 export default function App({ Component, pageProps }) {
   // const router = useRouter();
+
 
   return (
     <>
@@ -67,3 +70,4 @@ export default function App({ Component, pageProps }) {
     </>
   );
 }
+

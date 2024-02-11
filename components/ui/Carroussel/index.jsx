@@ -6,6 +6,8 @@ import testimonials from "./testimonials.json";
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SlideLeft from "../../../animation/slideleft";
+import { useTranslation } from 'react-i18next';
+
 
 export default function Home() {
   return (

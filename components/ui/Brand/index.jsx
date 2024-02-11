@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const Brand = ({ ...props }) => (
     <Image
-        src="/hadaly.svg"
+        src="/hadaly.png"
         alt="Hadaly logo"
         {...props}
         className="py-0"

@@ -1,7 +1,10 @@
 import Button from "../Button";
 import Input from "../Input";
+import "../../../i18n";
+import { useTranslation } from 'react-i18next';
 
 const Newsletter = () => {
+  const { t, i18n } = useTranslation('');
   // Replace this with your Google Apps Script web app URL
   const googleScriptURL =
     "https://script.google.com/macros/s/AKfycbyfdqeLDf6JqqPMikZsyXz7dVlMHUlUnAkbU-H2C1wxGm-PV7S9KLRZoUTQzqpLCuHO/exec";
@@ -30,7 +33,7 @@ const Newsletter = () => {
   return (
     <div className="mt-6 md:mt-0 px-4">
       <h2 className="text-gray-800 text-3xl font-semibold sm:text-3xl mx-auto flex  justify-center ">
-        Newsletter
+      {t('newsletterTitle')}
       </h2>
       <form
         onSubmit={handleSubmit}
@@ -56,7 +59,7 @@ const Newsletter = () => {
             type="email"
             name="email"
             required
-            placeholder="Enter your email"
+            placeholder={t('newsletterPlaceholder')}
             className="w-full pl-12 pr-3 focus:border-blue-600 text-xl rounded-b-lg  rounded-tl-3xl"
           />
         </div>
@@ -64,7 +67,7 @@ const Newsletter = () => {
           type="submit"
           className=" w-auto  group flex items-center justify-center gap-x-1 text-xl font-medium bg-indigo-950 text-white hover:bg-opacity-90 md:inline-flex px-4 py-2"
         >
-          Subscribe
+          {t('newsletterButton')}
           <span className="transition-transform duration-300 transform group-hover:scale-125 text-indigo-400  ">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />

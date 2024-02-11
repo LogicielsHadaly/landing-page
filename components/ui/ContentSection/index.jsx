@@ -6,6 +6,11 @@ import SlideLeft from '../../../animation/slideleft';
 import SlideRight from '../../../animation/slideright';
 import SlideDown from '../../../animation/slidedown';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+
+
+
+  
 
 
 const ContentSection = ({
@@ -23,7 +28,7 @@ const ContentSection = ({
   maintitle = ''
 }) => {
 
-
+  const { t } = useTranslation();
   const renderButton = () => {
     if (internalLink) {
       return (

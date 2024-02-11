@@ -16,8 +16,12 @@ import DataGov from "../components/ui/DataGovernance"
 import Graphmap from "../components/ui/Graphmap";
 import Carroussel from "../components/ui/Carroussel";
 import Testimonial from '../components/ui/Testimonials';
+import "../i18n";
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
+  const { t, i18n } = useTranslation('');
+
   return (
     <>
       <Head>
@@ -29,32 +33,32 @@ export default function Home() {
         Video={"/video/hero_video.gif"}
         BgColor="bg-indigo-50"
         title={[
-          { text: 'Your Due Diligence Copilot to Rapidly Assess ', highlight: false },
-          { text: 'Deal Red Flags', highlight: true },
+          { text: t('heroTitle1') , highlight: false },
+          { text: t('heroTitle2'), highlight: true },
         ]}
-        description="Our data room AI connects with your existing data room provider. It transforms the folder structure and filenames to align with your internal standards, including highlighting any missing data. We also provide a generative AI chatbot for buy-side Q&A of the data room."
-        button1Text="Get In Touch"
+        description={t('heroDescription')}
+        button1Text={t('heroButton1')}
         button1OnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
-        button2Text="Subscribe"
+        button2Text={t('heroButton2')}
         button2OnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
       />
 
-      <DecisionMaking />
+      {/* <DecisionMaking /> */}
 
       <ContentSection
         firstComponent='text'
-        video='/video/video_experience_fast_red_flag.gif'
-        title='Experience Fast Red Flag Reporting'
-        description="Browse 1000's of unstructured documents in your Data Room to find underlying risks in real time."
+        video='/video/video_website_v2.gif'
+        title={t('section1Title')}
+        description={t('section1Subtitle')}
         listItems={[
-          'Connect to your Data Room',
-          'Generate your Risk Reports',
-          'Chat with your Data Room to get additional information'
+          t('section1List1'),
+          t('section1List2'),
+          t('section1List3')
         ]}
-        buttonLabel='Tell me more'
+        buttonLabel={t('button1Section1')}
         buttonOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
         internalLink = '\DueDiligenceConsultant'
-        target='For Due Diligence Consultants'
+        target={t('target1Section1')}
 
         link=''
         linkOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
@@ -62,25 +66,67 @@ export default function Home() {
 
       <ContentSection
         firstComponent="VideoComponent"
-        video="/video/video_build_qualitative_dataroom.gif"
-        title="Build Qualitative Data Room"
-        description="Since your Data Room mirrors your company's organization, we ensure the identification of potential risks in your Data Room, helping your company stay well-organized and always prepared for future fundraising and acquisitions."
+        video="/video/video_connect_your_dataroom.png"
+        title={t('section2Title')}
+        description={t('section2Subtitle')}
         listItems={[
-          "Upload or start building your Data Room",
-          "Detect missing documents upfront",
-          "Improve your Data Room's Quality Scoring"
+          t('section2List1'),
+          t('section2List2'),
+          t('section2List3')
         ]}
-        buttonLabel="Tell me more"
+        buttonLabel={t('button1Section2')}
         internalLink = '\startup'
         buttonOnClick= {() => window.open('https://calendly.com/hadaly', '_blank')}
-        target='For Startups & SMEs'
-        link="Download Your Personal Data Room Checklist"
+        target={t('target1Section2')}
+        link={t('section2Link')}
         linkOnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
       />
+
+
+
+<ContentSection
+        firstComponent='text'
+        video='/video/video_generate_risk_reports.gif'
+        title={t('section3Title')}
+        description={t('section3Subtitle')}
+        listItems={[
+          t('section3List1'),
+          t('section3List2'),
+          t('section3List3')
+        ]}
+        buttonLabel={t('button1Section3')}
+        buttonOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+        internalLink = '\DueDiligenceConsultant'
+        target={t('target1Section3')}
+
+        link=''
+        linkOnClick={() => window.open('https://calendly.com/hadaly', '_blank')}
+         />
+
+      <ContentSection
+        firstComponent="VideoComponent"
+        video="/video/video_enhance_deal_screaning.gif"
+        title={t('section4Title')}
+        description={t('section4Subtitle')}
+        listItems={[
+          t('section4List1'),
+          t('section4List2'),
+          t('section4List3')
+        ]}
+        buttonLabel={t('button1Section4')}
+        internalLink = '\startup'
+        buttonOnClick= {() => window.open('https://calendly.com/hadaly', '_blank')}
+        target={t('target1Section4')}
+        link={t('section4Link')}
+        linkOnClick={() => window.open('https://aupipvte5zf.typeform.com/to/WuqvYFZG', '_blank')}
+      />
+
+
+
       {/* <InsightGen /> */}
       {/* <DataGov /> */}
       <LogoGrid />
-      <Testimonial />
+      {/* <Testimonial /> */}
       {/* <Carroussel /> */}
       {/* <CenteredCTAText />
       <CTA /> */}
@@ -92,3 +138,4 @@ export default function Home() {
     </>
   );
 }
+

@@ -2,11 +2,13 @@ import { useRouter } from "next/router";
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import SlideUp from "../../../animation/slideup";
-
+import "../../../i18n";
+import { useTranslation } from 'react-i18next';
 
 
 export default function Example() {
   const router = useRouter();
+  const { t, i18n } = useTranslation('');
 
   // Define the array of logo filenames
   const logoFilenames = ["nextai.svg", "fintech.svg", "propolys.svg", "mitacs.svg", "arbour.svg", "laval.svg", "poly.svg", "attestra.svg", "CDL.svg"];
@@ -17,7 +19,7 @@ export default function Example() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-10">
         <SlideUp>
           <h2 className="text-center text-lg font-semibold leading-8 text-gray-900">
-            Trusted by innovative teams
+            {t('partners')}
           </h2>
         </SlideUp>
         <SlideUp>
