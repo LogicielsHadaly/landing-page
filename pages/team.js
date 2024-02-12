@@ -6,7 +6,7 @@ import Team from "../components/ui/team"
 import Carroussel from "../components/ui/Carroussel";
 
 
-export default function index() {
+export default function Index() {
 
   return (
     <>
