@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/head_icon.png" />
         <link
-          href="/fonts/Fontspring-DEMO-argentcf-regular.otf"
+          href="/fonts/romana.otf"
           rel="preload"
           as="font"
           crossOrigin=""
@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }) {
         <style>{`
           @font-face {
             font-family: 'CustomFont';
-            src: url('/fonts/Fontspring-DEMO-argentcf-regular.otf') format('opentype');
+            src: url('/fonts/ArgentCF-Regular.ttf') format('opentype');
           }
 
           @font-face {
