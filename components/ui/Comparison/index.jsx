@@ -6,7 +6,8 @@ import SlideLeft from '../../../animation/slideleft';
 import SlideRight from '../../../animation/slideright';
 import SlideDown from '../../../animation/slidedown';
 import Brand from '../Brand';
-
+import "../../../i18n";
+import { useTranslation } from 'react-i18next';
 
 
 import React, { useState } from 'react';
@@ -19,21 +20,22 @@ const Card = ({ description, bgColor, textColor }) => (
 );
 
 const GridComponent = () => {
+  const { t, i18n } = useTranslation('');
   const [selectedButton, setSelectedButton] = useState('avoid');
 
   const avoidCards = [
-    { id: 1, description: '1. Losing time searching for the right information.' },
-    { id: 2, description: '2. Wasting time navigating through disorganized templates.' },
-    { id: 3, description: '3. Overlooking important information in your Data Room.' },
-    { id: 4, description: '4. Enhancing the quality of your Data Room.' },
+    { id: 1, description: t('startupOldWay1') },
+    { id: 2, description: t('startupOldWay2') },
+    { id: 3, description: t('startupOldWay3') },
+    { id: 4, description: t('startupOldWay4') },
     // ... other avoid cards
   ];
 
   const hadalyCards = [
-    { id: 5, description: '1. Connect your Data Room Providers' },
-    { id: 6, description: '2. Upload or start building your Data Room' },
-    { id: 7, description: '3. Get Access to 100+ Legal and Financial Templates' },
-    { id: 8, description: '4. Improve your Data Room Quality Scoring' },
+    { id: 5, description: t('startupWithHadaly1') },
+    { id: 6, description: t('startupWithHadaly2') },
+    { id: 7, description: t('startupWithHadaly3') },
+    { id: 8, description: t('startupWithHadaly4') },
     // ... other hadaly cards
   ];
 
@@ -47,7 +49,7 @@ const GridComponent = () => {
           onClick={() => setSelectedButton('avoid')}
           className={`font-md py-1  px-4  text-4xl ${selectedButton === 'avoid' ? 'bg-red-100' : 'bg-transparent border'} hover:bg-gray-100 text-red-500 text-center duration-150 rounded-b-lg rounded-tr-3xl`}
         >
-          <h1>Old Way</h1>
+          <h1>{t('startupOldWayTitle')}</h1>
         </button>
         <button
           onClick={() => setSelectedButton('hadaly')}

@@ -5,16 +5,16 @@ import "../../../i18n";
 import { useTranslation } from 'react-i18next';
 
 
-const navigation = [
-    { name: "Confidentiality", href: "/confidentiality" },
-    { name: "Legal Mention", href: "/legalMention" },
-    { name: "About Us", href: "/team" },
-    { name: "Contact", href: "/contact" },
-];
+
 
 const Footer = () => {
     const { t, i18n } = useTranslation('');
-
+    const navigation = [
+        { name: t('footerPrivacyPolicy'), href: "/confidentiality" },
+        { name: t('footerLegalMention'), href: "/legalMention" },
+        { name: t('footerAbout'), href: "/team" },
+        { name: 'Contact', href: "/contact" },
+    ];
     return (
         <footer className="pt-1 sm:pt-1 mt-32 ">
             <div className=" max-w-screen-2xl mx-auto flex flex-col md:flex-row  justify-around ">
