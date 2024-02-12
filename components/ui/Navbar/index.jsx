@@ -67,25 +67,48 @@ const Navbar = () => {
 
                     <Link href="/startup">
                         <p className={`hover:underline px-2 pt-2 ${isActive('/startup') ? 'border-b-2 border-indigo-500' : ''}`} >
-                        {t('navbarButton2')}
+                            {t('navbarButton2')}
                         </p>
                     </Link>
 
                     <Link href="/DueDiligenceConsultant">
                         <p className={`hover:underline px-2 pt-2 ${isActive('/DueDiligenceConsultant') ? 'border-b-2 border-indigo-500' : ''}`} >
-                        {t('navbarButton3')}
+                            {t('navbarButton3')}
                         </p>
                     </Link>
 
 
                     {/* Language Selector and Flag Display */}
-                    <div className="flex items-center px-4 py-1">
+                    {/* <div className="flex items-center px-4 py-1 ">
                         <ReactCountryFlag countryCode={getFlagCode(selectedLanguage)} svg style={{
                             width: '2em',
                             height: '2em',
                             marginRight: '8px',
                         }} />
-                        <select onChange={(e) => changeLanguage(e.target.value)} value={selectedLanguage} className="text-lg py-1 rounded border border-gray-300">
+                        <select onChange={(e) => changeLanguage(e.target.value)} value={selectedLanguage} className="text-lg py-1 rounded border border-indigo-300 bg-indigo-100 bg-opacity-10 ">
+                            {languages.map(lang => (
+                                <option key={lang.code} value={lang.code}>{lang.name}</option>
+                            ))}
+                        </select>
+                    </div> */}
+
+                    <div className="flex items-center px-4 py-1 ">
+                        <ReactCountryFlag
+                            countryCode={getFlagCode(selectedLanguage)}
+                            svg
+                            style={{
+                                width: '2em',
+                                height: '2em',
+                                marginRight: '8px',
+                                borderRadius: '20%', // Make the flag round
+                            }}
+                        />
+                        <select
+                            onChange={(e) => changeLanguage(e.target.value)}
+                            value={selectedLanguage}
+                            className="text-lg py-1 border border-indigo-300 bg-indigo-100 bg-opacity-10
+                   rounded-tl-lg rounded-tr-md rounded-bl-md rounded-br-lg focus:border-1 focus:border-indigo-500" // Example of asymmetric border-radius
+                        >
                             {languages.map(lang => (
                                 <option key={lang.code} value={lang.code}>{lang.name}</option>
                             ))}
