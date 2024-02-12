@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 const resources = {
   "en": {
-    "translation":    {
+    "translation":      {
       "navbarButtonCallToAction": "Book A Demo",
       "navbarButton1": "About us",
       "navbarButton2": "Company",
@@ -35,14 +35,14 @@ const resources = {
       "section3List3": "Chat with your Data Room to get additional information",
       "button1Section3": "Tell me more",
       "target1Section3": "For Due Diligence Consultants",
-      "section4Title": "Build Qualitative Data Room",
-      "section4Subtitle": "Since your Data Room mirrors your company's organization, we ensure the identification of potential risks in your Data Room, helping your company stay well-organized and always prepared for future fundraising and acquisitions.",
-      "section4List1": "Upload or start building your Data Room",
-      "section4List2": "Detect missing documents upfront",
-      "section4List3": "Improve your Data Room's Quality Scoring",
+      "section4Title": "Organize and standardize your deal structure.",
+      "section4Subtitle": "Improve tracking of fund performance",
+      "section4List1": "Integrate artificial intelligence into your investment processes",
+      "section4List2": "Compare the performance of your investments with our analysis platform",
+      "section4List3": "Identify the major risks associated with your investment portfolio",
       "button1Section4": "Tell me more",
-      "section4Link": "Download Your Personal Data Room Checklist",
-      "target1Section4": "For Startups & SMEs",
+      "section4Link": "",
+      "target1Section4": "For investment funds",
       "partners": "Trusted by innovative teams",
       "marque": "© 2024 Logiciels Hadaly Inc. All rights reserved.",
       "newsletterButton": "Subscribe",
@@ -184,7 +184,7 @@ const resources = {
       "button1Section3": "En savoir plus",
       "target1Section3": "Pour les acheteurs",
       "section4Title": "Organisez et standardisez la structure de vos deals.",
-      "section4Subtitle": "Since your Data Room mirrors your company's organization, we ensure the identification of potential risks in your Data Room, helping your company stay well-organized and always prepared for future fundraising and acquisitions.",
+      "section4Subtitle": "Améliorez le suivi des performances du fonds",
       "section4List1": "Intégrez  l’intelligence de artificielles dans vos processus d’investissements",
       "section4List2": "Comparez la performance de vos investissements grâce à notre platforme d’analyse",
       "section4List3": "Identifier les risques majeurs liées à votre portefeuille d’investissement",
