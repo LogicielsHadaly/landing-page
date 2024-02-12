@@ -4,7 +4,9 @@ import FAQs from "../components/ui/FAQs";
 import Navbar from "../components/ui/Navbar";
 import Footer from "../components/ui/Footer";
 
-export default function index() {
+
+export default function Index() {
+  
   return (
     <>
       <Head>
@@ -13,7 +15,7 @@ export default function index() {
       </Head>
       <Navbar />
       <Pricing />
-      <FAQs />
+      {/* <FAQs /> */}
       <Footer />
     </>
   );

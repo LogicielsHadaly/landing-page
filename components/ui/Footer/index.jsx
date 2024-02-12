@@ -14,6 +14,7 @@ const Footer = () => {
         { name: t('footerLegalMention'), href: "/legalMention" },
         { name: t('footerAbout'), href: "/team" },
         { name: 'Contact', href: "/contact" },
+        { name: 'Pricing', href: "/pricing" },
     ];
     return (
         <footer className="pt-1 sm:pt-1 mt-32 ">
