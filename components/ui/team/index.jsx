@@ -7,7 +7,7 @@ import ContentSection from '../ContentSection';
 import "../../../i18n";
 import { useTranslation } from 'react-i18next';
 
-const reports = () => {
+const Reports = () => {
   const { t, i18n } = useTranslation('');
   return (
     <div className='mt-24'>
@@ -31,4 +31,4 @@ const reports = () => {
   );
 };
 
-export default reports;
+export default Reports;
