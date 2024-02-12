@@ -8,7 +8,7 @@ import ContentSection from "../components/ui/ContentSection";
 import "../i18n";
 import { useTranslation } from 'react-i18next';
 
-export default function index() {
+export default function Index() {
   const { t, i18n } = useTranslation('');
   return (
     <>
